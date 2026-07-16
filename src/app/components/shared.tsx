@@ -42,7 +42,7 @@ export function PageHeader() {
           <img
             src="/icon.png"
             alt="Deuxsentique Logo"
-            className="h-12 w-auto object-contain opacity-90 drop-shadow-[0_0_12px_rgba(196,145,58,0.5)]"
+            className="h-16 md:h-20 w-auto object-contain brightness-110 contrast-110 drop-shadow-[0_0_15px_rgba(196,145,58,0.7)]"
           />
         </div>
 

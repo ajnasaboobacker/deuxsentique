@@ -328,7 +328,7 @@ export default function Home() {
           <img
             src="/icon.png"
             alt="Deuxsentique Logo"
-            className={`h-12 w-auto object-contain transition-all duration-700 drop-shadow-[0_0_12px_rgba(196,145,58,0.5)] ${
+            className={`h-16 md:h-20 w-auto object-contain transition-all duration-700 brightness-110 contrast-110 drop-shadow-[0_0_15px_rgba(196,145,58,0.7)] ${
               isScrolled ? "opacity-100 scale-100" : "opacity-0 scale-50 pointer-events-none"
             }`}
           />
