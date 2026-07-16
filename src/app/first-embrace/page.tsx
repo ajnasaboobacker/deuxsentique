@@ -177,7 +177,7 @@ export default function FirstEmbracePage() {
           </p>
           <Link
             href="/#chapter-11"
-            className="inline-block font-body text-[10px] uppercase tracking-[0.4em] border border-primary/50 text-primary px-10 py-4 hover:bg-primary hover:text-background transition-all duration-700 hover:shadow-[0_0_15px_rgba(233,195,73,0.2)]"
+            className="inline-block font-body text-[10px] uppercase tracking-[0.4em] border border-primary/50 text-primary px-10 py-4 hover:bg-primary hover:text-background transition-all duration-700 hover:shadow-[0_0_15px_rgba(196,145,58,0.2)]"
           >
             Request Invitation
           </Link>

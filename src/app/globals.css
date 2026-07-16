@@ -1,11 +1,11 @@
 @import "tailwindcss";
 
 @theme {
-  --color-background: #050505;
-  --color-on-background: #F5F5DC;
-  --color-primary: #E9C349;
-  --color-secondary: #9E7E7E;
-  --color-surface: #0a0a0a;
+  --color-background: #F5F0E8;
+  --color-on-background: #1A1A1A;
+  --color-primary: #C4913A;
+  --color-secondary: #8C6B5A;
+  --color-surface: #EDE8DF;
   --color-outline: #444748;
 
   --font-display: var(--font-bodoni-moda), serif;
@@ -14,8 +14,8 @@
 
 /* Base resets and luxury styling */
 html, body {
-  background-color: #050505;
-  color: #F5F5DC;
+  background-color: #F5F0E8;
+  color: #1A1A1A;
   overflow-x: hidden;
   height: 100%;
 }
@@ -35,7 +35,7 @@ html, body {
   .custom-cursor-dot {
     width: 6px;
     height: 6px;
-    background: #E9C349;
+    background: #C4913A;
     border-radius: 50%;
     position: fixed;
     pointer-events: none;
@@ -46,7 +46,7 @@ html, body {
   .custom-cursor-ring {
     width: 32px;
     height: 32px;
-    border: 1px solid rgba(233, 195, 73, 0.4);
+    border: 1px solid rgba(196, 145, 58, 0.4);
     border-radius: 50%;
     position: fixed;
     pointer-events: none;
@@ -58,13 +58,13 @@ html, body {
   body.cursor-hover .custom-cursor-dot {
     width: 4px;
     height: 4px;
-    background: #050505;
+    background: #F5F0E8;
   }
   body.cursor-hover .custom-cursor-ring {
     width: 48px;
     height: 48px;
-    border-color: rgba(233, 195, 73, 0.8);
-    background-color: rgba(233, 195, 73, 0.05);
+    border-color: rgba(196, 145, 58, 0.8);
+    background-color: rgba(196, 145, 58, 0.08);
   }
 }
 
@@ -118,7 +118,7 @@ html, body {
   height: 100vh;
   pointer-events: none;
   z-index: 9998;
-  background: radial-gradient(circle, rgba(0,0,0,0) 40%, rgba(0,0,0,0.95) 100%);
+  background: radial-gradient(circle, rgba(245,240,232,0) 40%, rgba(220,210,195,0.6) 100%);
 }
 
 /* Slow moving gold ambient lights */
@@ -129,7 +129,7 @@ html, body {
   top: -10vw;
   right: -10vw;
   border-radius: 50%;
-  background: radial-gradient(circle, rgba(233, 195, 73, 0.03) 0%, rgba(0,0,0,0) 70%);
+  background: radial-gradient(circle, rgba(196, 145, 58, 0.06) 0%, rgba(245,240,232,0) 70%);
   pointer-events: none;
   z-index: 2;
   animation: floatAmbient 25s ease-in-out infinite alternate;
@@ -142,7 +142,7 @@ html, body {
   bottom: -20vw;
   left: -20vw;
   border-radius: 50%;
-  background: radial-gradient(circle, rgba(158, 126, 126, 0.02) 0%, rgba(0,0,0,0) 70%);
+  background: radial-gradient(circle, rgba(140, 107, 90, 0.05) 0%, rgba(245,240,232,0) 70%);
   pointer-events: none;
   z-index: 2;
   animation: floatAmbientBottom 35s ease-in-out infinite alternate;
@@ -160,12 +160,12 @@ html, body {
 
 /* Luxury Cinematic Glassmorphism card */
 .glass-editorial-panel {
-  background: rgba(10, 10, 10, 0.65);
+  background: rgba(237, 232, 223, 0.7);
   backdrop-filter: blur(15px);
   -webkit-backdrop-filter: blur(15px);
-  border: 1px solid rgba(233, 195, 73, 0.1);
+  border: 1px solid rgba(196, 145, 58, 0.15);
   padding: 2rem 1.5rem;
-  box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.7);
+  box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.08);
   position: relative;
   overflow: hidden;
 }
@@ -184,8 +184,8 @@ html, body {
   left: 0;
   width: 10px;
   height: 10px;
-  border-top: 1px solid rgba(233, 195, 73, 0.6);
-  border-left: 1px solid rgba(233, 195, 73, 0.6);
+  border-top: 1px solid rgba(196, 145, 58, 0.4);
+  border-left: 1px solid rgba(196, 145, 58, 0.4);
 }
 
 .glass-editorial-panel::after {
@@ -195,8 +195,8 @@ html, body {
   right: 0;
   width: 10px;
   height: 10px;
-  border-bottom: 1px solid rgba(233, 195, 73, 0.6);
-  border-right: 1px solid rgba(233, 195, 73, 0.6);
+  border-bottom: 1px solid rgba(196, 145, 58, 0.4);
+  border-right: 1px solid rgba(196, 145, 58, 0.4);
 }
 
 /* Word-by-word reveal (Whisper blur effect) */
@@ -266,7 +266,7 @@ html, body {
   font-size: 9px;
   letter-spacing: 0.6em;
   text-transform: uppercase;
-  color: rgba(245, 245, 220, 0.12);
+  color: rgba(26, 26, 26, 0.1);
   font-family: var(--font-work-sans);
   pointer-events: none;
   z-index: 50;
@@ -284,9 +284,9 @@ html, body {
 
 /* Intimate glowing border effect for images */
 .cinematic-frame {
-  border: 1px solid rgba(245, 245, 220, 0.05);
+  border: 1px solid rgba(26, 26, 26, 0.06);
   padding: 1.5rem;
-  background: rgba(5, 5, 5, 0.3);
+  background: rgba(237, 232, 223, 0.4);
   position: relative;
 }
 
@@ -294,7 +294,7 @@ html, body {
   content: '';
   position: absolute;
   inset: 0;
-  border: 1px solid rgba(233, 195, 73, 0.03);
+  border: 1px solid rgba(196, 145, 58, 0.06);
   pointer-events: none;
 }
 
@@ -308,12 +308,22 @@ html, body {
   animation: fadeIn 1s cubic-bezier(0.25, 1, 0.5, 1) forwards;
 }
 
+/* Subtle floating animation for hero logo */
+@keyframes heroLogoFloat {
+  0%, 100% { transform: translateY(0); filter: drop-shadow(0 0 18px rgba(196,145,58,0.35)); }
+  50% { transform: translateY(-8px); filter: drop-shadow(0 0 28px rgba(196,145,58,0.5)); }
+}
+
+.hero-logo-float {
+  animation: heroLogoFloat 4s ease-in-out infinite;
+}
+
 /* Custom form inputs luxury styling */
 input:-webkit-autofill,
 input:-webkit-autofill:hover, 
 input:-webkit-autofill:focus {
-  -webkit-text-fill-color: #F5F5DC;
-  -webkit-box-shadow: 0 0 0px 1000px #050505 inset;
+  -webkit-text-fill-color: #1A1A1A;
+  -webkit-box-shadow: 0 0 0px 1000px #F5F0E8 inset;
   transition: background-color 5000s ease-in-out 0s;
 }
 
@@ -328,7 +338,7 @@ input:-webkit-autofill:focus {
   flex-direction: column;
   align-items: center;
   gap: 0.8rem;
-  color: rgba(245, 245, 220, 0.4);
+  color: rgba(26, 26, 26, 0.35);
   font-size: 9px;
   letter-spacing: 0.4em;
   text-transform: uppercase;
@@ -339,7 +349,7 @@ input:-webkit-autofill:focus {
 .scroll-indicator-line {
   width: 1px;
   height: 50px;
-  background: linear-gradient(to bottom, rgba(233, 195, 73, 0.5), rgba(233, 195, 73, 0));
+  background: linear-gradient(to bottom, rgba(196, 145, 58, 0.5), rgba(196, 145, 58, 0));
   animation: scrollDownLine 2s cubic-bezier(0.25, 1, 0.5, 1) infinite;
 }
 
@@ -367,7 +377,7 @@ input:-webkit-autofill:focus {
   width: 4px;
   height: 4px;
   border-radius: 50%;
-  background: rgba(245, 245, 220, 0.15);
+  background: rgba(26, 26, 26, 0.15);
   transition: all 0.6s cubic-bezier(0.25, 1, 0.5, 1);
   position: relative;
 }
@@ -381,27 +391,27 @@ input:-webkit-autofill:focus {
   font-family: var(--font-work-sans);
   font-size: 8px;
   letter-spacing: 0.15em;
-  color: rgba(245, 245, 220, 0.3);
+  color: rgba(26, 26, 26, 0.25);
   opacity: 0;
   transition: all 0.4s ease;
   pointer-events: none;
 }
 
 .timeline-dot.active {
-  background: #E9C349;
+  background: #C4913A;
   transform: scale(1.8);
-  box-shadow: 0 0 8px rgba(233, 195, 73, 0.6);
+  box-shadow: 0 0 8px rgba(196, 145, 58, 0.5);
 }
 
 .timeline-dot.active::after {
   opacity: 1;
-  color: #E9C349;
+  color: #C4913A;
   left: 2rem;
 }
 
 /* Fragrance Accord pyramid styling */
 .accord-container {
-  border-left: 1px solid rgba(233, 195, 73, 0.2);
+  border-left: 1px solid rgba(196, 145, 58, 0.25);
   padding-left: 1.5rem;
   display: flex;
   flex-direction: column;
@@ -416,7 +426,7 @@ input:-webkit-autofill:focus {
 .accord-title {
   font-family: var(--font-display);
   font-size: 16px;
-  color: rgba(245, 245, 220, 0.5);
+  color: rgba(26, 26, 26, 0.45);
   transition: color 0.4s ease;
 }
 
@@ -425,7 +435,7 @@ input:-webkit-autofill:focus {
   font-size: 11px;
   letter-spacing: 0.2em;
   text-transform: uppercase;
-  color: rgba(245, 245, 220, 0.3);
+  color: rgba(26, 26, 26, 0.3);
   margin-top: 0.25rem;
   transition: color 0.4s ease;
 }
@@ -436,17 +446,17 @@ input:-webkit-autofill:focus {
   font-family: var(--font-body);
   font-size: 13px;
   line-height: 1.6;
-  color: rgba(245, 245, 220, 0.65);
+  color: rgba(26, 26, 26, 0.6);
   transition: max-height 0.5s cubic-bezier(0.25, 1, 0.5, 1), margin-top 0.5s ease;
   margin-top: 0;
 }
 
 .accord-item.active .accord-title {
-  color: #E9C349;
+  color: #C4913A;
 }
 
 .accord-item.active .accord-notes {
-  color: rgba(245, 245, 220, 0.9);
+  color: rgba(26, 26, 26, 0.85);
 }
 
 .accord-item.active .accord-desc {
@@ -477,7 +487,7 @@ input:-webkit-autofill:focus {
   font-family: var(--font-display);
   font-size: 2.5rem;
   line-height: 1.15;
-  color: #F5F5DC;
+  color: #1A1A1A;
 }
 
 @media (min-width: 768px) {
@@ -489,7 +499,7 @@ input:-webkit-autofill:focus {
 .inner-page h2 {
   font-family: var(--font-display);
   font-size: 1.75rem;
-  color: #F5F5DC;
+  color: #1A1A1A;
   margin-top: 4rem;
   margin-bottom: 1.5rem;
 }
@@ -498,14 +508,14 @@ input:-webkit-autofill:focus {
   font-family: var(--font-body);
   font-size: 15px;
   line-height: 1.8;
-  color: rgba(245, 245, 220, 0.7);
+  color: rgba(26, 26, 26, 0.65);
   margin-bottom: 1.5rem;
 }
 
 .inner-page .lead {
   font-size: 17px;
   font-style: italic;
-  color: rgba(245, 245, 220, 0.85);
+  color: rgba(26, 26, 26, 0.8);
 }
 
 /* Fade-in animation for page content */
@@ -534,8 +544,8 @@ input:-webkit-autofill:focus {
 }
 
 .value-card {
-  background: rgba(10, 10, 10, 0.5);
-  border: 1px solid rgba(233, 195, 73, 0.08);
+  background: rgba(237, 232, 223, 0.5);
+  border: 1px solid rgba(196, 145, 58, 0.12);
   padding: 2rem;
   position: relative;
 }
@@ -547,14 +557,14 @@ input:-webkit-autofill:focus {
   left: 0;
   width: 8px;
   height: 8px;
-  border-top: 1px solid rgba(233, 195, 73, 0.5);
-  border-left: 1px solid rgba(233, 195, 73, 0.5);
+  border-top: 1px solid rgba(196, 145, 58, 0.4);
+  border-left: 1px solid rgba(196, 145, 58, 0.4);
 }
 
 .value-card h3 {
   font-family: var(--font-display);
   font-size: 1.1rem;
-  color: #E9C349;
+  color: #C4913A;
   margin-bottom: 0.75rem;
 }
 
@@ -579,22 +589,22 @@ input:-webkit-autofill:focus {
 }
 
 .product-card {
-  background: rgba(10, 10, 10, 0.5);
-  border: 1px solid rgba(233, 195, 73, 0.06);
+  background: rgba(237, 232, 223, 0.5);
+  border: 1px solid rgba(196, 145, 58, 0.1);
   padding: 2.5rem 2rem;
   text-align: center;
   transition: border-color 0.4s ease, box-shadow 0.4s ease;
 }
 
 .product-card:hover {
-  border-color: rgba(233, 195, 73, 0.2);
-  box-shadow: 0 10px 30px -10px rgba(0, 0, 0, 0.5);
+  border-color: rgba(196, 145, 58, 0.25);
+  box-shadow: 0 10px 30px -10px rgba(0, 0, 0, 0.08);
 }
 
 .product-card h3 {
   font-family: var(--font-display);
   font-size: 1.25rem;
-  color: #F5F5DC;
+  color: #1A1A1A;
   margin-bottom: 0.5rem;
 }
 
@@ -603,7 +613,7 @@ input:-webkit-autofill:focus {
   font-size: 11px;
   letter-spacing: 0.2em;
   text-transform: uppercase;
-  color: rgba(245, 245, 220, 0.4);
+  color: rgba(26, 26, 26, 0.35);
   margin-bottom: 1rem;
 }
 
@@ -616,6 +626,6 @@ input:-webkit-autofill:focus {
 .gold-divider {
   width: 60px;
   height: 1px;
-  background: linear-gradient(to right, transparent, rgba(233, 195, 73, 0.5), transparent);
+  background: linear-gradient(to right, transparent, rgba(196, 145, 58, 0.4), transparent);
   margin: 3rem auto;
 }

@@ -328,7 +328,7 @@ export default function Home() {
           <img
             src="/icon.png"
             alt="Deuxsentique Logo"
-            className={`h-12 w-auto object-contain transition-all duration-700 drop-shadow-[0_0_12px_rgba(233,195,73,0.5)] ${
+            className={`h-12 w-auto object-contain transition-all duration-700 drop-shadow-[0_0_12px_rgba(196,145,58,0.5)] ${
               isScrolled ? "opacity-100 scale-100" : "opacity-0 scale-50 pointer-events-none"
             }`}
           />
@@ -362,7 +362,7 @@ export default function Home() {
           </button>
 
           <button
-            className="hidden md:inline-block font-body text-[9px] md:text-[10px] uppercase tracking-[0.2em] md:tracking-[0.3em] border border-primary/40 text-primary px-4 md:px-8 py-2.5 md:py-3 hover:bg-primary hover:text-background transition-all duration-700 hover:shadow-[0_0_15px_rgba(233,195,73,0.3)] hover:-translate-y-0.5 cursor-pointer"
+            className="hidden md:inline-block font-body text-[9px] md:text-[10px] uppercase tracking-[0.2em] md:tracking-[0.3em] border border-primary/40 text-primary px-4 md:px-8 py-2.5 md:py-3 hover:bg-primary hover:text-background transition-all duration-700 hover:shadow-[0_0_15px_rgba(196,145,58,0.3)] hover:-translate-y-0.5 cursor-pointer"
             onClick={() => scrollToSection("chapter-11")}
           >
             Request Invitation
@@ -470,7 +470,7 @@ export default function Home() {
                           <img
                             src="/icon.png"
                             alt="Deuxsentique Logo"
-                            className="h-24 md:h-36 w-auto object-contain brightness-110 drop-shadow-[0_0_20px_rgba(233,195,73,0.45)]"
+                            className="h-24 md:h-36 w-auto object-contain hero-logo-float drop-shadow-[0_0_20px_rgba(196,145,58,0.4)]"
                           />
                         </div>
                       )}
@@ -600,7 +600,7 @@ export default function Home() {
                   </div>
                   <button
                     type="submit"
-                    className="w-full border border-primary/50 text-primary font-body text-[10px] uppercase tracking-[0.4em] py-4 md:py-5 hover:bg-primary hover:text-background transition-all duration-700 hover:shadow-[0_0_15px_rgba(233,195,73,0.2)] cursor-pointer"
+                    className="w-full border border-primary/50 text-primary font-body text-[10px] uppercase tracking-[0.4em] py-4 md:py-5 hover:bg-primary hover:text-background transition-all duration-700 hover:shadow-[0_0_15px_rgba(196,145,58,0.2)] cursor-pointer"
                   >
                     Request Invitation
                   </button>

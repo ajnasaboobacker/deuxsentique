@@ -5,9 +5,9 @@ import Link from "next/link";
 
 export function Footer() {
   return (
-    <footer className="bg-background w-full py-16 md:py-20 px-8 md:px-16 flex flex-col items-center justify-center gap-8 border-t border-white/5 relative z-[100]">
-      <div className="relative w-14 h-14 flex items-center justify-center opacity-60">
-        <img src="/icon.png" alt="Deuxsentique Logo" className="h-10 w-auto object-contain drop-shadow-[0_0_14px_rgba(233,195,73,0.4)]" />
+    <footer className="bg-background w-full py-20 md:py-28 px-8 md:px-16 flex flex-col items-center justify-center gap-6 border-t border-on-background/10 relative z-[100]">
+      <div className="flex items-center justify-center mb-2">
+        <img src="/icon.png" alt="Deuxsentique Logo" className="h-16 md:h-20 w-auto object-contain drop-shadow-[0_0_14px_rgba(196,145,58,0.35)]" />
       </div>
       <div className="font-display text-xl tracking-[0.4em] uppercase text-on-background">
         Deuxsentique
@@ -42,7 +42,7 @@ export function PageHeader() {
           <img
             src="/icon.png"
             alt="Deuxsentique Logo"
-            className="h-12 w-auto object-contain opacity-90 drop-shadow-[0_0_12px_rgba(233,195,73,0.5)]"
+            className="h-12 w-auto object-contain opacity-90 drop-shadow-[0_0_12px_rgba(196,145,58,0.5)]"
           />
         </div>
 
@@ -61,7 +61,7 @@ export function PageHeader() {
           </Link>
           <Link
             href="/#chapter-11"
-            className="hidden md:inline-block font-body text-[10px] uppercase tracking-[0.3em] border border-primary/40 text-primary px-8 py-3 hover:bg-primary hover:text-background transition-all duration-700 hover:shadow-[0_0_15px_rgba(233,195,73,0.3)] hover:-translate-y-0.5 cursor-pointer"
+            className="hidden md:inline-block font-body text-[10px] uppercase tracking-[0.3em] border border-primary/40 text-primary px-8 py-3 hover:bg-primary hover:text-background transition-all duration-700 hover:shadow-[0_0_15px_rgba(196,145,58,0.3)] hover:-translate-y-0.5 cursor-pointer"
           >
             Request Invitation
           </Link>
