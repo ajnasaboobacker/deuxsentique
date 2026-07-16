@@ -1,0 +1,322 @@
+<!DOCTYPE html>
+
+<html class="dark scroll-smooth" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Deuxsentique | The Full Narrative</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Bodoni+Moda:ital,opsz,wght@0,6..96,400..900;1,6..96,400..900&amp;family=Work+Sans:ital,wght@0,100..900;1,100..900&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                    "background": "#050505", // Void background
+                    "on-background": "#F5F5DC", // Parchment text
+                    "primary": "#E9C349", // Ember
+                    "secondary": "#9E7E7E", // Rose Dust
+                    "surface": "#0a0a0a",
+                    "outline": "#444748"
+            },
+            "fontFamily": {
+                    "display": ["Bodoni Moda", "serif"],
+                    "body": ["Work Sans", "sans-serif"]
+            }
+          }
+        }
+      }
+    </script>
+<style>
+        /* Film Grain Overlay */
+        .film-grain {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100vw;
+            height: 100vh;
+            pointer-events: none;
+            z-index: 9999;
+            opacity: 0.03;
+            background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
+        }
+
+        /* Vignette */
+        .vignette {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100vw;
+            height: 100vh;
+            pointer-events: none;
+            z-index: 9998;
+            background: radial-gradient(circle, rgba(0,0,0,0) 30%, rgba(0,0,0,0.9) 100%);
+        }
+
+        /* Section Isolation & Cross-Dissolve */
+        .chapter-container {
+            position: relative;
+            height: 1100vh; /* 11 chapters * 100vh */
+        }
+
+        .chapter-section {
+            position: sticky;
+            top: 0;
+            height: 100vh;
+            width: 100%;
+            overflow: hidden;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            opacity: 0;
+            transition: opacity 1.2s cubic-bezier(0.4, 0, 0.2, 1);
+            z-index: 1;
+        }
+
+        .chapter-section.active {
+            opacity: 1;
+            z-index: 10;
+        }
+
+        /* Ken Burns Animation */
+        @keyframes kenBurns {
+            0% { transform: scale(1) translate(0, 0); }
+            100% { transform: scale(1.1) translate(-2%, -1%); }
+        }
+        .ken-burns {
+            animation: kenBurns 30s ease-in-out infinite alternate;
+        }
+
+        /* Content Reveal */
+        .content-reveal {
+            opacity: 0;
+            transform: translateY(20px);
+            transition: opacity 1.5s cubic-bezier(0.25, 0.46, 0.45, 0.94) 0.5s, 
+                        transform 1.5s cubic-bezier(0.25, 0.46, 0.45, 0.94) 0.5s;
+        }
+        .active .content-reveal {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* Hidden Scrollbar */
+        body::-webkit-scrollbar { display: none; }
+        body { -ms-overflow-style: none; scrollbar-width: none; }
+
+        .image-overlay {
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(to bottom, rgba(5,5,5,0.4) 0%, rgba(5,5,5,0.7) 100%);
+            z-index: 2;
+        }
+    </style>
+</head>
+<body class="bg-background text-on-background font-body antialiased">
+<div class="film-grain"></div>
+<div class="vignette"></div>
+<!-- Navigation -->
+<nav class="fixed top-0 w-full flex justify-between items-center px-8 md:px-16 py-8 z-[100] transition-opacity duration-700">
+<div class="font-display text-2xl tracking-[0.4em] uppercase">Deuxsentique</div>
+<a class="font-body text-xs uppercase tracking-[0.3em] border border-primary/50 text-primary px-6 py-2 hover:bg-primary hover:text-background transition-all duration-500" href="#chapter-11">Waitlist</a>
+</nav>
+<main class="chapter-container">
+<!-- 01 Before -->
+<section class="chapter-section active" id="chapter-01">
+<div class="absolute inset-0 z-0">
+<img alt="Solitude shadow" class="ken-burns w-full h-full object-cover opacity-50" src="https://lh3.googleusercontent.com/aida/AP1WRLvWOak1H6daW8vA9B_ekDRKlsL3eQdcluooWHKYyekFZfCRsKwAGdjZ4Al_7At0yj5PhC32nHLnEPXl-Vh0NZG0Y2f58ELYlpr6O73voouDlN-MkiggrCLU5LFwxL8RudTDxJeElD6TG9NLiYtInWQfS52WwdBephBJOgvFU7hgiLCZRiyH94HV9v5P0c4pkZwwsuJbXa1htyh-pM0DEKjnDfyK9LPgc9QnMVAjVSXMvDz2aAx62cOK2bk"/>
+<div class="image-overlay"></div>
+</div>
+<div class="relative z-10 max-w-4xl px-8 text-center content-reveal">
+<p class="text-secondary text-xs uppercase tracking-[0.5em] mb-6">Chapter I</p>
+<h1 class="font-display text-4xl md:text-6xl mb-8 leading-tight">There is a kind of quiet<br/>that only exists before.</h1>
+<p class="max-w-xl mx-auto text-on-background/70 leading-relaxed text-lg italic">The silence of a room holding its breath, a clean slate of air waiting for a story to be written upon it.</p>
+</div>
+</section>
+<!-- 02 The Waiting -->
+<section class="chapter-section" id="chapter-02">
+<div class="absolute inset-0 z-0">
+<img alt="Preparatory gesture" class="ken-burns w-full h-full object-cover opacity-50" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBXbmlgH9hi1RlhNAH4jcIDBqKtm_7uY0ttfkv0Tm0V9zwvuv3hz-x-nyvwapo0HQfYbAI4JaF1ZfYTH5SzPxR21WTUR4-4glxlB00WVsfRe4dcFpM28JchobMrhwgHjC4FL01NuijKjQ1A1pVt3tkVqxIL-sVBPf2-nC5prd_z-EPGOhrmDGSD06x1o3oewUy8FmZMvj9jN3bImVKwo2IbfoA5Wy_LuUDg08vSXx5Vm5vq3HoIBBp_"/>
+<div class="image-overlay"></div>
+</div>
+<div class="relative z-10 max-w-4xl px-8 text-center content-reveal">
+<p class="text-secondary text-xs uppercase tracking-[0.5em] mb-6">Chapter II</p>
+<h2 class="font-display text-4xl md:text-6xl mb-8 leading-tight">You didn't plan for this<br/>evening to matter.</h2>
+<p class="max-w-xl mx-auto text-on-background/70 leading-relaxed text-lg italic">The slow ritual of dressing, the adjustment of a collar, the deliberate pause in front of a mirror that reflects someone you are about to become.</p>
+</div>
+</section>
+<!-- 03 The Arrival -->
+<section class="chapter-section" id="chapter-03">
+<div class="absolute inset-0 z-0">
+<img alt="Shift in light" class="ken-burns w-full h-full object-cover opacity-50" src="https://lh3.googleusercontent.com/aida/AP1WRLvED4n3hNKPwCHmi015LSCwJtZDKpyIY6gjitwYGZ3ncHcU94bGscg2Vzv2HFeE82aa8olQPGxw_eQ3jLpnE40tbbx2kZqMH6FgXvlv7AU5RojdwJ9ly70zcXivPM4URdDtGUVqmxu8w1eD5RZFWK2GJIWqGhDYrDZUESZ0iDVyHWZZNPH1mqc1zEKu2VayF0LGkp6syOlv22Q5oH2dMsTSCTBd7nD4BqX1ZNZwfNwQbU-OWuECR9kjlvQ"/>
+<div class="image-overlay"></div>
+</div>
+<div class="relative z-10 max-w-4xl px-8 text-center content-reveal">
+<p class="text-secondary text-xs uppercase tracking-[0.5em] mb-6">Chapter III</p>
+<h2 class="font-display text-4xl md:text-6xl mb-8 leading-tight">And then — someone<br/>enters the room.</h2>
+<p class="max-w-xl mx-auto text-on-background/70 leading-relaxed text-lg italic">The atmosphere shifts. A molecular change in the space between people. You haven't spoken yet, but the air is already crowded with meaning.</p>
+</div>
+</section>
+<!-- 04 Recognition -->
+<section class="chapter-section" id="chapter-04">
+<div class="absolute inset-0 z-0">
+<img alt="Silhouettes" class="ken-burns w-full h-full object-cover opacity-50" src="https://lh3.googleusercontent.com/aida/AP1WRLtStwEUxvF1dkVKd5kk5viB7tuUbZaIkrY7yUXZjdjq1WAz91v3oYTx3jUAjKk6RiLk9sUBMl32ERStVPF5xp3nifkY0KBR4fUldN_WwhYtEb2LEa1ApcgJgP9bZdoQa5KC1TFtRBrKehcqtcoXAal4nnZPjdQdJkxXfRyom6oAYY2cGtCc0FyVf4b7DMoC8uHZuhbxW75L3yQ5jD5Esh-3xflBCajfSBZQhRCk0FH6b8TW6tLscTWqj-g"/>
+<div class="image-overlay"></div>
+</div>
+<div class="relative z-10 max-w-4xl px-8 text-center content-reveal">
+<p class="text-secondary text-xs uppercase tracking-[0.5em] mb-6">Chapter IV</p>
+<h2 class="font-display text-4xl md:text-6xl mb-8 leading-tight">Some conversations begin<br/>long before words are used.</h2>
+<p class="max-w-xl mx-auto text-on-background/70 leading-relaxed text-lg italic">A shared glance that lasts a fraction too long. A magnetic pull that defies the physics of a crowded party. The recognition of a soul you haven't met yet.</p>
+</div>
+</section>
+<!-- 05 The Embrace -->
+<section class="chapter-section" id="chapter-05">
+<div class="absolute inset-0 z-0">
+<img alt="Peak intimacy" class="ken-burns w-full h-full object-cover opacity-50" src="https://lh3.googleusercontent.com/aida-public/AB6AXuD94keF4Iq7A6_UMMGYkgTfa3dVHsp1_lPrHgI1jEIhNRHjTovxvQkZjpaLMP5yQVCn9Q7X-6PAm6BYRxc88pFvbBJqLY4f5Zop8ribxr2ttqCPlVCacQWAXxTQ78adk4fJljgPIOvS8iHyAxmyt2cJvV24QlgtxLxFJMM-YZmvXyVUvBbSyKZj7lYeZwyManluB_lSHC_pLc0VXDvxcfppoB5UEORdp9SVxFkVthDMM8M-_j6it2GV"/>
+<div class="image-overlay"></div>
+</div>
+<div class="relative z-10 max-w-4xl px-8 text-center content-reveal">
+<p class="text-secondary text-xs uppercase tracking-[0.5em] mb-6">Chapter V</p>
+<h2 class="font-display text-4xl md:text-6xl mb-8 leading-tight">There is a moment, just after<br/>the distance closes.</h2>
+<p class="max-w-xl mx-auto text-on-background/70 leading-relaxed text-lg italic">Where the scent of them becomes the only thing you know. A collision of amber, heat, and the terrifying, beautiful loss of oneself in another.</p>
+</div>
+</section>
+<!-- 06 What Stays -->
+<section class="chapter-section" id="chapter-06">
+<div class="absolute inset-0 z-0">
+<img alt="Quiet aftermath" class="ken-burns w-full h-full object-cover opacity-50" src="https://lh3.googleusercontent.com/aida/AP1WRLsjRl-BV2aiYl5_OhsjA8NSIqAMptweA2heqftQbrHp9Ad5Mz9P-UzT_thyjqIa6RmEKgfpe9vVUOi3eHdyJqw1p1E8rXLNAdSItTVTb6Uiq4CHJbJxovy5XfVMLK7V1BI4LuZWl-ofwHflvxwONx0TgDb0IoWlFlYW1eoPxZx6efkbH87s1AXoml8KcdoDQ0GRLE6RhSzNrZCLpYDkqOUaP12KbbuNNS4prHHC3eHoo9om-r-Nl8xldfc"/>
+<div class="image-overlay"></div>
+</div>
+<div class="relative z-10 max-w-4xl px-8 text-center content-reveal">
+<p class="text-secondary text-xs uppercase tracking-[0.5em] mb-6">Chapter VI</p>
+<h2 class="font-display text-4xl md:text-6xl mb-8 leading-tight">Moments end. Their<br/>ghosts do not.</h2>
+<p class="max-w-xl mx-auto text-on-background/70 leading-relaxed text-lg italic">Long after the door has closed and the lights have dimmed, the essence of that encounter remains trapped in the fabric of the night. A haunting that feels like home.</p>
+</div>
+</section>
+<!-- 07 The Return -->
+<section class="chapter-section" id="chapter-07">
+<div class="absolute inset-0 z-0">
+<img alt="Intertwined hands" class="ken-burns w-full h-full object-cover opacity-50" src="https://lh3.googleusercontent.com/aida/AP1WRLsi9retQvQcOwsgElsLRwAI2IJTSO6LHhyRLh0sosauahP-yaLyAEtJXVl9eplmw4KW_0xZQ1UK34XWz3DEyZP3eNW-nxRDZk6SwlCVXTTZg5Ilcn62DDExTm6pKSKwrFRbrYFEAEs4OVdGam1AyAI7rSpLFgr6R6S7fwrz2HbfxmF5DIHRyx1ZRpaJfh4PX7OYDDQBxLKx0P8VUBX_tKwf7XMOkX4fz3ydd50ssiskbJ_ToYb4mzc2qw"/>
+<div class="image-overlay"></div>
+</div>
+<div class="relative z-10 max-w-4xl px-8 text-center content-reveal">
+<p class="text-secondary text-xs uppercase tracking-[0.5em] mb-6">Chapter VII</p>
+<h2 class="font-display text-4xl md:text-6xl mb-8 leading-tight">You saw them again,<br/>even when they weren't there.</h2>
+<p class="max-w-xl mx-auto text-on-background/70 leading-relaxed text-lg italic">The memory of them is triggered by the turn of a season, the smell of rain on hot pavement, the sharp bite of woodsmoke in the winter air.</p>
+</div>
+</section>
+<!-- 08 The Translation -->
+<section class="chapter-section" id="chapter-08">
+<div class="absolute inset-0 z-0">
+<img alt="Craft textures" class="ken-burns w-full h-full object-cover opacity-50" src="https://lh3.googleusercontent.com/aida/AP1WRLsPb76B6wEZHlF3usBb37cztF32hDHtCBM3BP5d4C-hDxUTnggnyMq1FObgPhzE8EWhj3Khhvx6DbpUuZcmQUjfxhFt8cgQo4cOUCBVTKvjBMyp8kJleklt82D7ZGgToNWdAOdHKgUUf0iTIBQLf9igR7_5FY3oJ7RqYApU2XFfJPkwwz9isIfUQk0NIx21l2JxuuNkojdKB315FaJ9Uloj37k7BZU1AuCmfhBLnz6m5NHQsJJWOl-OGjY"/>
+<div class="image-overlay"></div>
+</div>
+<div class="relative z-10 max-w-4xl px-8 text-center content-reveal">
+<p class="text-secondary text-xs uppercase tracking-[0.5em] mb-6">Chapter VIII</p>
+<h2 class="font-display text-4xl md:text-6xl mb-8 leading-tight">This is the moment<br/>we chose to keep.</h2>
+<p class="max-w-xl mx-auto text-on-background/70 leading-relaxed text-lg italic">The arduous process of pinning down an emotion and turning it into a sequence of notes. A distillation of longing into chemistry.</p>
+</div>
+</section>
+<!-- 09 Two Souls, One Essence -->
+<section class="chapter-section" id="chapter-09">
+<div class="absolute inset-0 z-0">
+<img alt="Founder silhouettes" class="ken-burns w-full h-full object-cover opacity-50" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCe7oQorBspkUz4Thov04yyVU0tn5bz7WFvjwy0KQdET_xi98cOOOVtQFwpSjO07-NqD_7-lU1pzim8zL3VDjXUCTl3tbLoBoU1XAPfWmWKqsCnH6hmVXqjteGe3dl6R7f0zwljZ0CGQpVUljBhnxE5ZuccJMbMoPxv5rgP0gVJTnRpWpti8Th5JrvhP_qeJQubrQayNI2GWbnPj-FOIBTXIhqcibc1fHpHgjM7Co_toU4gV70mvqbw"/>
+<div class="image-overlay"></div>
+</div>
+<div class="relative z-10 max-w-4xl px-8 text-center content-reveal">
+<p class="text-secondary text-xs uppercase tracking-[0.5em] mb-6">Chapter IX</p>
+<h2 class="font-display text-4xl md:text-6xl mb-8 leading-tight">Deuxsentique was built by<br/>two people who dared to listen.</h2>
+<p class="max-w-xl mx-auto text-on-background/70 leading-relaxed text-lg italic">Resten, who captures the narrative. Jiji, who commands the science. A dialogue between the storyteller and the chemist to find a singular truth.</p>
+</div>
+</section>
+<!-- 10 First Embrace -->
+<section class="chapter-section" id="chapter-10">
+<div class="absolute inset-0 z-0">
+<img alt="Negative space" class="ken-burns w-full h-full object-cover opacity-50" src="https://lh3.googleusercontent.com/aida/AP1WRLsynRbBuMTmsFHkuzK9vdDy2pQ1b7nBSQwMeF4qN4zMkwGrcb0dRMJh1a_qglOYHq1Zoc9Ln3TWDX9JoAg-ITnEVcktIU2J_7FMAOaOBAviIBpUD6PL1aHOGP_4jYC0H9GCF9kIXpe1kC0dNqklB2cKlxf5zYC8UQo3wNo370GABjZ2juZ0pj40XPHE26kqy6_bqjSuvzsUhcwCuys1gcLbHDdsGUtmQVl1iCODoHESRXAO6BjQHMFpedI"/>
+<div class="image-overlay"></div>
+</div>
+<div class="relative z-10 max-w-4xl px-8 text-center content-reveal">
+<p class="text-secondary text-xs uppercase tracking-[0.5em] mb-6">Chapter X</p>
+<h2 class="font-display text-4xl md:text-6xl mb-8 leading-tight">The first chapter of Deuxsentique<br/>carries a name: First Embrace.</h2>
+<p class="max-w-xl mx-auto text-on-background/70 leading-relaxed text-lg italic">Our inaugural creation. A study in the physics of attraction. Dark woods, ephemeral florals, and a base of deep, resonant amber that lingers like a secret.</p>
+</div>
+</section>
+<!-- 11 The Invitation -->
+<section class="chapter-section" id="chapter-11">
+<div class="absolute inset-0 z-0">
+<img alt="Open light" class="ken-burns w-full h-full object-cover opacity-50" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCUcDtHKc0C-yil8ncYfqrJSMg5OjioiTRMUaTzMNHt_iIOd4W0IKKU8nhobbzxK52eeaS3BcjXy0MOKO7W15_Sj5ThSBokWc5FSzia0Gg7a7pGvTjYsj_K6cvgFNI8wMw-sER2dOiVxAMKQQvsauwglF6nbfXUAoDU1hTWFmPJ-zYLU0fwvZ5la42OSeOIErwNBEFNF-FHjj8ctXIqwpI9KrK8_NpRfjw5epfQeZrs4nePbRbpojnK"/>
+<div class="image-overlay"></div>
+</div>
+<div class="relative z-10 max-w-xl px-8 text-center content-reveal">
+<p class="text-secondary text-xs uppercase tracking-[0.5em] mb-6">Chapter XI</p>
+<h2 class="font-display text-4xl md:text-6xl mb-8 leading-tight">We're not announcing a launch.<br/>We're offering an invitation.</h2>
+<p class="text-on-background/70 mb-12 text-lg italic">To witness the unveiling of something made with intention. Register your presence.</p>
+<form class="w-full flex flex-col gap-8" id="waitlist-form">
+<div class="relative">
+<input class="w-full bg-transparent border-0 border-b border-on-background/30 text-on-background font-body py-4 px-0 focus:ring-0 focus:border-primary transition-colors peer placeholder-transparent" id="email" placeholder="Email" required="" type="email"/>
+<label class="absolute left-0 top-4 text-xs text-on-background/40 transition-all peer-focus:-top-4 peer-focus:text-primary peer-valid:-top-4 peer-valid:text-primary uppercase tracking-[0.2em]" for="email">Email Address</label>
+</div>
+<button class="w-full border border-primary text-primary font-body text-xs uppercase tracking-[0.4em] py-5 hover:bg-primary hover:text-background transition-all duration-700" type="submit">
+                    Request Invitation
+                </button>
+</form>
+<div class="hidden mt-12 fade-in" id="success-state">
+<p class="text-primary text-xs uppercase tracking-[0.5em]">Intent Registered.</p>
+<p class="text-on-background/60 mt-4 italic">The silence ends soon.</p>
+</div>
+</div>
+</section>
+</main>
+<footer class="bg-background w-full py-20 px-16 flex flex-col items-center justify-center gap-8 border-t border-white/5 relative z-[100]">
+<div class="font-display text-xl tracking-[0.4em] uppercase">Deuxsentique</div>
+<div class="flex gap-12 text-[10px] uppercase tracking-[0.3em] text-on-background/50">
+<a class="hover:text-on-background transition-colors" href="#">Privacy</a>
+<a class="hover:text-on-background transition-colors" href="#">Terms</a>
+<a class="hover:text-on-background transition-colors" href="#">Contact</a>
+</div>
+<div class="text-[10px] tracking-[0.2em] text-on-background/30">
+        © MMXXIV. LONDON.
+    </div>
+</footer>
+<script>
+    document.addEventListener("DOMContentLoaded", () => {
+        const sections = document.querySelectorAll('.chapter-section');
+        
+        // Simple Intersection Observer to manage 'active' class for cross-dissolve
+        const observerOptions = {
+            root: null,
+            threshold: 0.5
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    // Remove active from all
+                    sections.forEach(s => s.classList.remove('active'));
+                    // Add to current
+                    entry.target.classList.add('active');
+                }
+            });
+        }, observerOptions);
+
+        sections.forEach(section => observer.observe(section));
+
+        // Form handling
+        const form = document.getElementById('waitlist-form');
+        const successState = document.getElementById('success-state');
+
+        if(form) {
+            form.addEventListener('submit', (e) => {
+                e.preventDefault();
+                form.classList.add('hidden');
+                successState.classList.remove('hidden');
+            });
+        }
+
+        // Parallax-ish Scroll behavior: Ensure smooth transition
+        // handled by sticky and opacity transitions in CSS
+    });
+</script>
+</body></html>
