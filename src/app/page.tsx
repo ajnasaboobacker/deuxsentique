@@ -29,7 +29,7 @@ const chapters: Chapter[] = [
     num: "Chapter II",
     title: "You didn't plan for this\nevening to matter.",
     desc: "The slow ritual of dressing, the adjustment of a collar, the deliberate pause in front of a mirror that reflects someone you are about to become.",
-    imageUrl: "/chapter-two.png",
+    imageUrl: "/chapters/ch02_painting.png",
     imageAlt: "Preparatory gesture",
     layout: "right-panel",
   },
@@ -47,7 +47,7 @@ const chapters: Chapter[] = [
     num: "Chapter IV",
     title: "Some conversations begin\nlong before words are used.",
     desc: "A shared glance that lasts a fraction too long. A magnetic pull that defies the physics of a crowded party. The recognition of a soul you haven't met yet.",
-    imageUrl: "/chapters/ch04.jpg",
+    imageUrl: "/chapters/ch04_painting.png",
     imageAlt: "Silhouettes",
     layout: "asymmetric",
   },
@@ -56,7 +56,7 @@ const chapters: Chapter[] = [
     num: "Chapter V",
     title: "There is a moment, just after\nthe distance closes.",
     desc: "Where the scent of them becomes the only thing you know. A collision of amber, heat, and the terrifying, beautiful loss of oneself in another.",
-    imageUrl: "/chapters/ch05.jpg",
+    imageUrl: "/chapters/ch05_painting.png",
     imageAlt: "Peak intimacy",
     layout: "left-panel",
   },
@@ -65,7 +65,7 @@ const chapters: Chapter[] = [
     num: "Chapter VI",
     title: "Moments end. Their\nghosts do not.",
     desc: "Long after the door has closed and the lights have dimmed, the essence of that encounter remains trapped in the fabric of the night. A haunting that feels like home.",
-    imageUrl: "/chapters/ch06.jpg",
+    imageUrl: "/chapters/ch06_painting.png",
     imageAlt: "Quiet aftermath",
     layout: "right-panel",
   },
@@ -83,7 +83,7 @@ const chapters: Chapter[] = [
     num: "Chapter VIII",
     title: "This is the moment\nwe chose to keep.",
     desc: "The arduous process of pinning down an emotion and turning it into a sequence of notes. A distillation of longing into chemistry.",
-    imageUrl: "/chapters/ch08.jpg",
+    imageUrl: "/chapters/ch08_painting.png",
     imageAlt: "Craft textures",
     layout: "left-panel",
   },
@@ -92,7 +92,7 @@ const chapters: Chapter[] = [
     num: "Chapter IX",
     title: "Deuxsentique was built by\ntwo people who dared to listen.",
     desc: "Resten, who captures the narrative. Jiji, who commands the science. A dialogue between the storyteller and the chemist to find a singular truth.",
-    imageUrl: "/chapters/ch09.jpg",
+    imageUrl: "/chapters/ch09_painting.png",
     imageAlt: "Founder silhouettes",
     layout: "right-panel",
   },
@@ -101,7 +101,7 @@ const chapters: Chapter[] = [
     num: "Chapter X",
     title: "The first chapter of Deuxsentique\ncarries a name: First Embrace.",
     desc: "Our inaugural creation. A study in the physics of attraction. Dark woods, ephemeral florals, and a base of deep, resonant amber that lingers like a secret.",
-    imageUrl: "/chapters/ch10.jpg",
+    imageUrl: "/chapters/ch10_painting.png",
     imageAlt: "Negative space",
     layout: "asymmetric",
   },
@@ -428,7 +428,7 @@ export default function Home() {
                         <img
                           src={chapter.imageUrl}
                           alt={chapter.imageAlt}
-                          className="w-full aspect-[4/5] object-cover filter grayscale contrast-125"
+                          className="w-full h-auto object-contain max-h-[65vh] blend-painting"
                         />
                       </div>
                     </div>
@@ -442,7 +442,7 @@ export default function Home() {
                         <img
                           src={chapter.imageUrl}
                           alt={chapter.imageAlt}
-                          className="w-full aspect-[4/5] object-cover filter grayscale contrast-125"
+                          className="w-full h-auto object-contain max-h-[65vh] blend-painting"
                         />
                       </div>
                     </div>
@@ -551,7 +551,7 @@ export default function Home() {
                         <img
                           src={chapter.imageUrl}
                           alt={chapter.imageAlt}
-                          className="w-full aspect-[3/4] object-cover filter grayscale contrast-125"
+                          className="w-full h-auto object-contain max-h-[60vh] blend-painting"
                         />
                       </div>
                     </div>
