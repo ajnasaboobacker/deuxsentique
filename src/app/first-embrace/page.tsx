@@ -1,11 +1,16 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { PageHeader, Footer } from "../components/shared";
 
 export default function FirstEmbracePage() {
   const [email, setEmail] = useState("");
   const [submitted, setSubmitted] = useState(false);
+  const [mounted, setMounted] = useState(false);
+
+  useEffect(() => {
+    setMounted(true);
+  }, []);
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
@@ -35,26 +40,31 @@ export default function FirstEmbracePage() {
           </p>
 
           {!submitted ? (
-            <form onSubmit={handleSubmit} className="w-full flex flex-col gap-6 md:gap-8 max-w-md mx-auto" id="waitlist-form" suppressHydrationWarning>
-              <div className="relative" suppressHydrationWarning>
-                <input
-                  type="email"
-                  id="email"
-                  required
-                  value={email}
-                  onChange={(e) => setEmail(e.target.value)}
-                  placeholder="EMAIL ADDRESS"
-                  className="w-full bg-transparent border-0 border-b border-primary/20 text-[#1A1A1A] py-3 text-[11px] tracking-[0.3em] uppercase focus:outline-none focus:border-primary transition-colors text-center"
-                  suppressHydrationWarning
-                />
+            mounted ? (
+              <form onSubmit={handleSubmit} className="w-full flex flex-col gap-6 md:gap-8 max-w-md mx-auto" id="waitlist-form">
+                <div className="relative">
+                  <input
+                    type="email"
+                    id="email"
+                    required
+                    value={email}
+                    onChange={(e) => setEmail(e.target.value)}
+                    placeholder="EMAIL ADDRESS"
+                    className="w-full bg-transparent border-0 border-b border-primary/20 text-[#1A1A1A] py-3 text-[11px] tracking-[0.3em] uppercase focus:outline-none focus:border-primary transition-colors text-center"
+                  />
+                </div>
+                <button
+                  type="submit"
+                  className="w-full font-body text-[10px] uppercase tracking-[0.3em] border border-primary text-primary py-4 hover:bg-primary hover:text-background transition-all duration-700 cursor-pointer"
+                >
+                  Request Invitation
+                </button>
+              </form>
+            ) : (
+              <div className="h-32 flex items-center justify-center">
+                <span className="text-[10px] uppercase tracking-[0.3em] text-on-background/25">Loading Form...</span>
               </div>
-              <button
-                type="submit"
-                className="w-full font-body text-[10px] uppercase tracking-[0.3em] border border-primary text-primary py-4 hover:bg-primary hover:text-background transition-all duration-700 cursor-pointer"
-              >
-                Request Invitation
-              </button>
-            </form>
+            )
           ) : (
             <div className="text-center max-w-md mx-auto transition-all duration-1000 animate-fadeIn" id="success-state">
               <p className="text-primary text-[12px] uppercase tracking-[0.6em] mb-4">
