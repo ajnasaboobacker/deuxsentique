@@ -1,11 +1,11 @@
 @import "tailwindcss";
 
 @theme {
-  --color-background: #EDE8D0;
+  --color-background: #fec6a1;
   --color-on-background: #1A1A1A;
   --color-primary: #C4913A;
   --color-secondary: #8C6B5A;
-  --color-surface: #E5E0C8;
+  --color-surface: #fec199;
   --color-outline: #444748;
 
   --font-display: var(--font-bodoni-moda), serif;
@@ -14,7 +14,7 @@
 
 /* Base resets and luxury styling */
 html, body {
-  background-color: #EDE8D0;
+  background-color: #fec6a1;
   color: #1A1A1A;
   overflow-x: hidden;
   height: 100%;
@@ -58,7 +58,7 @@ html, body {
   body.cursor-hover .custom-cursor-dot {
     width: 4px;
     height: 4px;
-    background: #EDE8D0;
+    background: #fec6a1;
   }
   body.cursor-hover .custom-cursor-ring {
     width: 48px;
@@ -93,7 +93,6 @@ html, body {
   justify-content: center;
   scroll-snap-align: start;
   scroll-snap-stop: always;
-  z-index: 10;
 }
 
 /* Film Grain Overlay */
@@ -118,7 +117,7 @@ html, body {
   height: 100vh;
   pointer-events: none;
   z-index: 9998;
-  background: radial-gradient(circle, rgba(237,232,208,0) 40%, rgba(212,202,185,0.65) 100%);
+  background: radial-gradient(circle, rgba(254,198,161,0) 40%, rgba(253,154,88,0.5) 100%);
 }
 
 /* Slow moving gold ambient lights */
@@ -129,7 +128,7 @@ html, body {
   top: -10vw;
   right: -10vw;
   border-radius: 50%;
-  background: radial-gradient(circle, rgba(196, 145, 58, 0.06) 0%, rgba(237,232,208,0) 70%);
+  background: radial-gradient(circle, rgba(196, 145, 58, 0.06) 0%, rgba(254,198,161,0) 70%);
   pointer-events: none;
   z-index: 2;
   animation: floatAmbient 25s ease-in-out infinite alternate;
@@ -142,7 +141,7 @@ html, body {
   bottom: -20vw;
   left: -20vw;
   border-radius: 50%;
-  background: radial-gradient(circle, rgba(140, 107, 90, 0.05) 0%, rgba(237,232,208,0) 70%);
+  background: radial-gradient(circle, rgba(140, 107, 90, 0.05) 0%, rgba(254,198,161,0) 70%);
   pointer-events: none;
   z-index: 2;
   animation: floatAmbientBottom 35s ease-in-out infinite alternate;
@@ -309,7 +308,7 @@ input:-webkit-autofill,
 input:-webkit-autofill:hover, 
 input:-webkit-autofill:focus {
   -webkit-text-fill-color: #1A1A1A;
-  -webkit-box-shadow: 0 0 0px 1000px #EDE8D0 inset;
+  -webkit-box-shadow: 0 0 0px 1000px #fec6a1 inset;
   transition: background-color 5000s ease-in-out 0s;
 }
 

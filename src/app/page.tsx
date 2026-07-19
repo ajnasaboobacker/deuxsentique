@@ -10,102 +10,83 @@ interface Chapter {
   title: string;
   desc: string;
   imageUrl: string;
+  bgImageUrl: string;
   imageAlt: string;
-  layout: "left-panel" | "right-panel" | "center-offset" | "asymmetric";
+  layout: "hero" | "left-panel" | "right-panel" | "philosophy" | "asymmetric" | "believe" | "invite" | "socials";
 }
 
 const chapters: Chapter[] = [
   {
-    id: "chapter-01",
-    num: "Chapter I",
-    title: "There is a kind of quiet\nthat only exists before.",
-    desc: "The silence of a room holding its breath, a clean slate of air waiting for a story to be written upon it.",
-    imageUrl: "/chapters/ch01.jpg",
-    imageAlt: "Solitude shadow",
-    layout: "center-offset",
-  },
-  {
-    id: "chapter-02",
-    num: "Chapter II",
-    title: "You didn't plan for this\nevening to matter.",
-    desc: "The slow ritual of dressing, the adjustment of a collar, the deliberate pause in front of a mirror that reflects someone you are about to become.",
+    id: "section-1",
+    num: "Section I",
+    title: "Two Souls. One Essence.",
+    desc: "A Storytelling Perfume House",
     imageUrl: "/chapters/ch02_painting.png",
-    imageAlt: "Preparatory gesture",
-    layout: "right-panel",
+    bgImageUrl: "/chapters/ch02_painting.png",
+    imageAlt: "Deuxsentique Logo",
+    layout: "hero",
   },
   {
-    id: "chapter-03",
-    num: "Chapter III",
-    title: "And then — someone\nenters the room.",
-    desc: "The atmosphere shifts. A molecular change in the space between people. You haven't spoken yet, but the air is already crowded with meaning.",
-    imageUrl: "/chapters/ch03.jpg",
-    imageAlt: "Shift in light",
-    layout: "center-offset",
-  },
-  {
-    id: "chapter-04",
-    num: "Chapter IV",
-    title: "Some conversations begin\nlong before words are used.",
-    desc: "A shared glance that lasts a fraction too long. A magnetic pull that defies the physics of a crowded party. The recognition of a soul you haven't met yet.",
+    id: "section-2",
+    num: "Section II",
+    title: "Every fragrance begins with a story.",
+    desc: "Some stories are remembered.\n\nSome quietly become part of who we are.\n\nAt Deuxsentique, we transform genuine human stories into fragrances that carry emotion, meaning and memory.\n\nEvery creation begins long before the bottle.\n\nEvery story has an essence.",
     imageUrl: "/chapters/ch04_painting.png",
-    imageAlt: "Silhouettes",
-    layout: "asymmetric",
-  },
-  {
-    id: "chapter-05",
-    num: "Chapter V",
-    title: "There is a moment, just after\nthe distance closes.",
-    desc: "Where the scent of them becomes the only thing you know. A collision of amber, heat, and the terrifying, beautiful loss of oneself in another.",
-    imageUrl: "/chapters/ch05_painting.png",
-    imageAlt: "Peak intimacy",
-    layout: "left-panel",
-  },
-  {
-    id: "chapter-06",
-    num: "Chapter VI",
-    title: "Moments end. Their\nghosts do not.",
-    desc: "Long after the door has closed and the lights have dimmed, the essence of that encounter remains trapped in the fabric of the night. A haunting that feels like home.",
-    imageUrl: "/chapters/ch06_painting.png",
-    imageAlt: "Quiet aftermath",
+    bgImageUrl: "/chapters/ch04_painting.png",
+    imageAlt: "Brand Introduction",
     layout: "right-panel",
   },
   {
-    id: "chapter-07",
-    num: "Chapter VII",
-    title: "You saw them again,\neven when they weren't there.",
-    desc: "The memory of them is triggered by the turn of a season, the smell of rain on hot pavement, the sharp bite of woodsmoke in the winter air.",
-    imageUrl: "/chapters/ch07.jpg",
-    imageAlt: "Intertwined hands",
-    layout: "center-offset",
-  },
-  {
-    id: "chapter-08",
-    num: "Chapter VIII",
-    title: "This is the moment\nwe chose to keep.",
-    desc: "The arduous process of pinning down an emotion and turning it into a sequence of notes. A distillation of longing into chemistry.",
+    id: "section-3",
+    num: "Section III",
+    title: "Our Creative Philosophy",
+    desc: "",
     imageUrl: "/chapters/ch08_painting.png",
-    imageAlt: "Craft textures",
-    layout: "left-panel",
+    bgImageUrl: "/chapters/ch08_painting.png",
+    imageAlt: "Our Creative Philosophy",
+    layout: "philosophy",
   },
   {
-    id: "chapter-09",
-    num: "Chapter IX",
-    title: "Deuxsentique was built by\ntwo people who dared to listen.",
-    desc: "Resten, who captures the narrative. Jiji, who commands the science. A dialogue between the storyteller and the chemist to find a singular truth.",
-    imageUrl: "/chapters/ch09_painting.png",
-    imageAlt: "Founder silhouettes",
-    layout: "right-panel",
-  },
-  {
-    id: "chapter-10",
-    num: "Chapter X",
-    title: "The first chapter of Deuxsentique\ncarries a name: First Embrace.",
-    desc: "Our inaugural creation. A study in the physics of attraction. Dark woods, ephemeral florals, and a base of deep, resonant amber that lingers like a secret.",
-    imageUrl: "/chapters/ch10_painting.png",
-    imageAlt: "Negative space",
+    id: "section-4",
+    num: "Section IV",
+    title: "Designed to Stay Close",
+    desc: "Some fragrances fill a room.\n\nOurs are created to become part of yours.\n\nDesigned to remain close.\n\nCreated for meaningful moments.\n\nDiscovered only by those nearest to you.",
+    imageUrl: "/chapters/ch05_painting.png",
+    bgImageUrl: "/chapters/ch05_painting.png",
+    imageAlt: "Designed to Stay Close",
     layout: "asymmetric",
   },
-];
+  {
+    id: "section-5",
+    num: "Section V",
+    title: "What We Believe",
+    desc: "",
+    imageUrl: "/chapters/ch10_painting.png",
+    bgImageUrl: "/chapters/ch10_painting.png",
+    imageAlt: "What We Believe",
+    layout: "believe",
+  },
+  {
+    id: "section-6",
+    num: "Section VI",
+    title: "Begin Your Journey",
+    desc: "Request your invitation to enter the world of Deuxsentique.\n\nReceive exclusive stories, behind-the-scenes moments and carefully curated updates as our journey unfolds.",
+    imageUrl: "/chapters/ch06_painting.png",
+    bgImageUrl: "/chapters/ch06_painting.png",
+    imageAlt: "Begin Your Journey",
+    layout: "invite",
+  },
+  {
+    id: "section-7",
+    num: "Section VII",
+    title: "Continue the Journey",
+    desc: "",
+    imageUrl: "/chapters/ch09_painting.png",
+    bgImageUrl: "/chapters/ch09_painting.png",
+    imageAlt: "Continue the Journey",
+    layout: "socials",
+  },
+];;
 
 /** Split title on \n into lines, then each line into words for the reveal animation */
 function renderTitle(title: string) {
@@ -131,10 +112,14 @@ function renderTitle(title: string) {
 }
 
 export default function Home() {
-  const [activeChapter, setActiveChapter] = useState("chapter-01");
+  const [activeChapter, setActiveChapter] = useState("section-1");
   const [email, setEmail] = useState("");
   const [submitted, setSubmitted] = useState(false);
   const containerRef = useRef<HTMLDivElement>(null);
+
+  // Philosophy and belief text animation indexes
+  const [philosophyIdx, setPhilosophyIdx] = useState(0);
+  const [beliefIdx, setBeliefIdx] = useState(0);
 
   // Header scroll transition state
   const [isScrolled, setIsScrolled] = useState(false);
@@ -148,6 +133,21 @@ export default function Home() {
 
   // Mobile menu
   const [menuOpen, setMenuOpen] = useState(false);
+
+  useEffect(() => {
+    const philosophyInterval = setInterval(() => {
+      setPhilosophyIdx((prev) => (prev + 1) % 5);
+    }, 2500);
+
+    const beliefInterval = setInterval(() => {
+      setBeliefIdx((prev) => (prev + 1) % 6);
+    }, 2500);
+
+    return () => {
+      clearInterval(philosophyInterval);
+      clearInterval(beliefInterval);
+    };
+  }, []);
 
   useEffect(() => {
     const container = containerRef.current;
@@ -268,30 +268,17 @@ export default function Home() {
           <div
             key={`bg-${chapter.id}`}
             className={`absolute inset-0 transition-opacity duration-[1400ms] ease-in-out ${
-              activeChapter === chapter.id ? "opacity-35" : "opacity-0"
+              activeChapter === chapter.id ? "opacity-25" : "opacity-0"
             }`}
           >
             <img
               src={chapter.imageUrl}
               alt={chapter.imageAlt}
-              className="w-full h-full object-cover filter brightness-[0.35]"
+              className="w-full h-full object-cover filter grayscale contrast-[0.9] brightness-[1.05] mix-blend-multiply"
             />
             <div className="image-overlay"></div>
           </div>
         ))}
-        {/* Chapter 11 Background */}
-        <div
-          className={`absolute inset-0 transition-opacity duration-[1400ms] ease-in-out ${
-            activeChapter === "chapter-11" ? "opacity-35" : "opacity-0"
-          }`}
-        >
-          <img
-            src="/chapters/ch11.jpg"
-            alt="Open light"
-            className="w-full h-full object-cover filter brightness-[0.35]"
-          />
-          <div className="image-overlay"></div>
-        </div>
       </div>
 
       {/* Floating Left Vertical Timeline Track */}
@@ -306,19 +293,12 @@ export default function Home() {
             data-chapter={`0${i + 1}`}
           ></button>
         ))}
-        <button
-          onClick={() => scrollToSection("chapter-11")}
-          className={`timeline-dot cursor-pointer focus:outline-none ${
-            activeChapter === "chapter-11" ? "active" : ""
-          }`}
-          data-chapter="11"
-        ></button>
       </div>
 
       {/* Fixed Luxury Header */}
-      <header className="fixed top-0 left-0 w-full flex justify-between items-center px-6 md:px-24 py-6 md:py-8 z-[100] bg-background/25 backdrop-blur-md border-b border-primary/5">
+      <header className="fixed top-0 left-0 w-full flex justify-between items-center px-6 md:px-24 py-6 md:py-8 z-[100] bg-[#1A1916]/90 backdrop-blur-md border-b border-primary/10">
         <div className="flex items-center gap-6">
-          <span className="font-display text-lg md:text-2xl tracking-[0.4em] uppercase text-on-background">
+          <span className="font-display text-lg md:text-2xl tracking-[0.4em] uppercase text-[#fec6a1]">
             Deuxsentique
           </span>
         </div>
@@ -337,13 +317,13 @@ export default function Home() {
         <div className="flex items-center gap-4 md:gap-6">
           <Link
             href="/about"
-            className="hidden md:inline-block font-body text-[10px] uppercase tracking-[0.3em] text-on-background/50 hover:text-primary transition-colors"
+            className="hidden md:inline-block font-body text-[10px] uppercase tracking-[0.3em] text-[#fec6a1]/60 hover:text-primary transition-colors"
           >
             Our Story
           </Link>
           <Link
             href="/first-embrace"
-            className="hidden md:inline-block font-body text-[10px] uppercase tracking-[0.3em] text-on-background/50 hover:text-primary transition-colors"
+            className="hidden md:inline-block font-body text-[10px] uppercase tracking-[0.3em] text-[#fec6a1]/60 hover:text-primary transition-colors"
           >
             First Embrace
           </Link>
@@ -351,7 +331,7 @@ export default function Home() {
           {/* Soundscape toggle */}
           <button
             onClick={toggleAmbientAudio}
-            className="hidden md:flex items-center gap-3 cursor-pointer text-[9px] uppercase tracking-[0.3em] text-on-background/50 hover:text-primary transition-colors focus:outline-none"
+            className="hidden md:flex items-center gap-3 cursor-pointer text-[9px] uppercase tracking-[0.3em] text-[#fec6a1]/60 hover:text-primary transition-colors focus:outline-none"
           >
             <span>Sound</span>
             <div className="flex gap-[2px] items-end h-3 w-4">
@@ -362,8 +342,8 @@ export default function Home() {
           </button>
 
           <button
-            className="hidden md:inline-block font-body text-[9px] md:text-[10px] uppercase tracking-[0.2em] md:tracking-[0.3em] border border-primary/40 text-primary px-4 md:px-8 py-2.5 md:py-3 hover:bg-primary hover:text-background transition-all duration-700 hover:shadow-[0_0_15px_rgba(196,145,58,0.3)] hover:-translate-y-0.5 cursor-pointer"
-            onClick={() => scrollToSection("chapter-11")}
+            className="hidden md:inline-block font-body text-[9px] md:text-[10px] uppercase tracking-[0.2em] md:tracking-[0.3em] border border-primary/40 text-primary px-4 md:px-8 py-2.5 md:py-3 hover:bg-primary hover:text-[#1A1916] transition-all duration-700 hover:shadow-[0_0_15px_rgba(196,145,58,0.3)] hover:-translate-y-0.5 cursor-pointer"
+            onClick={() => scrollToSection("section-6")}
           >
             Request Invitation
           </button>
@@ -374,8 +354,8 @@ export default function Home() {
             className="md:hidden flex flex-col gap-[5px] cursor-pointer p-2 focus:outline-none"
             aria-label="Menu"
           >
-            <span className={`block w-5 h-px bg-on-background transition-all duration-300 ${menuOpen ? "rotate-45 translate-y-[3px]" : ""}`}></span>
-            <span className={`block w-5 h-px bg-on-background transition-all duration-300 ${menuOpen ? "-rotate-45 -translate-y-[3px]" : ""}`}></span>
+            <span className={`block w-5 h-px bg-[#fec6a1] transition-all duration-300 ${menuOpen ? "rotate-45 translate-y-[3px]" : ""}`}></span>
+            <span className={`block w-5 h-px bg-[#fec6a1] transition-all duration-300 ${menuOpen ? "-rotate-45 -translate-y-[3px]" : ""}`}></span>
           </button>
         </div>
       </header>
@@ -389,7 +369,7 @@ export default function Home() {
           First Embrace
         </Link>
         <button
-          onClick={() => { setMenuOpen(false); scrollToSection("chapter-11"); }}
+          onClick={() => { setMenuOpen(false); scrollToSection("section-6"); }}
           className="font-body text-[10px] uppercase tracking-[0.4em] border border-primary/40 text-primary px-10 py-4 hover:bg-primary hover:text-background transition-all duration-700 mt-4 cursor-pointer"
         >
           Request Invitation
@@ -407,7 +387,32 @@ export default function Home() {
               id={chapter.id}
               className={`chapter-section ${isActive ? "active" : ""}`}
             >
-              <div className="relative z-10 w-full max-w-[1440px] px-6 md:px-24 grid grid-cols-1 md:grid-cols-12 gap-8 md:gap-16 items-center">
+              <div className="relative z-auto w-full max-w-[1440px] px-6 md:px-24 grid grid-cols-1 md:grid-cols-12 gap-8 md:gap-16 items-center">
+                
+                {chapter.layout === "hero" && (
+                  <div className="md:col-span-12 flex justify-center text-center">
+                    <div className="glass-editorial-panel w-full max-w-[700px] flex flex-col items-center justify-center reveal-frame">
+                      <div className="flex justify-center mb-8 reveal-subtitle">
+                        <img
+                          src="/icon.png"
+                          alt="Deuxsentique Logo"
+                          className="h-28 md:h-40 w-auto object-contain hero-logo-float drop-shadow-[0_0_20px_rgba(196,145,58,0.4)]"
+                        />
+                      </div>
+                      <h1 className="font-display text-4xl md:text-6xl lg:text-7xl mb-6 md:mb-8 tracking-[0.05em] leading-tight text-on-background">
+                        {renderTitle(chapter.title)}
+                      </h1>
+                      <p className="max-w-xl mx-auto text-on-background/70 leading-relaxed text-[16px] md:text-[18px] tracking-[0.2em] uppercase font-body font-light reveal-desc">
+                        {chapter.desc}
+                      </p>
+                      {/* Subtle Scroll Indicator Below */}
+                      <div className="mt-20 animate-bounce">
+                        <span className="text-[10px] uppercase tracking-[0.3em] text-on-background/40">Scroll</span>
+                      </div>
+                    </div>
+                  </div>
+                )}
+
                 {chapter.layout === "left-panel" && (
                   <>
                     <div className="md:col-span-6 flex justify-start">
@@ -418,12 +423,12 @@ export default function Home() {
                         <h2 className="font-display text-2xl md:text-4xl lg:text-5xl mb-6 md:mb-8 leading-tight text-on-background whitespace-pre-line">
                           {renderTitle(chapter.title)}
                         </h2>
-                        <p className="text-on-background/70 leading-relaxed text-[14px] md:text-[15px] font-body font-light italic reveal-desc">
+                        <p className="text-on-background/70 leading-relaxed text-[14px] md:text-[15px] font-body font-light italic reveal-desc whitespace-pre-line">
                           {chapter.desc}
                         </p>
                       </div>
                     </div>
-                    <div className="md:col-span-6 hidden md:flex justify-end reveal-frame">
+                    <div className="md:col-span-6 hidden md:flex justify-end reveal-frame mix-blend-multiply">
                       <div className="cinematic-frame w-full max-w-[480px]">
                         <img
                           src={chapter.imageUrl}
@@ -437,7 +442,7 @@ export default function Home() {
 
                 {chapter.layout === "right-panel" && (
                   <>
-                    <div className="md:col-span-6 hidden md:flex justify-start reveal-frame">
+                    <div className="md:col-span-6 hidden md:flex justify-start reveal-frame mix-blend-multiply">
                       <div className="cinematic-frame w-full max-w-[480px]">
                         <img
                           src={chapter.imageUrl}
@@ -454,7 +459,7 @@ export default function Home() {
                         <h2 className="font-display text-2xl md:text-4xl lg:text-5xl mb-6 md:mb-8 leading-tight text-on-background whitespace-pre-line">
                           {renderTitle(chapter.title)}
                         </h2>
-                        <p className="text-on-background/70 leading-relaxed text-[14px] md:text-[15px] font-body font-light italic reveal-desc">
+                        <p className="text-on-background/70 leading-relaxed text-[14px] md:text-[15px] font-body font-light italic reveal-desc whitespace-pre-line">
                           {chapter.desc}
                         </p>
                       </div>
@@ -462,29 +467,41 @@ export default function Home() {
                   </>
                 )}
 
-                {chapter.layout === "center-offset" && (
-                  <div className="md:col-span-12 flex justify-center">
-                    <div className="glass-editorial-panel w-full max-w-[700px] text-center reveal-frame">
-                      {chapter.id === "chapter-01" && (
-                        <div className="flex justify-center mb-8 reveal-subtitle">
-                          <img
-                            src="/icon.png"
-                            alt="Deuxsentique Logo"
-                            className="h-24 md:h-36 w-auto object-contain hero-logo-float drop-shadow-[0_0_20px_rgba(196,145,58,0.4)]"
-                          />
+                {chapter.layout === "philosophy" && (
+                  <>
+                    <div className="md:col-span-6 flex justify-start">
+                      <div className="glass-editorial-panel w-full max-w-[580px] reveal-frame">
+                        <p className="text-secondary text-[10px] uppercase tracking-[0.6em] mb-6 md:mb-8 font-body reveal-subtitle">
+                          {chapter.num}
+                        </p>
+                        <h2 className="font-display text-2xl md:text-4xl lg:text-5xl mb-12 leading-tight text-on-background">
+                          {renderTitle(chapter.title)}
+                        </h2>
+                        <div className="h-24 flex items-center reveal-desc">
+                          <span className="font-display text-4xl md:text-6xl tracking-wide text-primary transition-all duration-700 ease-in-out">
+                            {["Story", "Emotion", "Notes", "Scent", "Memory"][philosophyIdx]}
+                          </span>
                         </div>
-                      )}
-                      <p className="text-secondary text-[10px] uppercase tracking-[0.6em] mb-6 md:mb-8 font-body reveal-subtitle">
-                        {chapter.num}
-                      </p>
-                      <h2 className="font-display text-2xl md:text-4xl lg:text-5xl mb-6 md:mb-8 leading-tight text-on-background whitespace-pre-line">
-                        {renderTitle(chapter.title)}
-                      </h2>
-                      <p className="max-w-xl mx-auto text-on-background/70 leading-relaxed text-[14px] md:text-[15px] font-body font-light italic reveal-desc">
-                        {chapter.desc}
-                      </p>
+                        {/* Flow tracker below */}
+                        <div className="flex items-center gap-4 mt-6 text-[10px] uppercase tracking-[0.3em] text-on-background/30 font-body reveal-desc">
+                          {["Story", "Emotion", "Notes", "Scent", "Memory"].map((word, idx) => (
+                            <span key={word} className={`transition-colors duration-500 ${idx === philosophyIdx ? "text-primary font-medium" : ""}`}>
+                              {word} {idx < 4 && <span className="ml-4 text-on-background/15">→</span>}
+                            </span>
+                          ))}
+                        </div>
+                      </div>
                     </div>
-                  </div>
+                    <div className="md:col-span-6 hidden md:flex justify-end reveal-frame mix-blend-multiply">
+                      <div className="cinematic-frame w-full max-w-[480px]">
+                        <img
+                          src={chapter.imageUrl}
+                          alt={chapter.imageAlt}
+                          className="w-full h-auto object-contain max-h-[65vh] blend-painting"
+                        />
+                      </div>
+                    </div>
+                  </>
                 )}
 
                 {chapter.layout === "asymmetric" && (
@@ -494,59 +511,18 @@ export default function Home() {
                         <p className="text-secondary text-[10px] uppercase tracking-[0.6em] mb-6 md:mb-8 font-body reveal-subtitle">
                           {chapter.num}
                         </p>
-                        <h2 className="font-display text-2xl md:text-4xl lg:text-5xl mb-6 md:mb-8 leading-tight text-on-background whitespace-pre-line">
-                          {renderTitle(chapter.title)}
-                        </h2>
-
-                        {/* Interactive Olfactory Accord Showcase for Chapter X (First Embrace) */}
-                        {chapter.id === "chapter-10" ? (
-                          <div className="accord-container reveal-desc mt-6">
-                            <div
-                              className={`accord-item cursor-pointer ${activeAccord === "top" ? "active" : ""}`}
-                              onClick={() => setActiveAccord("top")}
-                            >
-                              <h3 className="accord-title">Top Notes</h3>
-                              <p className="accord-notes">Bergamot, Mandarin, Jasmine</p>
-                              <p className="accord-desc">
-                                A bright, fresh opening of sparkling citrus balanced with the soft,
-                                ethereal whisper of jasmine petals.
-                              </p>
-                            </div>
-
-                            <div
-                              className={`accord-item cursor-pointer ${activeAccord === "heart" ? "active" : ""}`}
-                              onClick={() => setActiveAccord("heart")}
-                            >
-                              <h3 className="accord-title">Heart Notes</h3>
-                              <p className="accord-notes">Damask Rose, Peony, Lychee</p>
-                              <p className="accord-desc">
-                                An intimate, blooming core of rich Damask rose and soft peony
-                                offset by the sweet freshness of lychee.
-                              </p>
-                            </div>
-
-                            <div
-                              className={`accord-item cursor-pointer ${activeAccord === "base" ? "active" : ""}`}
-                              onClick={() => setActiveAccord("base")}
-                            >
-                              <h3 className="accord-title">Base Notes</h3>
-                              <p className="accord-notes">
-                                Sandalwood, White Musk, Amber, Vanilla, Tonka
-                              </p>
-                              <p className="accord-desc">
-                                A deep, warm finish of woody sandalwood, rich musk, and velvet tonka
-                                bean that lingers close on the skin.
-                              </p>
-                            </div>
-                          </div>
-                        ) : (
-                          <p className="text-on-background/70 leading-relaxed text-[14px] md:text-[15px] font-body font-light italic reveal-desc">
-                            {chapter.desc}
+                        {/* Large Editorial Quote */}
+                        <div className="border-l border-primary/20 pl-6 md:pl-8 mb-8">
+                          <p className="font-display text-2xl md:text-3xl lg:text-4xl italic leading-relaxed text-on-background">
+                            &ldquo;The fragrance is discovered, not announced.&rdquo;
                           </p>
-                        )}
+                        </div>
+                        <p className="text-on-background/70 leading-relaxed text-[14px] md:text-[15px] font-body font-light italic reveal-desc whitespace-pre-line">
+                          {chapter.desc}
+                        </p>
                       </div>
                     </div>
-                    <div className="md:col-span-5 hidden md:flex justify-center reveal-frame">
+                    <div className="md:col-span-5 hidden md:flex justify-center reveal-frame mix-blend-multiply">
                       <div className="cinematic-frame w-full max-w-[380px] -translate-y-8">
                         <img
                           src={chapter.imageUrl}
@@ -557,76 +533,129 @@ export default function Home() {
                     </div>
                   </>
                 )}
+
+                {chapter.layout === "believe" && (
+                  <>
+                    <div className="md:col-span-6 hidden md:flex justify-start reveal-frame mix-blend-multiply">
+                      <div className="cinematic-frame w-full max-w-[480px]">
+                        <img
+                          src={chapter.imageUrl}
+                          alt={chapter.imageAlt}
+                          className="w-full h-auto object-contain max-h-[65vh] blend-painting"
+                        />
+                      </div>
+                    </div>
+                    <div className="md:col-span-6 flex justify-end">
+                      <div className="glass-editorial-panel w-full max-w-[580px] reveal-frame">
+                        <p className="text-secondary text-[10px] uppercase tracking-[0.6em] mb-6 md:mb-8 font-body reveal-subtitle">
+                          {chapter.num}
+                        </p>
+                        <h2 className="font-display text-2xl md:text-4xl lg:text-5xl mb-12 leading-tight text-on-background">
+                          {renderTitle(chapter.title)}
+                        </h2>
+                        <div className="h-24 flex items-center reveal-desc">
+                          <span className="font-display text-4xl md:text-6xl tracking-wide text-primary transition-all duration-700 ease-in-out">
+                            {["Story", "Craftsmanship", "Emotion", "Authenticity", "Connection", "Timelessness"][beliefIdx]}
+                          </span>
+                        </div>
+                        <div className="flex flex-wrap gap-4 mt-6 text-[10px] uppercase tracking-[0.3em] text-on-background/30 font-body reveal-desc">
+                          {["Story", "Craftsmanship", "Emotion", "Authenticity", "Connection", "Timelessness"].map((word, idx) => (
+                            <span key={word} className={`transition-colors duration-500 ${idx === beliefIdx ? "text-primary font-medium" : ""}`}>
+                              {word} {idx < 5 && <span className="ml-4 text-on-background/15">•</span>}
+                            </span>
+                          ))}
+                        </div>
+                      </div>
+                    </div>
+                  </>
+                )}
+
+                {chapter.layout === "invite" && (
+                  <div className="md:col-span-12 flex justify-center text-center">
+                    <div className="glass-editorial-panel w-full max-w-[580px] flex flex-col items-center reveal-frame">
+                      <p className="text-secondary text-[10px] uppercase tracking-[0.6em] mb-6 md:mb-8 font-body reveal-subtitle">
+                        {chapter.num}
+                      </p>
+                      <h2 className="font-display text-2xl md:text-4xl lg:text-5xl mb-6 md:mb-8 leading-tight text-on-background whitespace-pre-line">
+                        {renderTitle(chapter.title)}
+                      </h2>
+                      <p className="text-on-background/70 mb-10 md:mb-12 text-[14px] md:text-[15px] font-body font-light italic reveal-desc max-w-lg">
+                        {chapter.desc}
+                      </p>
+
+                      {!submitted ? (
+                        <form onSubmit={handleSubmit} className="w-full flex flex-col gap-6 md:gap-8 reveal-desc max-w-md" id="waitlist-form" suppressHydrationWarning>
+                          <div className="relative" suppressHydrationWarning>
+                            <input
+                              type="email"
+                              id="email"
+                              required
+                              value={email}
+                              onChange={(e) => setEmail(e.target.value)}
+                              placeholder="EMAIL ADDRESS"
+                              className="w-full bg-transparent border-0 border-b border-primary/20 text-[#1A1A1A] py-3 text-[11px] tracking-[0.3em] uppercase focus:outline-none focus:border-primary transition-colors text-center"
+                              suppressHydrationWarning
+                            />
+                          </div>
+                          <button
+                            type="submit"
+                            className="w-full font-body text-[10px] uppercase tracking-[0.3em] border border-primary text-primary py-4 hover:bg-primary hover:text-background transition-all duration-700 cursor-pointer"
+                          >
+                            Request Invitation
+                          </button>
+                        </form>
+                      ) : (
+                        <div className="text-center reveal-desc max-w-md transition-all duration-1000 animate-fadeIn" id="success-state">
+                          <p className="text-primary text-[12px] uppercase tracking-[0.6em] mb-4">
+                            Thank you for requesting your invitation.
+                          </p>
+                          <p className="text-on-background/70 text-[13px] leading-relaxed font-body font-light">
+                            Your journey with Deuxsentique begins here.<br />
+                            We&apos;ll share stories, updates and exclusive moments as we move towards our first collection.
+                          </p>
+                        </div>
+                      )}
+                    </div>
+                  </div>
+                )}
+
+                {chapter.layout === "socials" && (
+                  <div className="md:col-span-12 flex justify-center text-center">
+                    <div className="glass-editorial-panel w-full max-w-[580px] flex flex-col items-center reveal-frame">
+                      <p className="text-secondary text-[10px] uppercase tracking-[0.6em] mb-6 md:mb-8 font-body reveal-subtitle">
+                        {chapter.num}
+                      </p>
+                      <h2 className="font-display text-2xl md:text-4xl lg:text-5xl mb-12 leading-tight text-on-background">
+                        {renderTitle(chapter.title)}
+                      </h2>
+                      <div className="flex flex-wrap justify-center gap-8 md:gap-12 mt-4 reveal-desc">
+                        {["Instagram", "TikTok", "Facebook", "LinkedIn", "YouTube"].map((platform) => (
+                          <Link
+                            key={platform}
+                            href="#"
+                            className="font-body text-[10px] uppercase tracking-[0.3em] text-on-background/50 hover:text-primary transition-colors duration-500"
+                          >
+                            {platform}
+                          </Link>
+                        ))}
+                      </div>
+                    </div>
+                  </div>
+                )}
+
               </div>
             </section>
           );
         })}
 
-        {/* Chapter 11 (The Invitation / Waitlist Form) */}
-        <section
-          id="chapter-11"
-          className={`chapter-section ${activeChapter === "chapter-11" ? "active" : ""}`}
-        >
-          <div className="relative z-10 w-full max-w-[1440px] px-6 md:px-24 flex justify-center">
-            <div className="glass-editorial-panel w-full max-w-[580px] reveal-frame">
-              <p className="text-secondary text-[10px] uppercase tracking-[0.6em] mb-6 md:mb-8 font-body reveal-subtitle">
-                Chapter XI
-              </p>
-              <h2 className="font-display text-2xl md:text-4xl lg:text-5xl mb-6 md:mb-8 leading-tight text-on-background reveal-title">
-                We&apos;re not announcing a launch.<br />We&apos;re offering an invitation.
-              </h2>
-              <p className="text-on-background/70 mb-10 md:mb-12 text-[14px] md:text-[15px] font-body font-light italic reveal-desc">
-                To witness the unveiling of something made with intention. Register your presence.
-              </p>
-
-              {!submitted ? (
-                <form onSubmit={handleSubmit} className="w-full flex flex-col gap-6 md:gap-8 reveal-desc" id="waitlist-form">
-                  <div className="relative">
-                    <input
-                      type="email"
-                      id="email"
-                      required
-                      value={email}
-                      onChange={(e) => setEmail(e.target.value)}
-                      className="w-full bg-transparent border-0 border-b border-on-background/25 text-on-background font-body py-4 px-0 focus:ring-0 focus:border-primary focus:outline-none transition-all peer placeholder-transparent"
-                      placeholder="Email Address"
-                    />
-                    <label
-                      htmlFor="email"
-                      className="absolute left-0 top-4 text-[10px] text-on-background/40 transition-all peer-focus:-top-4 peer-focus:text-primary peer-focus:text-[10px] peer-valid:-top-4 peer-valid:text-primary peer-valid:text-[10px] uppercase tracking-[0.2em] pointer-events-none"
-                    >
-                      Email Address
-                    </label>
-                  </div>
-                  <button
-                    type="submit"
-                    className="w-full border border-primary/50 text-primary font-body text-[10px] uppercase tracking-[0.4em] py-4 md:py-5 hover:bg-primary hover:text-background transition-all duration-700 hover:shadow-[0_0_15px_rgba(196,145,58,0.2)] cursor-pointer"
-                  >
-                    Request Invitation
-                  </button>
-                </form>
-              ) : (
-                <div className="mt-8 transition-all duration-1000 animate-fadeIn" id="success-state">
-                  <p className="text-primary text-[11px] uppercase tracking-[0.6em]">
-                    Intent Registered.
-                  </p>
-                  <p className="text-on-background/60 mt-4 italic text-[14px] font-body">
-                    The silence ends soon.
-                  </p>
-                </div>
-              )}
-            </div>
-          </div>
-        </section>
-
         {/* Footer */}
         <Footer />
       </div>
 
-      {/* Floating Scroll Indicator (hidden at chapter 11) */}
+      {/* Floating Scroll Indicator (hidden at section 7) */}
       <div
         className={`scroll-indicator transition-opacity duration-700 ${
-          activeChapter === "chapter-11" ? "opacity-0 pointer-events-none" : "opacity-100"
+          activeChapter === "section-7" ? "opacity-0 pointer-events-none" : "opacity-100"
         }`}
       >
         <span className="font-body text-[9px] uppercase tracking-[0.4em]">Scroll</span>
