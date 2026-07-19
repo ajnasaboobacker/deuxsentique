@@ -44,7 +44,7 @@ export default function AboutPage() {
             <div className="md:col-span-6 flex justify-end mix-blend-multiply">
               <div className="cinematic-frame w-full max-w-[480px]">
                 <img
-                  src="/chapters/ch04_painting.png"
+                  src="/about_beginning.png"
                   alt="The Beginning of Deuxsentique"
                   className="w-full h-auto object-contain max-h-[60vh] blend-painting"
                 />
@@ -79,7 +79,7 @@ export default function AboutPage() {
             <div className="md:col-span-5 flex justify-center mix-blend-multiply order-1 md:order-2">
               <div className="cinematic-frame w-full max-w-[380px]">
                 <img
-                  src="/chapters/ch02_painting.png"
+                  src="/about_founders.png"
                   alt="Resten and Jiji"
                   className="w-full h-auto object-contain max-h-[60vh] blend-painting"
                 />
@@ -94,7 +94,7 @@ export default function AboutPage() {
             <div className="md:col-span-6 flex justify-start mix-blend-multiply">
               <div className="cinematic-frame w-full max-w-[480px]">
                 <img
-                  src="/chapters/ch08_painting.png"
+                  src="/about_philosophy.png"
                   alt="Our Philosophy"
                   className="w-full h-auto object-contain max-h-[60vh] blend-painting"
                 />
@@ -130,7 +130,7 @@ export default function AboutPage() {
             <div className="md:col-span-5 flex justify-center mix-blend-multiply order-1 md:order-2">
               <div className="cinematic-frame w-full max-w-[380px]">
                 <img
-                  src="/chapters/ch05_painting.png"
+                  src="/about_dna.png"
                   alt="Cultural DNA"
                   className="w-full h-auto object-contain max-h-[60vh] blend-painting"
                 />
@@ -176,7 +176,7 @@ export default function AboutPage() {
             <div className="md:col-span-6 flex justify-start mix-blend-multiply">
               <div className="cinematic-frame w-full max-w-[480px]">
                 <img
-                  src="/chapters/ch10_painting.png"
+                  src="/about_craft.png"
                   alt="The Craft"
                   className="w-full h-auto object-contain max-h-[60vh] blend-painting"
                 />
