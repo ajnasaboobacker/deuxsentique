@@ -2,7 +2,7 @@
 
 import { useEffect, useState, useRef } from "react";
 import Link from "next/link";
-import { Footer } from "./components/shared";
+import { PageHeader, Footer } from "./components/shared";
 
 interface Chapter {
   id: string;
@@ -131,9 +131,6 @@ export default function Home() {
   // Olfactory Accord active sub-state (Chapter X)
   const [activeAccord, setActiveAccord] = useState<"top" | "heart" | "base">("top");
 
-  // Mobile menu
-  const [menuOpen, setMenuOpen] = useState(false);
-
   useEffect(() => {
     const philosophyInterval = setInterval(() => {
       setPhilosophyIdx((prev) => (prev + 1) % 5);
@@ -148,6 +145,15 @@ export default function Home() {
       clearInterval(beliefInterval);
     };
   }, []);
+
+  // Web Audio Context cleanup on page unmount
+  useEffect(() => {
+    return () => {
+      if (audioCtx) {
+        audioCtx.close().catch(() => {});
+      }
+    };
+  }, [audioCtx]);
 
   useEffect(() => {
     const container = containerRef.current;
@@ -295,86 +301,15 @@ export default function Home() {
         ))}
       </div>
 
-      {/* Fixed Luxury Header */}
-      <header className="fixed top-0 left-0 w-full flex justify-between items-center px-6 md:px-24 py-6 md:py-8 z-[100] bg-[#1A1916]/90 backdrop-blur-md border-b border-primary/10">
-        <div className="flex items-center gap-6">
-          <span className="font-display text-lg md:text-2xl tracking-[0.4em] uppercase text-[#fec6a1]">
-            Deuxsentique
-          </span>
-        </div>
-
-        {/* Centered small navbar logo that fades in on scroll */}
-        <div className="absolute left-1/2 -translate-x-1/2 top-1/2 -translate-y-1/2">
-          <img
-            src="/icon.png"
-            alt="Deuxsentique Logo"
-            className={`h-16 md:h-20 w-auto object-contain transition-all duration-700 brightness-110 contrast-110 drop-shadow-[0_0_15px_rgba(196,145,58,0.7)] ${
-              isScrolled ? "opacity-100 scale-100" : "opacity-0 scale-50 pointer-events-none"
-            }`}
-          />
-        </div>
-
-        <div className="flex items-center gap-4 md:gap-6">
-          <Link
-            href="/about"
-            className="hidden md:inline-block font-body text-[10px] uppercase tracking-[0.3em] text-[#fec6a1]/60 hover:text-primary transition-colors"
-          >
-            Our Story
-          </Link>
-          <Link
-            href="/first-embrace"
-            className="hidden md:inline-block font-body text-[10px] uppercase tracking-[0.3em] text-[#fec6a1]/60 hover:text-primary transition-colors"
-          >
-            First Embrace
-          </Link>
-
-          {/* Soundscape toggle */}
-          <button
-            onClick={toggleAmbientAudio}
-            className="hidden md:flex items-center gap-3 cursor-pointer text-[9px] uppercase tracking-[0.3em] text-[#fec6a1]/60 hover:text-primary transition-colors focus:outline-none"
-          >
-            <span>Sound</span>
-            <div className="flex gap-[2px] items-end h-3 w-4">
-              <span className={`w-[2px] bg-primary transition-all duration-300 ${audioPlaying ? "animate-[pulse_1s_infinite_0s] h-3" : "h-1"}`}></span>
-              <span className={`w-[2px] bg-primary transition-all duration-300 ${audioPlaying ? "animate-[pulse_1s_infinite_0.2s] h-2" : "h-[2px]"}`}></span>
-              <span className={`w-[2px] bg-primary transition-all duration-300 ${audioPlaying ? "animate-[pulse_1s_infinite_0.4s] h-3" : "h-[1.5px]"}`}></span>
-            </div>
-          </button>
-
-          <button
-            className="hidden md:inline-block font-body text-[9px] md:text-[10px] uppercase tracking-[0.2em] md:tracking-[0.3em] border border-primary/40 text-primary px-4 md:px-8 py-2.5 md:py-3 hover:bg-primary hover:text-[#1A1916] transition-all duration-700 hover:shadow-[0_0_15px_rgba(196,145,58,0.3)] hover:-translate-y-0.5 cursor-pointer"
-            onClick={() => scrollToSection("section-6")}
-          >
-            Request Invitation
-          </button>
-
-          {/* Mobile hamburger */}
-          <button
-            onClick={() => setMenuOpen(!menuOpen)}
-            className="md:hidden flex flex-col gap-[5px] cursor-pointer p-2 focus:outline-none"
-            aria-label="Menu"
-          >
-            <span className={`block w-5 h-px bg-[#fec6a1] transition-all duration-300 ${menuOpen ? "rotate-45 translate-y-[3px]" : ""}`}></span>
-            <span className={`block w-5 h-px bg-[#fec6a1] transition-all duration-300 ${menuOpen ? "-rotate-45 -translate-y-[3px]" : ""}`}></span>
-          </button>
-        </div>
-      </header>
-
-      {/* Mobile overlay menu */}
-      <div className={`fixed inset-0 z-[99] bg-background/95 backdrop-blur-xl flex flex-col items-center justify-center gap-10 transition-all duration-500 md:hidden ${menuOpen ? "opacity-100 pointer-events-auto" : "opacity-0 pointer-events-none"}`}>
-        <Link href="/about" onClick={() => setMenuOpen(false)} className="font-display text-2xl tracking-[0.3em] uppercase text-on-background hover:text-primary transition-colors">
-          Our Story
-        </Link>
-        <Link href="/first-embrace" onClick={() => setMenuOpen(false)} className="font-display text-2xl tracking-[0.3em] uppercase text-on-background hover:text-primary transition-colors">
-          First Embrace
-        </Link>
-        <button
-          onClick={() => { setMenuOpen(false); scrollToSection("section-6"); }}
-          className="font-body text-[10px] uppercase tracking-[0.4em] border border-primary/40 text-primary px-10 py-4 hover:bg-primary hover:text-background transition-all duration-700 mt-4 cursor-pointer"
-        >
-          Request Invitation
-        </button>
-      </div>
+      {/* Unified PageHeader Component */}
+      <PageHeader
+        showSoundscape
+        audioPlaying={audioPlaying}
+        toggleAmbientAudio={toggleAmbientAudio}
+        fadeLogoOnScroll
+        isScrolled={isScrolled}
+        scrollToSection={scrollToSection}
+      />
 
       {/* Main Snap Scroll Container */}
       <div ref={containerRef} className="scroll-container">
