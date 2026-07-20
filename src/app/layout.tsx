@@ -31,7 +31,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" className="dark scroll-smooth" suppressHydrationWarning>
+    <html lang="en" className="dark scroll-smooth" data-scroll-behavior="smooth" suppressHydrationWarning>
       <body className={`${bodoniModa.variable} ${workSans.variable} bg-background text-on-background font-body antialiased`}>
         {/* Visual depth layers — shared across all pages */}
         <div className="film-grain"></div>
