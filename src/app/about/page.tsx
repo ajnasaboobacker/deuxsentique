@@ -16,14 +16,14 @@ export default function AboutPage() {
         <ScrollReveal />
         {/* Hero */}
         <section className="text-center" style={{ paddingTop: "2rem", paddingBottom: "2rem" }}>
-          <p className="text-secondary text-[10px] uppercase tracking-[0.6em] mb-6 font-body">
+          <p className="text-secondary text-[10px] uppercase tracking-[0.6em] mb-6 font-body animate-hero-subtitle">
             Our Story
           </p>
-          <h1 className="font-display text-4xl md:text-5xl lg:text-6xl mb-6 leading-tight text-on-background">
+          <h1 className="font-display text-4xl md:text-5xl lg:text-6xl mb-6 leading-tight text-on-background animate-hero-title">
             Two people who dared<br />to listen.
           </h1>
-          <div className="gold-divider"></div>
-          <p className="lead max-w-2xl mx-auto">
+          <div className="gold-divider animate-hero-divider"></div>
+          <p className="lead max-w-2xl mx-auto animate-hero-desc">
             Deuxsentique was not born from a business plan. It was born from a conversation between two people who believed that the most powerful stories are the ones we carry on our skin.
           </p>
         </section>

@@ -651,3 +651,50 @@ input:-webkit-autofill:focus {
   animation: ambientFloat 7.5s ease-in-out infinite;
 }
 
+/* Staggered load animations for Our Story Hero section */
+@keyframes heroFadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(16px);
+    filter: blur(3px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+    filter: blur(0);
+  }
+}
+
+@keyframes dividerExpand {
+  from {
+    transform: scaleX(0);
+    opacity: 0;
+  }
+  to {
+    transform: scaleX(1);
+    opacity: 1;
+  }
+}
+
+.animate-hero-subtitle {
+  opacity: 0;
+  animation: heroFadeInUp 1.4s cubic-bezier(0.25, 1, 0.3, 1) 0.1s forwards;
+}
+
+.animate-hero-title {
+  opacity: 0;
+  animation: heroFadeInUp 1.6s cubic-bezier(0.25, 1, 0.3, 1) 0.4s forwards;
+}
+
+.animate-hero-divider {
+  opacity: 0;
+  transform-origin: center;
+  animation: dividerExpand 1.6s cubic-bezier(0.25, 1, 0.3, 1) 0.8s forwards;
+}
+
+.animate-hero-desc {
+  opacity: 0;
+  animation: heroFadeInUp 1.6s cubic-bezier(0.25, 1, 0.3, 1) 1.1s forwards;
+}
+
+
