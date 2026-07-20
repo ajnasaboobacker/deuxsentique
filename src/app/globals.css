@@ -612,3 +612,42 @@ input:-webkit-autofill:focus {
   mix-blend-mode: multiply;
   filter: contrast(1.08) brightness(1.03);
 }
+
+/* Scroll reveal and ambient float animations for illustrations */
+@keyframes ambientFloat {
+  0%, 100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-8px);
+  }
+}
+
+.scroll-reveal-container {
+  opacity: 0;
+  transform: translateY(24px) scale(0.97);
+  filter: blur(4px);
+  transition: opacity 1.8s cubic-bezier(0.25, 1, 0.3, 1),
+              transform 1.8s cubic-bezier(0.25, 1, 0.3, 1),
+              filter 1.8s cubic-bezier(0.25, 1, 0.3, 1);
+}
+
+.scroll-reveal-container.is-visible {
+  opacity: 1;
+  transform: translateY(0) scale(1);
+  filter: blur(0);
+}
+
+/* Trigger slow float after reveal state is visible to avoid transition clash */
+.scroll-reveal-container.is-visible .animate-float-slow {
+  animation: ambientFloat 9s ease-in-out infinite;
+}
+
+.scroll-reveal-container.is-visible .animate-float-slower {
+  animation: ambientFloat 11s ease-in-out infinite;
+}
+
+.scroll-reveal-container.is-visible .animate-float-fast {
+  animation: ambientFloat 7.5s ease-in-out infinite;
+}
+

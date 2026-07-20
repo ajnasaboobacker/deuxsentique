@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { PageHeader, Footer } from "../components/shared";
+import ScrollReveal from "../components/scroll-reveal";
 
 export const metadata: Metadata = {
   title: "Our Story | Deuxsentique",
@@ -12,6 +13,7 @@ export default function AboutPage() {
       <PageHeader />
 
       <main className="inner-page page-fade-in">
+        <ScrollReveal />
         {/* Hero */}
         <section className="text-center" style={{ paddingTop: "2rem", paddingBottom: "2rem" }}>
           <p className="text-secondary text-[10px] uppercase tracking-[0.6em] mb-6 font-body">
@@ -41,8 +43,8 @@ export default function AboutPage() {
                 From this, Deuxsentique was born: two creators, one shared essence.
               </p>
             </div>
-            <div className="md:col-span-6 flex justify-end mix-blend-multiply">
-              <div className="cinematic-frame w-full max-w-[480px]">
+            <div className="md:col-span-6 flex justify-end mix-blend-multiply scroll-reveal-container">
+              <div className="cinematic-frame w-full max-w-[480px] animate-float-slow">
                 <img
                   src="/about_beginning.png"
                   alt="The Beginning of Deuxsentique"
@@ -76,8 +78,8 @@ export default function AboutPage() {
                 Where chemistry meets soul: Jiji ensures precision, safety, and authenticity. Resten shapes each perfume as a living story — a bottle of memory. Together they create fragrances that are technically balanced and emotionally profound.
               </p>
             </div>
-            <div className="md:col-span-5 flex justify-center mix-blend-multiply order-1 md:order-2">
-              <div className="cinematic-frame w-full max-w-[380px]">
+            <div className="md:col-span-5 flex justify-center mix-blend-multiply order-1 md:order-2 scroll-reveal-container">
+              <div className="cinematic-frame w-full max-w-[380px] animate-float-slower">
                 <img
                   src="/about_founders.png"
                   alt="Resten and Jiji"
@@ -91,8 +93,8 @@ export default function AboutPage() {
         {/* Philosophy */}
         <section className="!max-w-[1200px] mx-auto my-16 md:my-24">
           <div className="grid grid-cols-1 md:grid-cols-12 gap-8 md:gap-16 items-center">
-            <div className="md:col-span-6 flex justify-start mix-blend-multiply">
-              <div className="cinematic-frame w-full max-w-[480px]">
+            <div className="md:col-span-6 flex justify-start mix-blend-multiply scroll-reveal-container">
+              <div className="cinematic-frame w-full max-w-[480px] animate-float-fast">
                 <img
                   src="/about_philosophy.png"
                   alt="Our Philosophy"
@@ -127,8 +129,8 @@ export default function AboutPage() {
                 &ldquo;Deuxsentique is not built to compete. It is built to endure.&rdquo;
               </p>
             </div>
-            <div className="md:col-span-5 flex justify-center mix-blend-multiply order-1 md:order-2">
-              <div className="cinematic-frame w-full max-w-[380px]">
+            <div className="md:col-span-5 flex justify-center mix-blend-multiply order-1 md:order-2 scroll-reveal-container">
+              <div className="cinematic-frame w-full max-w-[380px] animate-float-slow">
                 <img
                   src="/about_dna.png"
                   alt="Cultural DNA"
@@ -173,8 +175,8 @@ export default function AboutPage() {
         {/* Craft */}
         <section className="!max-w-[1200px] mx-auto my-16 md:my-24">
           <div className="grid grid-cols-1 md:grid-cols-12 gap-8 md:gap-16 items-center">
-            <div className="md:col-span-6 flex justify-start mix-blend-multiply">
-              <div className="cinematic-frame w-full max-w-[480px]">
+            <div className="md:col-span-6 flex justify-start mix-blend-multiply scroll-reveal-container">
+              <div className="cinematic-frame w-full max-w-[480px] animate-float-slower">
                 <img
                   src="/about_craft.png"
                   alt="The Craft"
