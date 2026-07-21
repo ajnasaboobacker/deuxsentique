@@ -330,7 +330,7 @@ export default function Home() {
                 
                 {chapter.layout === "hero" && (
                   <div className="md:col-span-12 flex justify-center text-center">
-                    <div className="glass-editorial-panel w-full max-w-[700px] flex flex-col items-center justify-center reveal-frame">
+                    <div className="glass-editorial-panel w-full max-w-[1000px] flex flex-col items-center justify-center reveal-frame">
                       <div className="flex justify-center mb-8 reveal-subtitle">
                         <img
                           src="/icon.png"
@@ -338,16 +338,12 @@ export default function Home() {
                           className="h-28 md:h-40 w-auto object-contain hero-logo-float drop-shadow-[0_0_20px_rgba(196,145,58,0.4)]"
                         />
                       </div>
-                      <h1 className="font-display text-4xl md:text-6xl lg:text-7xl mb-6 md:mb-8 tracking-[0.05em] leading-tight text-on-background">
+                      <h1 className="font-higher-jump text-xl sm:text-2xl md:text-4xl lg:text-5xl xl:text-6xl mb-6 md:mb-8 tracking-[0.05em] leading-tight text-on-background whitespace-nowrap">
                         {renderTitle(chapter.title)}
                       </h1>
                       <p className="max-w-xl mx-auto text-on-background/70 leading-relaxed text-[16px] md:text-[18px] tracking-[0.2em] uppercase font-body font-light reveal-desc">
                         {chapter.desc}
                       </p>
-                      {/* Subtle Scroll Indicator Below */}
-                      <div className="mt-20 animate-bounce">
-                        <span className="text-[10px] uppercase tracking-[0.3em] text-on-background/40">Scroll</span>
-                      </div>
                     </div>
                   </div>
                 )}
@@ -510,21 +506,39 @@ export default function Home() {
                 )}
 
                 {chapter.layout === "invite" && (
-                  <div className="md:col-span-12 flex justify-center text-center">
-                    <div className="glass-editorial-panel w-full max-w-[580px] flex flex-col items-center reveal-frame">
-                      <p className="text-secondary text-[10px] uppercase tracking-[0.6em] mb-6 md:mb-8 font-body reveal-subtitle">
+                  <div className="md:col-span-12 flex justify-center text-center relative z-10">
+                    {/* Glowing background aura */}
+                    <div className="absolute -inset-6 bg-gradient-to-r from-primary/20 via-primary/30 to-primary/20 rounded-3xl blur-2xl opacity-60 animate-glow-pulse pointer-events-none"></div>
+
+                    <div className="relative bg-surface/50 backdrop-blur-xl border border-primary/30 p-10 md:p-16 w-full max-w-[620px] flex flex-col items-center justify-center reveal-frame rounded-2xl invite-card-animated overflow-hidden">
+                      {/* Decorative Gold Corner Borders */}
+                      <div className="absolute top-0 left-0 w-8 h-8 border-t-2 border-l-2 border-primary/50 rounded-tl-2xl"></div>
+                      <div className="absolute top-0 right-0 w-8 h-8 border-t-2 border-r-2 border-primary/50 rounded-tr-2xl"></div>
+                      <div className="absolute bottom-0 left-0 w-8 h-8 border-b-2 border-l-2 border-primary/50 rounded-bl-2xl"></div>
+                      <div className="absolute bottom-0 right-0 w-8 h-8 border-b-2 border-r-2 border-primary/50 rounded-br-2xl"></div>
+                      
+                      {/* Floating Brand Logo Seal */}
+                      <div className="flex justify-center mb-6 reveal-subtitle">
+                        <img
+                          src="/icon.png"
+                          alt="Deuxsentique Seal"
+                          className="h-16 w-auto object-contain hero-logo-float drop-shadow-[0_0_20px_rgba(196,145,58,0.5)]"
+                        />
+                      </div>
+
+                      <p className="text-secondary text-[10px] uppercase tracking-[0.6em] mb-4 font-body reveal-subtitle font-medium">
                         {chapter.num}
                       </p>
-                      <h2 className="font-display text-2xl md:text-4xl lg:text-5xl mb-6 md:mb-8 leading-tight text-on-background whitespace-pre-line">
+                      <h2 className="font-display text-2xl md:text-4xl lg:text-5xl mb-6 leading-tight text-on-background whitespace-pre-line">
                         {renderTitle(chapter.title)}
                       </h2>
-                      <p className="text-on-background/70 mb-10 md:mb-12 text-[14px] md:text-[15px] font-body font-light italic reveal-desc max-w-lg">
+                      <p className="text-on-background/80 mb-10 text-[14px] md:text-[15px] font-body font-light italic reveal-desc max-w-md">
                         {chapter.desc}
                       </p>
 
                       {!submitted ? (
                         mounted ? (
-                          <form onSubmit={handleSubmit} className="w-full flex flex-col gap-6 md:gap-8 reveal-desc max-w-md" id="waitlist-form">
+                          <form onSubmit={handleSubmit} className="w-full flex flex-col gap-6 reveal-desc max-w-sm" id="waitlist-form">
                             <div className="relative">
                               <input
                                 type="email"
@@ -532,30 +546,36 @@ export default function Home() {
                                 required
                                 value={email}
                                 onChange={(e) => setEmail(e.target.value)}
-                                placeholder="EMAIL ADDRESS"
-                                className="w-full bg-transparent border-0 border-b border-primary/20 text-[#1A1A1A] py-3 text-[11px] tracking-[0.3em] uppercase focus:outline-none focus:border-primary transition-colors text-center"
+                                placeholder="ENTER YOUR EMAIL ADDRESS"
+                                className="w-full bg-[#1A1A1A]/5 border border-primary/30 text-[#1A1A1A] py-4 px-6 rounded-lg text-[11px] tracking-[0.25em] focus:outline-none input-luxury-focus text-center placeholder-[#1A1A1A]/50 font-body font-light"
                               />
                             </div>
                             <button
                               type="submit"
-                              className="w-full font-body text-[10px] uppercase tracking-[0.3em] border border-primary text-primary py-4 hover:bg-primary hover:text-background transition-all duration-700 cursor-pointer"
+                              className="w-full font-body text-[10px] uppercase tracking-[0.3em] bg-primary text-background font-medium py-4 rounded-lg hover:bg-[#B38029] transition-all duration-500 cursor-pointer shadow-[0_8px_25px_rgba(196,145,58,0.3)] animate-button-shine"
                             >
                               Request Invitation
                             </button>
+                            <p className="text-[9px] uppercase tracking-[0.25em] text-on-background/50 font-body font-light">
+                              Strictly private access. We value your privacy.
+                            </p>
                           </form>
                         ) : (
                           <div className="h-32 flex items-center justify-center reveal-desc">
-                            <span className="text-[10px] uppercase tracking-[0.3em] text-on-background/25">Loading Form...</span>
+                            <span className="text-[10px] uppercase tracking-[0.3em] text-on-background/30">Loading Access Form...</span>
                           </div>
                         )
                       ) : (
                         <div className="text-center reveal-desc max-w-md transition-all duration-1000 animate-fadeIn" id="success-state">
-                          <p className="text-primary text-[12px] uppercase tracking-[0.6em] mb-4">
-                            Thank you for requesting your invitation.
+                          <div className="inline-flex items-center justify-center w-14 h-14 rounded-full border-2 border-primary mb-6 text-primary bg-primary/10 shadow-[0_0_20px_rgba(196,145,58,0.2)]">
+                            <span className="text-xl">✓</span>
+                          </div>
+                          <p className="text-primary text-[12px] uppercase tracking-[0.6em] mb-4 font-body font-semibold">
+                            Invitation Requested
                           </p>
-                          <p className="text-on-background/70 text-[13px] leading-relaxed font-body font-light">
+                          <p className="text-on-background/80 text-[13px] leading-relaxed font-body font-light">
                             Your journey with Deuxsentique begins here.<br />
-                            We&apos;ll share stories, updates and exclusive moments as we move towards our first collection.
+                            We will share stories, updates and exclusive access as our first collection unfolds.
                           </p>
                         </div>
                       )}

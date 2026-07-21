@@ -1,5 +1,13 @@
 @import "tailwindcss";
 
+@font-face {
+  font-family: 'Higher Jump';
+  src: url('/Assets/fonts/Higher Jump.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}
+
 @theme {
   --color-background: #fec6a1;
   --color-on-background: #1A1A1A;
@@ -10,6 +18,7 @@
 
   --font-display: var(--font-bodoni-moda), serif;
   --font-body: var(--font-work-sans), sans-serif;
+  --font-higher-jump: "Higher Jump", sans-serif;
 }
 
 /* Base resets and luxury styling */
@@ -318,6 +327,61 @@ input:-webkit-autofill:focus {
   transition: background-color 5000s ease-in-out 0s;
 }
 
+/* Custom Luxury Animations for Invitation / CTA Section */
+@keyframes buttonShine {
+  0% { transform: translateX(-120%) rotate(25deg); }
+  25%, 100% { transform: translateX(220%) rotate(25deg); }
+}
+
+.animate-button-shine {
+  position: relative;
+  overflow: hidden;
+}
+
+.animate-button-shine::after {
+  content: '';
+  position: absolute;
+  top: -50%;
+  left: -50%;
+  width: 60%;
+  height: 200%;
+  background: linear-gradient(
+    90deg,
+    rgba(255, 255, 255, 0) 0%,
+    rgba(255, 255, 255, 0.5) 50%,
+    rgba(255, 255, 255, 0) 100%
+  );
+  animation: buttonShine 3.5s ease-in-out infinite;
+  pointer-events: none;
+}
+
+@keyframes ambientGlowPulse {
+  0%, 100% { opacity: 0.35; transform: scale(0.96); }
+  50% { opacity: 0.85; transform: scale(1.05); }
+}
+
+.animate-glow-pulse {
+  animation: ambientGlowPulse 4s ease-in-out infinite;
+}
+
+@keyframes borderGlowPulse {
+  0%, 100% { border-color: rgba(196, 145, 58, 0.25); box-shadow: 0 15px 45px rgba(140, 107, 90, 0.12); }
+  50% { border-color: rgba(196, 145, 58, 0.65); box-shadow: 0 20px 60px rgba(196, 145, 58, 0.3); }
+}
+
+.invite-card-animated {
+  animation: borderGlowPulse 4s ease-in-out infinite;
+}
+
+.input-luxury-focus {
+  transition: all 0.4s ease;
+}
+
+.input-luxury-focus:focus {
+  box-shadow: 0 0 18px rgba(196, 145, 58, 0.35);
+  border-color: #C4913A !important;
+}
+
 /* Scroll Indicators */
 .scroll-indicator {
   position: fixed;
@@ -543,7 +607,7 @@ input:-webkit-autofill:focus {
 .value-card h3 {
   font-family: var(--font-display);
   font-size: 1.1rem;
-  color: #C4913A;
+  color: #734c10;
   margin-bottom: 0.75rem;
 }
 

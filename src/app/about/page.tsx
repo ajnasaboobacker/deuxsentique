@@ -104,7 +104,7 @@ export default function AboutPage() {
             </div>
             <div className="md:col-span-6 flex flex-col justify-center text-left">
               <h2 className="!mt-0">Our Philosophy</h2>
-              <p className="text-primary font-display text-xl md:text-2xl tracking-wide mb-6" style={{ lineHeight: 1.4 }}>
+              <p className="text-[#734c10] font-display text-xl md:text-2xl tracking-wide mb-6" style={{ lineHeight: 1.4 }}>
                 Story → Emotion → Notes → Perfume.
               </p>
               <p>
