@@ -1,21 +1,36 @@
 import { createClient } from "@supabase/supabase-js";
 
-// Retrieve environment variables
-const supabaseUrl = process.env.NEXT_PUBLIC_SUPABASE_URL || "";
-const supabaseAnonKey = process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY || "";
+/**
+ * Check dynamically if valid Supabase configuration environment variables are loaded
+ */
+export function checkIsSupabaseConfigured(): boolean {
+  const supabaseUrl = process.env.NEXT_PUBLIC_SUPABASE_URL || "";
+  const supabaseAnonKey = process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY || "";
+  return (
+    Boolean(supabaseUrl) &&
+    Boolean(supabaseAnonKey) &&
+    !supabaseUrl.includes("your-project-id") &&
+    !supabaseAnonKey.includes("your-actual-anon-key")
+  );
+}
 
-// Check if valid Supabase configuration exists
-export const isSupabaseConfigured =
-  Boolean(supabaseUrl) &&
-  Boolean(supabaseAnonKey) &&
-  !supabaseUrl.includes("your-project-id") &&
-  !supabaseAnonKey.includes("your-actual-anon-key");
+// Backwards-compatible export (evaluated at import, but helper checkIsSupabaseConfigured is dynamic)
+export const isSupabaseConfigured = checkIsSupabaseConfigured();
 
-// Export Supabase Client instance (singleton)
-export const supabase = createClient(
-  isSupabaseConfigured ? supabaseUrl : "https://placeholder-project.supabase.co",
-  isSupabaseConfigured ? supabaseAnonKey : "placeholder-key"
-);
+/**
+ * Get active Supabase client instance using current env vars
+ */
+export function getSupabaseClient() {
+  const supabaseUrl = process.env.NEXT_PUBLIC_SUPABASE_URL || "";
+  const supabaseAnonKey = process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY || "";
+  if (checkIsSupabaseConfigured()) {
+    return createClient(supabaseUrl, supabaseAnonKey);
+  }
+  return createClient("https://placeholder-project.supabase.co", "placeholder-key");
+}
+
+// Singleton export
+export const supabase = getSupabaseClient();
 
 export interface Invitation {
   id: string;
@@ -56,9 +71,10 @@ const memoryStorage: Invitation[] = [
 export async function addInvitation(email: string, source: "homepage" | "first-embrace" = "homepage") {
   const cleanEmail = email.trim().toLowerCase();
 
-  if (isSupabaseConfigured) {
+  if (checkIsSupabaseConfigured()) {
     try {
-      const { data, error } = await supabase
+      const client = getSupabaseClient();
+      const { data, error } = await client
         .from("invitations")
         .insert([{ email: cleanEmail, source, status: "active" }])
         .select()
@@ -98,9 +114,10 @@ export async function addInvitation(email: string, source: "homepage" | "first-e
  * Fetch all email invitations
  */
 export async function getInvitations(): Promise<Invitation[]> {
-  if (isSupabaseConfigured) {
+  if (checkIsSupabaseConfigured()) {
     try {
-      const { data, error } = await supabase
+      const client = getSupabaseClient();
+      const { data, error } = await client
         .from("invitations")
         .select("*")
         .order("created_at", { ascending: false });
@@ -121,9 +138,10 @@ export async function getInvitations(): Promise<Invitation[]> {
  * Update invitation status (active vs archived)
  */
 export async function updateInvitationStatus(id: string, status: "active" | "archived") {
-  if (isSupabaseConfigured) {
+  if (checkIsSupabaseConfigured()) {
     try {
-      const { error } = await supabase
+      const client = getSupabaseClient();
+      const { error } = await client
         .from("invitations")
         .update({ status })
         .eq("id", id);
@@ -147,9 +165,10 @@ export async function updateInvitationStatus(id: string, status: "active" | "arc
  * Delete invitation by ID
  */
 export async function deleteInvitation(id: string) {
-  if (isSupabaseConfigured) {
+  if (checkIsSupabaseConfigured()) {
     try {
-      const { error } = await supabase
+      const client = getSupabaseClient();
+      const { error } = await client
         .from("invitations")
         .delete()
         .eq("id", id);
@@ -168,3 +187,4 @@ export async function deleteInvitation(id: string) {
   }
   return { success: false, error: "Invitation not found" };
 }
+

@@ -211,7 +211,7 @@ export default function AdminPage() {
           <div className="hidden sm:flex items-center gap-2 text-[10px] uppercase tracking-wider px-3 py-1.5 rounded-md border border-white/10 bg-white/5">
             <span className={`w-2 h-2 rounded-full ${isSupabaseConfigured ? "bg-emerald-400" : "bg-amber-400"}`}></span>
             <span className="text-white/70">
-              {isSupabaseConfigured ? "Supabase DB Active" : "Local Storage Mode"}
+              {isSupabaseConfigured ? "DATABASE STATUS ACTIVE" : "Local Storage Mode"}
             </span>
           </div>
 

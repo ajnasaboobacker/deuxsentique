@@ -4,7 +4,7 @@ import {
   getInvitations,
   updateInvitationStatus,
   deleteInvitation,
-  isSupabaseConfigured,
+  checkIsSupabaseConfigured,
 } from "@/lib/supabase";
 
 export async function GET() {
@@ -18,7 +18,7 @@ export async function GET() {
       success: true,
       data: list,
       stats: { total, active, archived },
-      isSupabaseConfigured,
+      isSupabaseConfigured: checkIsSupabaseConfigured(),
     });
   } catch (error) {
     console.error("GET /api/invitations error:", error);
