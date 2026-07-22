@@ -20,7 +20,7 @@ export const supabase = createClient(
 export interface Invitation {
   id: string;
   email: string;
-  status: "pending" | "approved" | "archived";
+  status: "active" | "archived";
   source: "homepage" | "first-embrace" | "admin";
   created_at: string;
 }
@@ -30,28 +30,28 @@ const memoryStorage: Invitation[] = [
   {
     id: "sample-1",
     email: "victoria.montclair@haute-perfumery.com",
-    status: "approved",
+    status: "active",
     source: "homepage",
     created_at: new Date(Date.now() - 3600000 * 24 * 2).toISOString(),
   },
   {
     id: "sample-2",
     email: "julien.dupris@parfums-journal.fr",
-    status: "pending",
+    status: "active",
     source: "first-embrace",
     created_at: new Date(Date.now() - 3600000 * 5).toISOString(),
   },
   {
     id: "sample-3",
     email: "elena.rostrum@vogue-elegance.co.uk",
-    status: "pending",
+    status: "active",
     source: "homepage",
     created_at: new Date(Date.now() - 3600000 * 1).toISOString(),
   },
 ];
 
 /**
- * Add a new email invitation to database or fallback storage
+ * Add a new email invitation directly to database or fallback storage
  */
 export async function addInvitation(email: string, source: "homepage" | "first-embrace" = "homepage") {
   const cleanEmail = email.trim().toLowerCase();
@@ -60,12 +60,11 @@ export async function addInvitation(email: string, source: "homepage" | "first-e
     try {
       const { data, error } = await supabase
         .from("invitations")
-        .insert([{ email: cleanEmail, source, status: "pending" }])
+        .insert([{ email: cleanEmail, source, status: "active" }])
         .select()
         .single();
 
       if (error) {
-        // If error is unique constraint violation, handle gracefully
         if (error.code === "23505") {
           return { success: true, message: "Email already registered.", duplicate: true };
         }
@@ -87,7 +86,7 @@ export async function addInvitation(email: string, source: "homepage" | "first-e
   const newInvitation: Invitation = {
     id: `inv-${Date.now()}`,
     email: cleanEmail,
-    status: "pending",
+    status: "active",
     source,
     created_at: new Date().toISOString(),
   };
@@ -119,9 +118,9 @@ export async function getInvitations(): Promise<Invitation[]> {
 }
 
 /**
- * Update invitation status
+ * Update invitation status (active vs archived)
  */
-export async function updateInvitationStatus(id: string, status: "pending" | "approved" | "archived") {
+export async function updateInvitationStatus(id: string, status: "active" | "archived") {
   if (isSupabaseConfigured) {
     try {
       const { error } = await supabase

@@ -10,12 +10,12 @@ export default function AdminPage() {
   const [authError, setAuthError] = useState(false);
 
   const [invitations, setInvitations] = useState<Invitation[]>([]);
-  const [stats, setStats] = useState({ total: 0, pending: 0, approved: 0, archived: 0 });
+  const [stats, setStats] = useState({ total: 0, active: 0, archived: 0 });
   const [isSupabaseConfigured, setIsSupabaseConfigured] = useState(false);
   const [loading, setLoading] = useState(true);
 
   const [searchQuery, setSearchQuery] = useState("");
-  const [selectedFilter, setSelectedFilter] = useState<"all" | "pending" | "approved" | "archived">("all");
+  const [selectedFilter, setSelectedFilter] = useState<"all" | "active" | "archived">("all");
   const [actionLoadingId, setActionLoadingId] = useState<string | null>(null);
 
   // Check existing session auth
@@ -33,7 +33,7 @@ export default function AdminPage() {
       const json = await res.json();
       if (json.success) {
         setInvitations(json.data || []);
-        setStats(json.stats || { total: 0, pending: 0, approved: 0, archived: 0 });
+        setStats(json.stats || { total: 0, active: 0, archived: 0 });
         setIsSupabaseConfigured(json.isSupabaseConfigured || false);
       }
     } catch (err) {
@@ -51,7 +51,6 @@ export default function AdminPage() {
 
   const handleLogin = (e: React.FormEvent) => {
     e.preventDefault();
-    // Default admin passcode: deuxsentique2026 or environment variable
     if (passcode.trim() === "deuxsentique2026" || passcode.trim() === process.env.NEXT_PUBLIC_ADMIN_PASSCODE) {
       setIsAuthenticated(true);
       sessionStorage.setItem("dsq_admin_auth", "true");
@@ -61,7 +60,7 @@ export default function AdminPage() {
     }
   };
 
-  const handleStatusChange = async (id: string, newStatus: "pending" | "approved" | "archived") => {
+  const handleStatusChange = async (id: string, newStatus: "active" | "archived") => {
     setActionLoadingId(id);
     try {
       const res = await fetch("/api/invitations", {
@@ -81,7 +80,7 @@ export default function AdminPage() {
   };
 
   const handleDelete = async (id: string) => {
-    if (!confirm("Are you sure you want to remove this email invitation?")) return;
+    if (!confirm("Are you sure you want to remove this email entry?")) return;
     setActionLoadingId(id);
     try {
       const res = await fetch(`/api/invitations?id=${encodeURIComponent(id)}`, {
@@ -92,7 +91,7 @@ export default function AdminPage() {
         await fetchInvitations();
       }
     } catch (err) {
-      console.error("Failed to delete invitation:", err);
+      console.error("Failed to delete entry:", err);
     } finally {
       setActionLoadingId(null);
     }
@@ -118,7 +117,7 @@ export default function AdminPage() {
     link.setAttribute("href", encodedUri);
     link.setAttribute(
       "download",
-      `deuxsentique_invitations_${new Date().toISOString().slice(0, 10)}.csv`
+      `deuxsentique_waitlist_${new Date().toISOString().slice(0, 10)}.csv`
     );
     document.body.appendChild(link);
     link.click();
@@ -237,7 +236,7 @@ export default function AdminPage() {
               Audience & Waitlist Management
             </p>
             <h1 className="font-display text-3xl md:text-4xl text-[#FAF6F0]">
-              Email Invitation Requests
+              Submitted Email List
             </h1>
           </div>
 
@@ -276,18 +275,14 @@ export default function AdminPage() {
         )}
 
         {/* Stat Cards Overview */}
-        <div className="grid grid-cols-2 lg:grid-cols-4 gap-4 md:gap-6 mb-10">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-4 md:gap-6 mb-10">
           <div className="bg-[#1A1916] border border-white/10 p-6 rounded-xl">
             <p className="text-white/50 text-[10px] uppercase tracking-[0.3em] mb-2">Total Signups</p>
             <p className="font-display text-3xl md:text-4xl text-[#FAF6F0]">{stats.total}</p>
           </div>
-          <div className="bg-[#1A1916] border border-amber-500/20 p-6 rounded-xl">
-            <p className="text-amber-400/80 text-[10px] uppercase tracking-[0.3em] mb-2">Pending Review</p>
-            <p className="font-display text-3xl md:text-4xl text-amber-300">{stats.pending}</p>
-          </div>
           <div className="bg-[#1A1916] border border-emerald-500/20 p-6 rounded-xl">
-            <p className="text-emerald-400/80 text-[10px] uppercase tracking-[0.3em] mb-2">Approved Access</p>
-            <p className="font-display text-3xl md:text-4xl text-emerald-300">{stats.approved}</p>
+            <p className="text-emerald-400/80 text-[10px] uppercase tracking-[0.3em] mb-2">Active Waitlist</p>
+            <p className="font-display text-3xl md:text-4xl text-emerald-300">{stats.active}</p>
           </div>
           <div className="bg-[#1A1916] border border-white/10 p-6 rounded-xl">
             <p className="text-white/40 text-[10px] uppercase tracking-[0.3em] mb-2">Archived</p>
@@ -311,7 +306,7 @@ export default function AdminPage() {
 
           {/* Filter Status Tabs */}
           <div className="flex items-center gap-2 bg-[#1A1916] p-1.5 rounded-lg border border-white/10 self-start md:self-auto">
-            {(["all", "pending", "approved", "archived"] as const).map((filter) => (
+            {(["all", "active", "archived"] as const).map((filter) => (
               <button
                 key={filter}
                 onClick={() => setSelectedFilter(filter)}
@@ -331,11 +326,11 @@ export default function AdminPage() {
         <div className="bg-[#1A1916] border border-white/10 rounded-xl overflow-hidden shadow-2xl">
           {loading ? (
             <div className="p-16 text-center text-white/40 text-xs uppercase tracking-[0.3em]">
-              Loading Invitations...
+              Loading Email List...
             </div>
           ) : filteredList.length === 0 ? (
             <div className="p-16 text-center">
-              <p className="text-white/60 text-sm font-light mb-2">No email invitations found.</p>
+              <p className="text-white/60 text-sm font-light mb-2">No email entries found.</p>
               <p className="text-white/30 text-xs font-light">
                 {searchQuery
                   ? `No entries matched "${searchQuery}"`
@@ -375,14 +370,9 @@ export default function AdminPage() {
                         })}
                       </td>
                       <td className="py-4 px-6">
-                        {item.status === "approved" && (
+                        {item.status === "active" && (
                           <span className="inline-flex items-center gap-1.5 text-[9px] uppercase tracking-wider text-emerald-400 bg-emerald-400/10 border border-emerald-400/20 px-3 py-1 rounded-full font-medium">
-                            <span>✓</span> Approved
-                          </span>
-                        )}
-                        {item.status === "pending" && (
-                          <span className="inline-flex items-center gap-1.5 text-[9px] uppercase tracking-wider text-amber-300 bg-amber-400/10 border border-amber-400/20 px-3 py-1 rounded-full font-medium">
-                            <span>•</span> Pending
+                            <span>✓</span> Registered
                           </span>
                         )}
                         {item.status === "archived" && (
@@ -393,22 +383,21 @@ export default function AdminPage() {
                       </td>
                       <td className="py-4 px-6 text-right">
                         <div className="flex items-center justify-end gap-2">
-                          {item.status !== "approved" && (
-                            <button
-                              onClick={() => handleStatusChange(item.id, "approved")}
-                              disabled={actionLoadingId === item.id}
-                              className="text-[9px] uppercase tracking-wider px-3 py-1.5 rounded border border-emerald-500/30 text-emerald-400 hover:bg-emerald-500/10 transition-colors cursor-pointer"
-                            >
-                              Approve
-                            </button>
-                          )}
-                          {item.status !== "archived" && (
+                          {item.status === "active" ? (
                             <button
                               onClick={() => handleStatusChange(item.id, "archived")}
                               disabled={actionLoadingId === item.id}
                               className="text-[9px] uppercase tracking-wider px-3 py-1.5 rounded border border-white/15 text-white/60 hover:bg-white/10 transition-colors cursor-pointer"
                             >
                               Archive
+                            </button>
+                          ) : (
+                            <button
+                              onClick={() => handleStatusChange(item.id, "active")}
+                              disabled={actionLoadingId === item.id}
+                              className="text-[9px] uppercase tracking-wider px-3 py-1.5 rounded border border-emerald-500/30 text-emerald-400 hover:bg-emerald-500/10 transition-colors cursor-pointer"
+                            >
+                              Restore
                             </button>
                           )}
                           <button

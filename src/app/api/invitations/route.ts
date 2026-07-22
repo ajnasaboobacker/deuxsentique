@@ -11,14 +11,13 @@ export async function GET() {
   try {
     const list = await getInvitations();
     const total = list.length;
-    const pending = list.filter((item) => item.status === "pending").length;
-    const approved = list.filter((item) => item.status === "approved").length;
+    const active = list.filter((item) => item.status === "active").length;
     const archived = list.filter((item) => item.status === "archived").length;
 
     return NextResponse.json({
       success: true,
       data: list,
-      stats: { total, pending, approved, archived },
+      stats: { total, active, archived },
       isSupabaseConfigured,
     });
   } catch (error) {
@@ -58,9 +57,9 @@ export async function PATCH(request: Request) {
     const body = await request.json();
     const { id, status } = body;
 
-    if (!id || !["pending", "approved", "archived"].includes(status)) {
+    if (!id || !["active", "archived"].includes(status)) {
       return NextResponse.json(
-        { success: false, error: "Invalid parameters provided." },
+        { success: false, error: "Invalid status parameters provided." },
         { status: 400 }
       );
     }
