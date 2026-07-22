@@ -12,8 +12,18 @@ export default function FirstEmbracePage() {
     setMounted(true);
   }, []);
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
+    if (!email) return;
+    try {
+      await fetch("/api/invitations", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ email, source: "first-embrace" }),
+      });
+    } catch (err) {
+      console.warn("Failed to post email to API:", err);
+    }
     setSubmitted(true);
   };
 
