@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { useEffect, useState, useRef } from "react";
 import Link from "next/link";
 import { PageHeader, Footer } from "../components/shared";
 import ScrollReveal from "../components/scroll-reveal";
@@ -9,8 +9,13 @@ export default function Page1() {
   const [email, setEmail] = useState("");
   const [submitted, setSubmitted] = useState(false);
   const [philosophyIdx, setPhilosophyIdx] = useState(0);
+  const videoRef = useRef<HTMLVideoElement>(null);
 
   useEffect(() => {
+    if (videoRef.current) {
+      videoRef.current.playbackRate = 0.5; // Slow motion playback
+    }
+
     const philosophyInterval = setInterval(() => {
       setPhilosophyIdx((prev) => (prev + 1) % 5);
     }, 2500);
@@ -41,22 +46,36 @@ export default function Page1() {
         <ScrollReveal />
 
         {/* Hero Section */}
-        <section className="text-center" style={{ paddingTop: "2rem", paddingBottom: "2rem" }}>
+        <section className="text-center relative pt-4 pb-12 md:pb-16 overflow-hidden">
+          {/* Slow Looped Hero Video Banner */}
+          <div className="relative max-w-[1100px] mx-auto mb-12 rounded-2xl overflow-hidden shadow-[0_20px_50px_rgba(0,0,0,0.25)] border border-primary/20">
+            <video
+              ref={videoRef}
+              src="/Assets/hero.mp4"
+              autoPlay
+              loop
+              muted
+              playsInline
+              className="w-full h-[45vh] md:h-[60vh] object-cover filter brightness-[0.92] contrast-[1.05]"
+            />
+            <div className="absolute inset-0 bg-gradient-to-t from-[#fec6a1] via-[#fec6a1]/20 to-transparent"></div>
+          </div>
+
           <div className="flex justify-center mb-6">
             <img
               src="/icon.png"
               alt="Deuxsentique Logo"
-              className="h-28 md:h-36 w-auto object-contain hero-logo-float drop-shadow-[0_0_20px_rgba(196,145,58,0.4)]"
+              className="h-24 md:h-32 w-auto object-contain hero-logo-float drop-shadow-[0_0_20px_rgba(196,145,58,0.4)]"
             />
           </div>
           <p className="text-secondary text-[10px] uppercase tracking-[0.6em] mb-4 font-body animate-hero-subtitle">
             Section I
           </p>
-          <h1 className="font-higher-jump text-3xl sm:text-4xl md:text-5xl lg:text-6xl mb-6 tracking-[0.05em] leading-tight text-on-background animate-hero-title">
+          <h1 className="font-display text-4xl sm:text-5xl md:text-6xl lg:text-7xl mb-6 tracking-[0.06em] leading-tight text-on-background animate-hero-title font-normal">
             Two Souls. One Essence.
           </h1>
           <div className="gold-divider animate-hero-divider"></div>
-          <p className="lead max-w-2xl mx-auto animate-hero-desc">
+          <p className="lead max-w-2xl mx-auto animate-hero-desc text-[15px] md:text-[17px] tracking-[0.2em] uppercase font-body font-light">
             A Storytelling Perfume House
           </p>
         </section>

@@ -348,7 +348,7 @@ export default function Home() {
                           className="h-28 md:h-40 w-auto object-contain hero-logo-float drop-shadow-[0_0_20px_rgba(196,145,58,0.4)]"
                         />
                       </div>
-                      <h1 className="font-higher-jump text-xl sm:text-2xl md:text-4xl lg:text-5xl xl:text-6xl mb-6 md:mb-8 tracking-[0.05em] leading-tight text-on-background whitespace-nowrap">
+                      <h1 className="font-display text-xl sm:text-2xl md:text-4xl lg:text-5xl xl:text-6xl mb-6 md:mb-8 tracking-[0.05em] leading-tight text-on-background whitespace-nowrap">
                         {renderTitle(chapter.title)}
                       </h1>
                       <p className="max-w-xl mx-auto text-on-background/70 leading-relaxed text-[16px] md:text-[18px] tracking-[0.2em] uppercase font-body font-light reveal-desc">
