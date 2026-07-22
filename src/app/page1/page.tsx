@@ -42,46 +42,60 @@ export default function Page1() {
     <>
       <PageHeader />
 
-      <main className="inner-page page-fade-in">
-        <ScrollReveal />
+      {/* Full-Screen Hero Section with Background Video */}
+      <section className="relative w-full h-screen min-h-[650px] flex items-center justify-center text-center overflow-hidden -mt-[80px] z-10">
+        {/* Background Video */}
+        <div className="absolute inset-0 z-0 pointer-events-none w-full h-full">
+          <video
+            ref={videoRef}
+            src="/Assets/hero.mp4"
+            autoPlay
+            loop
+            muted
+            playsInline
+            className="w-full h-full object-cover filter brightness-[0.65] contrast-[1.1]"
+          />
+          {/* Dark luxury gradient overlay for high contrast text readability */}
+          <div className="absolute inset-0 bg-gradient-to-b from-black/70 via-black/40 to-[#fec6a1]"></div>
+        </div>
 
-        {/* Hero Section */}
-        <section className="text-center relative pt-4 pb-12 md:pb-16 overflow-hidden">
-          {/* Slow Looped Hero Video Banner */}
-          <div className="relative max-w-[1100px] mx-auto mb-12 rounded-2xl overflow-hidden shadow-[0_20px_50px_rgba(0,0,0,0.25)] border border-primary/20">
-            <video
-              ref={videoRef}
-              src="/Assets/hero.mp4"
-              autoPlay
-              loop
-              muted
-              playsInline
-              className="w-full h-[45vh] md:h-[60vh] object-cover filter brightness-[0.92] contrast-[1.05]"
-            />
-            <div className="absolute inset-0 bg-gradient-to-t from-[#fec6a1] via-[#fec6a1]/20 to-transparent"></div>
-          </div>
-
+        {/* Foreground Hero Content Over Video */}
+        <div className="relative z-10 w-full max-w-[1000px] px-6 flex flex-col items-center justify-center pt-16">
           <div className="flex justify-center mb-6">
             <img
               src="/icon.png"
               alt="Deuxsentique Logo"
-              className="h-24 md:h-32 w-auto object-contain hero-logo-float drop-shadow-[0_0_20px_rgba(196,145,58,0.4)]"
+              className="h-28 md:h-36 w-auto object-contain hero-logo-float drop-shadow-[0_0_25px_rgba(196,145,58,0.6)]"
             />
           </div>
-          <p className="text-secondary text-[10px] uppercase tracking-[0.6em] mb-4 font-body animate-hero-subtitle">
+
+          <p className="text-[#C4913A] text-[11px] uppercase tracking-[0.6em] mb-4 font-body font-medium drop-shadow-md">
             Section I
           </p>
-          <h1 className="font-display text-4xl sm:text-5xl md:text-6xl lg:text-7xl mb-6 tracking-[0.06em] leading-tight text-on-background animate-hero-title font-normal">
+
+          <h1 className="font-display text-4xl sm:text-5xl md:text-6xl lg:text-7xl mb-6 tracking-[0.06em] leading-tight text-[#FAF6F0] font-normal drop-shadow-[0_4px_20px_rgba(0,0,0,0.8)]">
             Two Souls. One Essence.
           </h1>
-          <div className="gold-divider animate-hero-divider"></div>
-          <p className="lead max-w-2xl mx-auto animate-hero-desc text-[15px] md:text-[17px] tracking-[0.2em] uppercase font-body font-light">
+
+          <div className="w-28 h-[1px] bg-gradient-to-r from-transparent via-[#C4913A] to-transparent my-6 shadow-[0_0_12px_#C4913A]"></div>
+
+          <p className="text-[#E8DDCB] max-w-xl mx-auto leading-relaxed text-[15px] md:text-[18px] tracking-[0.25em] uppercase font-body font-light drop-shadow-md">
             A Storytelling Perfume House
           </p>
-        </section>
+        </div>
+
+        {/* Floating Scroll Indicator */}
+        <div className="absolute bottom-8 left-1/2 -translate-x-1/2 z-10 flex flex-col items-center gap-2 opacity-80 animate-bounce">
+          <span className="text-[#E8DDCB] text-[9px] uppercase tracking-[0.4em] font-body">Scroll</span>
+          <div className="w-[1px] h-8 bg-gradient-to-b from-[#C4913A] to-transparent"></div>
+        </div>
+      </section>
+
+      <main className="inner-page page-fade-in !pt-0">
+        <ScrollReveal />
 
         {/* Section II: Introduction */}
-        <section className="!max-w-[1200px] mx-auto my-16 md:my-24">
+        <section className="!max-w-[1200px] mx-auto my-16 md:my-24 pt-8">
           <div className="grid grid-cols-1 md:grid-cols-12 gap-8 md:gap-16 items-center">
             <div className="md:col-span-6 flex flex-col justify-center text-left">
               <p className="text-secondary text-[10px] uppercase tracking-[0.6em] mb-2 font-body">
