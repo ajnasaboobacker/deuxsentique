@@ -50,8 +50,19 @@ export default function CursorEffect() {
         target.closest("a") ||
         target.closest("button") ||
         target.closest(".cursor-pointer");
-      
+
+      const isDarkSection =
+        !!target.closest("header") ||
+        !!target.closest("footer") ||
+        !!target.closest(".bg-surface") ||
+        !!target.closest(".invite-card-animated") ||
+        !!target.closest(".h-screen") ||
+        !!target.closest("video") ||
+        !!target.closest("[class*='bg-[#11100E]']") ||
+        !!target.closest("[class*='bg-black']");
+
       document.body.classList.toggle("cursor-hover", !!isInteractive);
+      document.body.classList.toggle("cursor-dark-bg", isDarkSection);
     };
 
     window.addEventListener("mousemove", handleMouseMove);
