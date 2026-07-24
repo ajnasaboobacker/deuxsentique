@@ -52,12 +52,12 @@ export function PageHeader({
           {scrollToSection ? (
             <button
               onClick={() => scrollToSection("section-1")}
-              className="font-display text-lg md:text-2xl tracking-[0.4em] uppercase text-[#fec6a1] hover:text-primary transition-colors cursor-pointer focus:outline-none bg-transparent border-none p-0"
+              className="font-display text-lg md:text-2xl tracking-[0.4em] uppercase text-[#1A1A1A] hover:text-[#1A1A1A] transition-colors cursor-pointer focus:outline-none bg-transparent border-none p-0 font-semibold"
             >
               Deuxsentique
             </button>
           ) : (
-            <Link href="/" className="font-display text-lg md:text-2xl tracking-[0.4em] uppercase text-[#fec6a1] hover:text-primary transition-colors">
+            <Link href="/" className="font-display text-lg md:text-2xl tracking-[0.4em] uppercase text-[#1A1A1A] hover:text-[#1A1A1A] transition-colors font-semibold">
               Deuxsentique
             </Link>
           )}
