@@ -742,13 +742,52 @@ input:-webkit-autofill:focus {
   filter: blur(0);
 }
 
+.animate-float-slow {
+  animation: ambientFloat 9s ease-in-out infinite;
+}
+
+.animate-float-fast {
+  animation: ambientFloat 6s ease-in-out infinite;
+}
+
 /* Trigger slow float after reveal state is visible to avoid transition clash */
 .scroll-reveal-container.is-visible .animate-float-slow {
   animation: ambientFloat 9s ease-in-out infinite;
 }
 
 .scroll-reveal-container.is-visible .animate-float-slower {
-  animation: ambientFloat 11s ease-in-out infinite;
+  animation: ambientFloat 12s ease-in-out infinite;
+}
+
+/* Hero Title Animated Reveal & Shimmer for Page1 */
+@keyframes heroTitleReveal {
+  0% {
+    opacity: 0;
+    transform: translateY(28px) scale(0.94);
+    filter: blur(10px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+    filter: blur(0);
+  }
+}
+
+@keyframes goldShimmerGlow {
+  0%, 100% {
+    filter: drop-shadow(0 0 15px rgba(196, 145, 58, 0.35));
+  }
+  50% {
+    filter: drop-shadow(0 0 32px rgba(196, 145, 58, 0.85));
+  }
+}
+
+.hero-title-word {
+  animation: heroTitleReveal 1.4s cubic-bezier(0.16, 1, 0.3, 1) both;
+}
+
+.hero-title-shimmer {
+  animation: heroTitleReveal 1.4s cubic-bezier(0.16, 1, 0.3, 1) both, goldShimmerGlow 4s ease-in-out infinite 1.4s;
 }
 
 .scroll-reveal-container.is-visible .animate-float-fast {

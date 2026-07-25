@@ -9,6 +9,7 @@ export default function Page1() {
   const [email, setEmail] = useState("");
   const [submitted, setSubmitted] = useState(false);
   const [philosophyIdx, setPhilosophyIdx] = useState(0);
+  const [isScrolled, setIsScrolled] = useState(false);
   const videoRef = useRef<HTMLVideoElement>(null);
 
   useEffect(() => {
@@ -16,11 +17,34 @@ export default function Page1() {
       videoRef.current.playbackRate = 0.5; // Slow motion playback
     }
 
+    const handleScroll = () => {
+      const scrollPos = Math.max(
+        window.scrollY || 0,
+        document.body ? document.body.scrollTop || 0 : 0,
+        document.documentElement ? document.documentElement.scrollTop || 0 : 0
+      );
+      setIsScrolled(scrollPos > 150);
+    };
+
+    window.addEventListener("scroll", handleScroll, { capture: true, passive: true });
+    document.addEventListener("scroll", handleScroll, { capture: true, passive: true });
+    if (document.body) {
+      document.body.addEventListener("scroll", handleScroll, { capture: true, passive: true });
+    }
+    handleScroll();
+
     const philosophyInterval = setInterval(() => {
       setPhilosophyIdx((prev) => (prev + 1) % 5);
     }, 2500);
 
-    return () => clearInterval(philosophyInterval);
+    return () => {
+      window.removeEventListener("scroll", handleScroll, { capture: true });
+      document.removeEventListener("scroll", handleScroll, { capture: true });
+      if (document.body) {
+        document.body.removeEventListener("scroll", handleScroll, { capture: true });
+      }
+      clearInterval(philosophyInterval);
+    };
   }, []);
 
   const handleSubmit = async (e: React.FormEvent) => {
@@ -40,7 +64,11 @@ export default function Page1() {
 
   return (
     <>
-      <PageHeader />
+      <PageHeader
+        fadeLogoOnScroll
+        isScrolled={isScrolled}
+        brandTitleClassName="text-[#000000] hover:text-[#C4913A] font-semibold drop-shadow-[0_0_10px_rgba(196,145,58,0.7)] [text-shadow:_0_0_8px_rgba(254,198,161,0.6)]"
+      />
 
       {/* Full-Screen Hero Section with Background Video */}
       <section className="relative w-full h-screen min-h-[650px] flex items-center justify-center text-center overflow-hidden -mt-[80px] z-10">
@@ -63,23 +91,43 @@ export default function Page1() {
         <div className="relative z-10 w-full max-w-[1000px] px-6 flex flex-col items-center justify-center pt-16">
           <div className="flex justify-center mb-6">
             <img
-              src="/icon.png"
+              src="/Assets/logo/ICON blk trnsprnt.png"
               alt="Deuxsentique Logo"
-              className="h-28 md:h-36 w-auto object-contain hero-logo-float drop-shadow-[0_0_25px_rgba(196,145,58,0.6)]"
+              className="h-28 md:h-36 w-auto object-contain hero-logo-float drop-shadow-[0_4px_20px_rgba(0,0,0,0.5)]"
             />
           </div>
 
-          <p className="text-[#C4913A] text-[11px] uppercase tracking-[0.6em] mb-4 font-body font-medium drop-shadow-md">
-            Section I
-          </p>
-
-          <h1 className="font-display text-4xl sm:text-5xl md:text-6xl lg:text-7xl mb-6 tracking-[0.06em] leading-tight text-[#FAF6F0] font-normal drop-shadow-[0_4px_20px_rgba(0,0,0,0.8)]">
-            Two Souls. One Essence.
+          {/* Animated Luxury Serif Hero Title for Page1 */}
+          <h1 className="font-display text-4xl sm:text-5xl md:text-6xl lg:text-7xl mb-6 tracking-[0.08em] leading-tight text-[#FAF6F0] drop-shadow-[0_4px_25px_rgba(0,0,0,0.9)] flex flex-wrap justify-center items-center gap-x-3 md:gap-x-4 gap-y-2">
+            <span
+              className="inline-block hero-title-word hover:scale-105 transition-transform duration-500 cursor-default font-normal uppercase"
+              style={{ animationDelay: "0.2s" }}
+            >
+              Two
+            </span>
+            <span
+              className="inline-block hero-title-shimmer text-[#C4913A] italic font-serif font-normal hover:scale-105 transition-transform duration-500 cursor-default"
+              style={{ animationDelay: "0.5s" }}
+            >
+              Souls.
+            </span>
+            <span
+              className="inline-block hero-title-word hover:scale-105 transition-transform duration-500 cursor-default font-normal uppercase"
+              style={{ animationDelay: "0.8s" }}
+            >
+              One
+            </span>
+            <span
+              className="inline-block hero-title-shimmer text-[#C4913A] italic font-serif font-normal hover:scale-105 transition-transform duration-500 cursor-default"
+              style={{ animationDelay: "1.1s" }}
+            >
+              Essence.
+            </span>
           </h1>
 
           <div className="w-28 h-[1px] bg-gradient-to-r from-transparent via-[#C4913A] to-transparent my-6 shadow-[0_0_12px_#C4913A]"></div>
 
-          <p className="text-[#E8DDCB] max-w-xl mx-auto leading-relaxed text-[15px] md:text-[18px] tracking-[0.25em] uppercase font-body font-light drop-shadow-md">
+          <p className="text-[#E8DDCB] max-w-2xl mx-auto leading-relaxed text-[13px] sm:text-[15px] md:text-[17px] tracking-[0.55em] md:tracking-[0.65em] uppercase font-body font-light drop-shadow-md mt-4">
             A Storytelling Perfume House
           </p>
         </div>
@@ -95,24 +143,18 @@ export default function Page1() {
         <ScrollReveal />
 
         {/* Section II: Introduction */}
-        <section className="!max-w-[1200px] mx-auto my-16 md:my-24 pt-8">
+        <section className="!max-w-[1200px] mx-auto my-28 md:my-44 pt-12 md:pt-20">
           <div className="grid grid-cols-1 md:grid-cols-12 gap-8 md:gap-16 items-center">
             <div className="md:col-span-6 flex flex-col justify-center text-left">
-              <p className="text-secondary text-[10px] uppercase tracking-[0.6em] mb-2 font-body">
-                Section II
-              </p>
-              <h2 className="!mt-0">Every fragrance begins with a story.</h2>
+              <h2 className="!mt-0">Every Story Deserves an Essence.</h2>
               <p>
-                Some stories are remembered. Some quietly become part of who we are.
+                Behind every fragrance is a real human story.
               </p>
               <p>
-                At Deuxsentique, we transform genuine human stories into fragrances that carry emotion, meaning and memory.
-              </p>
-              <p>
-                Every creation begins long before the bottle. Every story has an essence.
+                Everything else begins from there.
               </p>
             </div>
-            <div className="md:col-span-6 flex justify-end mix-blend-multiply scroll-reveal-container">
+            <div className="md:col-span-6 flex justify-end mix-blend-multiply">
               <div className="cinematic-frame w-full max-w-[480px] animate-float-slow">
                 <img
                   src="/chapters/ch04_painting.png"
@@ -124,32 +166,38 @@ export default function Page1() {
           </div>
         </section>
 
+        <div className="gold-divider opacity-60 my-16 md:my-28"></div>
+
         {/* Section III: Philosophy */}
-        <section className="!max-w-[1200px] mx-auto my-16 md:my-24">
+        <section className="!max-w-[1200px] mx-auto my-28 md:my-44">
           <div className="grid grid-cols-1 md:grid-cols-12 gap-8 md:gap-16 items-center">
-            <div className="md:col-span-6 flex justify-start mix-blend-multiply scroll-reveal-container">
-              <div className="cinematic-frame w-full max-w-[480px] animate-float-fast">
+            <div className="md:col-span-6 flex justify-start">
+              <div className="w-full max-w-[480px] animate-float-fast relative p-4 rounded-3xl bg-gradient-to-b from-[#FFFDF9]/85 to-[#FBF5ED]/60 shadow-[0_12px_45px_rgba(196,145,58,0.15)] border border-[#C4913A]/25 backdrop-blur-sm">
                 <img
                   src="/chapters/ch08_painting.png"
                   alt="Our Creative Philosophy"
-                  className="w-full h-auto object-contain max-h-[60vh] blend-painting"
+                  className="w-full h-auto object-contain max-h-[60vh] rounded-2xl filter contrast-[1.05] brightness-[1.02]"
                 />
               </div>
             </div>
             <div className="md:col-span-6 flex flex-col justify-center text-left">
-              <p className="text-secondary text-[10px] uppercase tracking-[0.6em] mb-2 font-body">
-                Section III
-              </p>
               <h2 className="!mt-0">Our Creative Philosophy</h2>
               <div className="h-20 flex items-center my-2">
-                <span className="font-display text-4xl md:text-5xl tracking-wide text-primary transition-all duration-700 ease-in-out">
+                <span className="font-display text-4xl md:text-5xl tracking-wide text-[#000000] font-normal drop-shadow-[0_0_12px_rgba(196,145,58,0.4)] transition-all duration-700 ease-in-out">
                   {["Story", "Emotion", "Notes", "Scent", "Memory"][philosophyIdx]}
                 </span>
               </div>
-              <div className="flex flex-wrap items-center gap-3 text-[10px] uppercase tracking-[0.3em] text-on-background/40 font-body">
+              <div className="flex flex-wrap items-center gap-3 text-[10px] uppercase tracking-[0.3em] font-body">
                 {["Story", "Emotion", "Notes", "Scent", "Memory"].map((word, idx) => (
-                  <span key={word} className={`transition-colors duration-500 ${idx === philosophyIdx ? "text-primary font-semibold" : ""}`}>
-                    {word} {idx < 4 && <span className="ml-3 text-on-background/20">→</span>}
+                  <span
+                    key={word}
+                    className={`transition-all duration-500 ${
+                      idx === philosophyIdx
+                        ? "text-[#000000] font-bold border-b border-[#C4913A] pb-0.5"
+                        : "text-[#1A1916]/40"
+                    }`}
+                  >
+                    {word} {idx < 4 && <span className="ml-3 text-[#1A1916]/20">→</span>}
                   </span>
                 ))}
               </div>
@@ -157,13 +205,12 @@ export default function Page1() {
           </div>
         </section>
 
+        <div className="gold-divider opacity-60 my-16 md:my-28"></div>
+
         {/* Section IV: Asymmetric / Stay Close */}
-        <section className="!max-w-[1200px] mx-auto my-16 md:my-24">
+        <section className="!max-w-[1200px] mx-auto my-28 md:my-44">
           <div className="grid grid-cols-1 md:grid-cols-12 gap-8 md:gap-16 items-center">
             <div className="md:col-span-7 flex flex-col justify-center text-left order-2 md:order-1">
-              <p className="text-secondary text-[10px] uppercase tracking-[0.6em] mb-2 font-body">
-                Section IV
-              </p>
               <h2 className="!mt-0">Designed to Stay Close</h2>
               <div className="border-l border-primary/30 pl-6 my-6">
                 <p className="font-display text-xl md:text-2xl lg:text-3xl italic text-on-background">
@@ -177,7 +224,7 @@ export default function Page1() {
                 Designed to remain close. Created for meaningful moments. Discovered only by those nearest to you.
               </p>
             </div>
-            <div className="md:col-span-5 flex justify-center mix-blend-multiply order-1 md:order-2 scroll-reveal-container">
+            <div className="md:col-span-5 flex justify-center mix-blend-multiply order-1 md:order-2">
               <div className="cinematic-frame w-full max-w-[380px] animate-float-slow">
                 <img
                   src="/chapters/ch05_painting.png"
@@ -189,11 +236,10 @@ export default function Page1() {
           </div>
         </section>
 
+        <div className="gold-divider opacity-60 my-16 md:my-28"></div>
+
         {/* Section V: Beliefs */}
-        <section className="!max-w-[1200px] mx-auto my-16 md:my-24">
-          <p className="text-secondary text-[10px] uppercase tracking-[0.6em] mb-2 font-body text-center">
-            Section V
-          </p>
+        <section className="!max-w-[1200px] mx-auto my-28 md:my-44">
           <h2 style={{ textAlign: "center", marginBottom: "3rem" }}>What We Believe</h2>
           <div className="values-grid">
             <div className="value-card">
@@ -223,8 +269,10 @@ export default function Page1() {
           </div>
         </section>
 
+        <div className="gold-divider opacity-60 my-16 md:my-28"></div>
+
         {/* Section VI: Begin Your Journey */}
-        <section className="!max-w-[1200px] mx-auto my-16 md:my-24 flex justify-center">
+        <section className="!max-w-[1200px] mx-auto my-28 md:my-44 flex justify-center">
           <div className="relative bg-surface/50 backdrop-blur-xl border border-primary/30 p-10 md:p-16 w-full max-w-[640px] flex flex-col items-center justify-center rounded-2xl invite-card-animated overflow-hidden text-center">
             <div className="absolute top-0 left-0 w-8 h-8 border-t-2 border-l-2 border-primary/50 rounded-tl-2xl"></div>
             <div className="absolute top-0 right-0 w-8 h-8 border-t-2 border-r-2 border-primary/50 rounded-tr-2xl"></div>
@@ -232,13 +280,10 @@ export default function Page1() {
             <div className="absolute bottom-0 right-0 w-8 h-8 border-b-2 border-r-2 border-primary/50 rounded-br-2xl"></div>
 
             <img
-              src="/icon.png"
+              src="/Assets/logo/ICON blk trnsprnt.png"
               alt="Deuxsentique Seal"
               className="h-14 w-auto mb-4 drop-shadow-[0_0_15px_rgba(196,145,58,0.5)]"
             />
-            <p className="text-secondary text-[10px] uppercase tracking-[0.6em] mb-2 font-body font-medium">
-              Section VI
-            </p>
             <h2 className="font-display text-2xl md:text-4xl mb-4 text-on-background">
               Begin Your Journey
             </h2>
@@ -283,11 +328,10 @@ export default function Page1() {
           </div>
         </section>
 
+        <div className="gold-divider opacity-60 my-16 md:my-28"></div>
+
         {/* Section VII: Socials */}
-        <section className="!max-w-[1200px] mx-auto my-16 md:my-24 text-center">
-          <p className="text-secondary text-[10px] uppercase tracking-[0.6em] mb-2 font-body">
-            Section VII
-          </p>
+        <section className="!max-w-[1200px] mx-auto my-28 md:my-44 text-center">
           <h2 className="font-display text-2xl md:text-4xl mb-8">
             Continue the Journey
           </h2>
@@ -307,7 +351,7 @@ export default function Page1() {
         <div style={{ height: "4rem" }}></div>
       </main>
 
-      <Footer />
+      <Footer logoSrc="/Assets/logo/ICON blk trnsprnt.png" />
     </>
   );
 }

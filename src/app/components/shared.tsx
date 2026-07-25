@@ -3,11 +3,11 @@
 import { useState } from "react";
 import Link from "next/link";
 
-export function Footer() {
+export function Footer({ logoSrc = "/icon.png" }: { logoSrc?: string }) {
   return (
     <footer className="bg-background w-full py-20 md:py-28 px-8 md:px-16 flex flex-col items-center justify-center gap-6 border-t border-on-background/10 relative z-[100]">
       <div className="flex items-center justify-center mb-2">
-        <img src="/icon.png" alt="Deuxsentique Logo" className="h-16 md:h-20 w-auto object-contain drop-shadow-[0_0_14px_rgba(196,145,58,0.35)]" />
+        <img src={logoSrc} alt="Deuxsentique Logo" className="h-16 md:h-20 w-auto object-contain drop-shadow-[0_0_14px_rgba(196,145,58,0.35)]" />
       </div>
       <div className="font-display text-xl tracking-[0.4em] uppercase text-on-background">
         Deuxsentique
@@ -33,6 +33,7 @@ interface PageHeaderProps {
   fadeLogoOnScroll?: boolean;
   isScrolled?: boolean;
   scrollToSection?: (id: string) => void;
+  brandTitleClassName?: string;
 }
 
 export function PageHeader({
@@ -42,6 +43,7 @@ export function PageHeader({
   fadeLogoOnScroll = false,
   isScrolled = false,
   scrollToSection,
+  brandTitleClassName = "text-[#fec6a1] hover:text-primary",
 }: PageHeaderProps) {
   const [menuOpen, setMenuOpen] = useState(false);
 
@@ -52,12 +54,12 @@ export function PageHeader({
           {scrollToSection ? (
             <button
               onClick={() => scrollToSection("section-1")}
-              className="font-display text-lg md:text-2xl tracking-[0.4em] uppercase text-[#1A1A1A] hover:text-[#1A1A1A] transition-colors cursor-pointer focus:outline-none bg-transparent border-none p-0 font-semibold"
+              className={`font-display text-lg md:text-2xl tracking-[0.4em] uppercase transition-colors cursor-pointer focus:outline-none bg-transparent border-none p-0 ${brandTitleClassName}`}
             >
               Deuxsentique
             </button>
           ) : (
-            <Link href="/" className="font-display text-lg md:text-2xl tracking-[0.4em] uppercase text-[#1A1A1A] hover:text-[#1A1A1A] transition-colors font-semibold">
+            <Link href="/" className={`font-display text-lg md:text-2xl tracking-[0.4em] uppercase transition-colors ${brandTitleClassName}`}>
               Deuxsentique
             </Link>
           )}
@@ -84,13 +86,13 @@ export function PageHeader({
         <nav className="flex items-center gap-4 md:gap-6">
           <Link
             href="/about"
-            className="hidden md:inline-block font-body text-[10px] uppercase tracking-[0.3em] text-[#fec6a1]/60 hover:text-primary transition-colors"
+            className="hidden md:inline-block font-body text-[12px] md:text-[13px] uppercase tracking-[0.3em] text-[#fec6a1]/70 hover:text-primary transition-colors font-medium"
           >
             Our Story
           </Link>
           <Link
             href="/first-embrace"
-            className="hidden md:inline-block font-body text-[10px] uppercase tracking-[0.3em] text-[#fec6a1]/60 hover:text-primary transition-colors"
+            className="hidden md:inline-block font-body text-[12px] md:text-[13px] uppercase tracking-[0.3em] text-[#fec6a1]/70 hover:text-primary transition-colors font-medium"
           >
             First Embrace
           </Link>
