@@ -790,6 +790,64 @@ input:-webkit-autofill:focus {
   animation: heroTitleReveal 1.4s cubic-bezier(0.16, 1, 0.3, 1) both, goldShimmerGlow 4s ease-in-out infinite 1.4s;
 }
 
+/* Subtle ambient smoke mist animation behind Section IV quote */
+@keyframes subtleSmokeDrift1 {
+  0%, 100% {
+    transform: translate(0, 0) scale(1) rotate(0deg);
+    opacity: 0.18;
+  }
+  50% {
+    transform: translate(22px, -14px) scale(1.28) rotate(14deg);
+    opacity: 0.35;
+  }
+}
+
+@keyframes subtleSmokeDrift2 {
+  0%, 100% {
+    transform: translate(0, 0) scale(1.1) rotate(0deg);
+    opacity: 0.12;
+  }
+  50% {
+    transform: translate(-20px, 12px) scale(1.32) rotate(-16deg);
+    opacity: 0.28;
+  }
+}
+
+.subtle-smoke-layer-1 {
+  animation: subtleSmokeDrift1 18s ease-in-out infinite;
+}
+
+.subtle-smoke-layer-2 {
+  animation: subtleSmokeDrift2 24s ease-in-out infinite reverse;
+}
+
+/* Section 6 Cinematic Background & Floating Card Animations */
+@keyframes cinematicSlowZoom {
+  0%, 100% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.04) rotate(0.15deg);
+  }
+}
+
+@keyframes subtleBreathingFloat {
+  0%, 100% {
+    transform: translateY(0) scale(1);
+  }
+  50% {
+    transform: translateY(-6px) scale(1.006);
+  }
+}
+
+.animate-cinematic-zoom {
+  animation: cinematicSlowZoom 32s ease-in-out infinite;
+}
+
+.animate-invitation-float {
+  animation: subtleBreathingFloat 9s ease-in-out infinite;
+}
+
 .scroll-reveal-container.is-visible .animate-float-fast {
   animation: ambientFloat 7.5s ease-in-out infinite;
 }

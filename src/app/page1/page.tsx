@@ -4,9 +4,11 @@ import { useEffect, useState, useRef } from "react";
 import Link from "next/link";
 import { PageHeader, Footer } from "../components/shared";
 import ScrollReveal from "../components/scroll-reveal";
+import SmokeQuote from "../components/smoke-quote";
 
 export default function Page1() {
   const [email, setEmail] = useState("");
+  const [marketingConsent, setMarketingConsent] = useState(false);
   const [submitted, setSubmitted] = useState(false);
   const [philosophyIdx, setPhilosophyIdx] = useState(0);
   const [isScrolled, setIsScrolled] = useState(false);
@@ -54,7 +56,7 @@ export default function Page1() {
       await fetch("/api/invitations", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ email, source: "homepage" }),
+        body: JSON.stringify({ email, marketingConsent, source: "page1" }),
       });
     } catch (err) {
       console.warn("Failed to post email to API, showing success state:", err);
@@ -212,11 +214,11 @@ export default function Page1() {
           <div className="grid grid-cols-1 md:grid-cols-12 gap-8 md:gap-16 items-center">
             <div className="md:col-span-7 flex flex-col justify-center text-left order-2 md:order-1">
               <h2 className="!mt-0">Designed to Stay Close</h2>
-              <div className="border-l border-primary/30 pl-6 my-6">
-                <p className="font-display text-xl md:text-2xl lg:text-3xl italic text-on-background">
+              <SmokeQuote>
+                <p className="font-display text-xl md:text-2xl lg:text-3xl italic text-[#1A1916] leading-relaxed">
                   &ldquo;The fragrance is discovered, not announced.&rdquo;
                 </p>
-              </div>
+              </SmokeQuote>
               <p>
                 Some fragrances fill a room. Ours are created to become part of yours.
               </p>
@@ -271,55 +273,87 @@ export default function Page1() {
 
         <div className="gold-divider opacity-60 my-16 md:my-28"></div>
 
-        {/* Section VI: Begin Your Journey */}
-        <section className="!max-w-[1200px] mx-auto my-28 md:my-44 flex justify-center">
-          <div className="relative bg-surface/50 backdrop-blur-xl border border-primary/30 p-10 md:p-16 w-full max-w-[640px] flex flex-col items-center justify-center rounded-2xl invite-card-animated overflow-hidden text-center">
-            <div className="absolute top-0 left-0 w-8 h-8 border-t-2 border-l-2 border-primary/50 rounded-tl-2xl"></div>
-            <div className="absolute top-0 right-0 w-8 h-8 border-t-2 border-r-2 border-primary/50 rounded-tr-2xl"></div>
-            <div className="absolute bottom-0 left-0 w-8 h-8 border-b-2 border-l-2 border-primary/50 rounded-bl-2xl"></div>
-            <div className="absolute bottom-0 right-0 w-8 h-8 border-b-2 border-r-2 border-primary/50 rounded-br-2xl"></div>
+        {/* Section VI: Begin Your Journey (Light Warm Luxury Redesign) */}
+        <section className="relative w-full min-h-[85vh] py-20 md:py-32 px-4 flex items-center justify-center overflow-hidden my-20 md:my-32">
+          {/* Warm Light Atelier Background Image with Seamless Page Blending */}
+          <div className="absolute inset-0 z-0">
+            <img
+              src="/section6_warm_light_bg.png"
+              alt="Deuxsentique Atelier"
+              className="w-full h-full object-cover filter brightness-[0.95] contrast-[0.98] animate-cinematic-zoom"
+            />
+            {/* Soft Warm Gradient Blending Seamlessly into Page Background */}
+            <div className="absolute inset-0 bg-gradient-to-t from-[#fec6a1] via-[#FAF6F0]/40 to-[#fec6a1]"></div>
+            <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,_rgba(255,253,249,0.6)_0%,_transparent_75%)]"></div>
+          </div>
+
+          {/* Floating Light Frosted Glass Invitation Card */}
+          <div className="relative z-10 bg-[#FFFDF9]/85 backdrop-blur-2xl border border-[#C4913A]/40 p-8 md:p-14 w-full max-w-[620px] flex flex-col items-center justify-center rounded-3xl shadow-[0_20px_50px_rgba(196,145,58,0.15)] text-center animate-invitation-float">
+            <div className="absolute top-0 left-0 w-8 h-8 border-t-2 border-l-2 border-[#C4913A]/60 rounded-tl-3xl"></div>
+            <div className="absolute top-0 right-0 w-8 h-8 border-t-2 border-r-2 border-[#C4913A]/60 rounded-tr-3xl"></div>
+            <div className="absolute bottom-0 left-0 w-8 h-8 border-b-2 border-l-2 border-[#C4913A]/60 rounded-bl-3xl"></div>
+            <div className="absolute bottom-0 right-0 w-8 h-8 border-b-2 border-r-2 border-[#C4913A]/60 rounded-br-3xl"></div>
 
             <img
               src="/Assets/logo/ICON blk trnsprnt.png"
               alt="Deuxsentique Seal"
-              className="h-14 w-auto mb-4 drop-shadow-[0_0_15px_rgba(196,145,58,0.5)]"
+              className="h-14 w-auto mb-4 drop-shadow-[0_2px_10px_rgba(0,0,0,0.1)]"
             />
-            <h2 className="font-display text-2xl md:text-4xl mb-4 text-on-background">
+            <h2 className="font-display text-3xl md:text-4xl mb-3 text-[#2D1F1D] tracking-wide">
               Begin Your Journey
             </h2>
-            <p className="text-on-background/80 mb-8 text-[14px] md:text-[15px] font-body font-light italic max-w-md">
-              Request your invitation to enter the world of Deuxsentique. Receive exclusive stories, behind-the-scenes moments and carefully curated updates.
+            <p className="text-[#4A3B32]/90 mb-8 text-[13px] md:text-[14px] font-body font-light leading-relaxed max-w-md">
+              Request your invitation to enter the world of Deuxsentique. Receive exclusive stories, early access and carefully curated updates as our journey unfolds.
             </p>
 
             {!submitted ? (
-              <form onSubmit={handleSubmit} className="w-full flex flex-col gap-5 max-w-sm">
-                <input
-                  type="email"
-                  required
-                  value={email}
-                  onChange={(e) => setEmail(e.target.value)}
-                  placeholder="ENTER YOUR EMAIL ADDRESS"
-                  className="w-full bg-[#1A1A1A]/5 border border-primary/30 text-[#1A1A1A] py-4 px-6 rounded-lg text-[11px] tracking-[0.25em] focus:outline-none input-luxury-focus text-center placeholder-[#1A1A1A]/50 font-body font-light"
-                />
+              <form onSubmit={handleSubmit} className="w-full flex flex-col gap-5 max-w-md text-left">
+                <div>
+                  <input
+                    type="email"
+                    required
+                    value={email}
+                    onChange={(e) => setEmail(e.target.value)}
+                    placeholder="ENTER YOUR EMAIL ADDRESS"
+                    className="w-full bg-[#FAF6F0] border border-[#C4913A]/40 text-[#2D1F1D] py-4 px-6 rounded-xl text-[11px] tracking-[0.25em] focus:outline-none focus:border-[#C4913A] focus:ring-1 focus:ring-[#C4913A] text-center placeholder-[#8C7A6B] font-body font-light transition-all shadow-inner"
+                  />
+                </div>
+
+                {/* GDPR Marketing Consent Checkbox */}
+                <label className="flex items-start gap-3 cursor-pointer group px-1">
+                  <input
+                    type="checkbox"
+                    checked={marketingConsent}
+                    onChange={(e) => setMarketingConsent(e.target.checked)}
+                    className="mt-0.5 h-4 w-4 rounded border-[#C4913A]/50 text-[#C4913A] focus:ring-[#C4913A] accent-[#C4913A] bg-transparent cursor-pointer"
+                  />
+                  <span className="text-[11px] text-[#4A3B32]/85 leading-relaxed font-body font-light group-hover:text-[#2D1F1D] transition-colors select-none">
+                    I would like to receive stories, launch updates and exclusive invitations from Deuxsentique. I understand I can unsubscribe at any time.
+                  </span>
+                </label>
+
+                {/* Updated Premium Button */}
                 <button
                   type="submit"
-                  className="w-full font-body text-[10px] uppercase tracking-[0.3em] bg-primary text-background font-medium py-4 rounded-lg hover:bg-[#B38029] transition-all duration-500 cursor-pointer shadow-[0_8px_25px_rgba(196,145,58,0.3)] animate-button-shine"
+                  className="w-full font-body text-[11px] uppercase tracking-[0.3em] bg-[#2D1F1D] text-[#FAF6F0] font-medium py-4 rounded-xl border border-[#C4913A]/50 hover:bg-[#C4913A] hover:text-[#1A1916] hover:border-[#C4913A] transition-all duration-500 cursor-pointer shadow-[0_8px_25px_rgba(45,31,29,0.2)] hover:shadow-[0_0_25px_rgba(196,145,58,0.4)]"
                 >
                   Request Invitation
                 </button>
-                <p className="text-[9px] uppercase tracking-[0.25em] text-on-background/50 font-body font-light">
-                  Strictly private access. We value your privacy.
+
+                {/* Privacy Text */}
+                <p className="text-[9px] uppercase tracking-[0.25em] text-[#8C7A6B] font-body font-light text-center mt-1">
+                  Strictly Private Access. We Value Your Privacy.
                 </p>
               </form>
             ) : (
-              <div className="text-center max-w-md">
-                <div className="inline-flex items-center justify-center w-12 h-12 rounded-full border-2 border-primary mb-4 text-primary bg-primary/10">
+              <div className="text-center max-w-md py-4">
+                <div className="inline-flex items-center justify-center w-12 h-12 rounded-full border-2 border-[#C4913A] mb-4 text-[#C4913A] bg-[#C4913A]/10">
                   ✓
                 </div>
-                <p className="text-primary text-[12px] uppercase tracking-[0.6em] mb-2 font-semibold">
+                <p className="text-[#C4913A] text-[12px] uppercase tracking-[0.6em] mb-2 font-semibold">
                   Invitation Requested
                 </p>
-                <p className="text-on-background/80 text-[13px] leading-relaxed">
+                <p className="text-[#4A3B32]/90 text-[13px] leading-relaxed">
                   Your journey with Deuxsentique begins here.<br />
                   We will share stories, updates and exclusive access as our first collection unfolds.
                 </p>
