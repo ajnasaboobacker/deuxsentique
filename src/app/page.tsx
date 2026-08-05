@@ -392,20 +392,35 @@ export default function Home() {
 
   return (
     <>
-      {/* Fixed Background Images for Scroll-snapping Cross-dissolves */}
+      {/* Fixed Background Images & Videos for Scroll-snapping Cross-dissolves */}
       <div className="fixed inset-0 z-0 pointer-events-none">
         {chapters.map((chapter) => (
           <div
             key={`bg-${chapter.id}`}
             className={`absolute inset-0 transition-opacity duration-[1400ms] ease-in-out ${
-              activeChapter === chapter.id ? "opacity-25" : "opacity-0"
+              activeChapter === chapter.id
+                ? chapter.id === "section-1"
+                  ? "opacity-60"
+                  : "opacity-25"
+                : "opacity-0"
             }`}
           >
-            <img
-              src={chapter.imageUrl}
-              alt={chapter.imageAlt}
-              className="w-full h-full object-cover filter grayscale contrast-[0.9] brightness-[1.05] mix-blend-multiply"
-            />
+            {chapter.id === "section-1" ? (
+              <video
+                src="/Assets/hero.mp4"
+                autoPlay
+                loop
+                muted
+                playsInline
+                className="w-full h-full object-cover filter contrast-[0.95] brightness-[1.05] mix-blend-multiply"
+              />
+            ) : (
+              <img
+                src={chapter.imageUrl}
+                alt={chapter.imageAlt}
+                className="w-full h-full object-cover filter grayscale contrast-[0.9] brightness-[1.05] mix-blend-multiply"
+              />
+            )}
             {/* Smooth top and bottom gradients to blend background images with the page background color (#fec6a1) */}
             <div className="absolute inset-0 bg-gradient-to-b from-[#fec6a1] via-transparent to-[#fec6a1] opacity-95"></div>
             {/* Subtle side vignettes to soften horizontal transitions */}
