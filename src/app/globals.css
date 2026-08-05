@@ -119,15 +119,14 @@ html, body {
   }
 }
 
-/* Scroll Snapping Container */
+/* Scroll Container for Lenis Smooth Scrolling */
 .scroll-container {
   height: 100vh;
   width: 100%;
-  overflow-y: scroll;
-  scroll-snap-type: y proximity;
-  scroll-behavior: smooth;
+  overflow-y: auto;
   scrollbar-width: none; /* Firefox */
   -ms-overflow-style: none;  /* IE/Edge */
+  overscroll-behavior-y: contain;
 }
 
 .scroll-container::-webkit-scrollbar {
@@ -142,8 +141,6 @@ html, body {
   display: flex;
   align-items: center;
   justify-content: center;
-  scroll-snap-align: start;
-  scroll-snap-stop: always;
 }
 
 /* Film Grain Overlay */

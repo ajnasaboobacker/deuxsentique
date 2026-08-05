@@ -2,6 +2,7 @@
 
 import { useEffect, useState, useRef } from "react";
 import Link from "next/link";
+import Lenis from "lenis";
 import { PageHeader, Footer } from "./components/shared";
 import { LiquidMetalButton } from "@/components/ui/liquid-metal-button";
 
@@ -220,6 +221,40 @@ export default function Home() {
     };
   }, [audioCtx]);
 
+  const lenisRef = useRef<Lenis | null>(null);
+
+  // Initialize Lenis Buttery Smooth Scroll Engine
+  useEffect(() => {
+    const container = containerRef.current;
+    if (!container) return;
+
+    const lenis = new Lenis({
+      wrapper: container,
+      content: (container.firstElementChild as HTMLElement) || container,
+      duration: 1.4,
+      easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
+      orientation: "vertical",
+      gestureOrientation: "vertical",
+      smoothWheel: true,
+      wheelMultiplier: 1.1,
+      touchMultiplier: 1.5,
+    });
+
+    lenisRef.current = lenis;
+
+    function raf(time: number) {
+      lenis.raf(time);
+      requestAnimationFrame(raf);
+    }
+
+    requestAnimationFrame(raf);
+
+    return () => {
+      lenis.destroy();
+      lenisRef.current = null;
+    };
+  }, []);
+
   useEffect(() => {
     const container = containerRef.current;
     if (!container) return;
@@ -266,7 +301,14 @@ export default function Home() {
   const scrollToSection = (id: string) => {
     const el = document.getElementById(id);
     if (el) {
-      el.scrollIntoView({ behavior: "smooth" });
+      if (lenisRef.current) {
+        lenisRef.current.scrollTo(el, {
+          duration: 1.4,
+          easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
+        });
+      } else {
+        el.scrollIntoView({ behavior: "smooth" });
+      }
     }
   };
 
