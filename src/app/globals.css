@@ -709,12 +709,12 @@ input:-webkit-autofill:focus {
 
 /* Blends painting images transparently on the beige canvas */
 .cinematic-frame {
-  background-color: var(--color-background);
+  background-color: transparent;
 }
 
 .blend-painting {
   mix-blend-mode: multiply;
-  filter: contrast(1.08) brightness(1.03);
+  filter: contrast(1.08) brightness(1.05);
 }
 
 /* Scroll reveal and ambient float animations for illustrations */
@@ -887,15 +887,122 @@ input:-webkit-autofill:focus {
   animation: heroFadeInUp 1.6s cubic-bezier(0.25, 1, 0.3, 1) 0.4s forwards;
 }
 
-.animate-hero-divider {
-  opacity: 0;
-  transform-origin: center;
-  animation: dividerExpand 1.6s cubic-bezier(0.25, 1, 0.3, 1) 0.8s forwards;
+
+
+/* Vintage Parchment Scroll / Sealed Letter styling for Section VI Invitation */
+.parchment-card {
+  background: radial-gradient(circle at 50% 30%, #fec6a1 0%, #f0ae85 60%, #dc9264 100%);
+  box-shadow: 
+    0 25px 70px -15px rgba(60, 30, 15, 0.35),
+    0 0 0 1px rgba(196, 145, 58, 0.45),
+    inset 0 0 60px rgba(160, 95, 55, 0.25);
+  border: 1px solid rgba(196, 145, 58, 0.5);
+  position: relative;
 }
 
-.animate-hero-desc {
-  opacity: 0;
-  animation: heroFadeInUp 1.6s cubic-bezier(0.25, 1, 0.3, 1) 1.1s forwards;
+.parchment-border {
+  position: absolute;
+  inset: 14px;
+  border: 1px solid rgba(196, 145, 58, 0.4);
+  pointer-events: none;
+  border-radius: 8px;
 }
+
+.parchment-border::before {
+  content: '';
+  position: absolute;
+  inset: 4px;
+  border: 1px dashed rgba(196, 145, 58, 0.25);
+  border-radius: 6px;
+}
+
+.scroll-roll-top {
+  position: absolute;
+  top: -14px;
+  left: 4%;
+  right: 4%;
+  height: 20px;
+  background: linear-gradient(180deg, #b88052 0%, #fec6a1 40%, #9e6438 100%);
+  border-radius: 10px;
+  box-shadow: 0 6px 14px rgba(40, 20, 10, 0.3);
+  border: 1px solid rgba(160, 100, 45, 0.5);
+}
+
+.scroll-roll-bottom {
+  position: absolute;
+  bottom: -14px;
+  left: 4%;
+  right: 4%;
+  height: 20px;
+  background: linear-gradient(180deg, #9e6438 0%, #fec6a1 60%, #b88052 100%);
+  border-radius: 10px;
+  box-shadow: 0 -6px 14px rgba(40, 20, 10, 0.3);
+  border: 1px solid rgba(160, 100, 45, 0.5);
+}
+
+.wax-seal {
+  width: 68px;
+  height: 68px;
+  background: radial-gradient(circle at 35% 35%, #b8362b 0%, #851f16 65%, #52100a 100%);
+  border-radius: 50%;
+  box-shadow: 
+    0 10px 24px rgba(74, 16, 10, 0.45),
+    inset 0 2px 4px rgba(255, 210, 190, 0.5),
+    inset 0 -4px 8px rgba(0, 0, 0, 0.55);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  transition: transform 0.5s cubic-bezier(0.25, 1, 0.5, 1);
+  cursor: pointer;
+}
+
+.wax-seal:hover {
+  transform: scale(1.08) rotate(4deg);
+}
+
+.wax-seal-inner {
+  width: 52px;
+  height: 52px;
+  border-radius: 50%;
+  border: 1.5px solid rgba(255, 215, 150, 0.45);
+  box-shadow: inset 0 0 10px rgba(0, 0, 0, 0.45);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.parchment-input {
+  background: rgba(254, 215, 190, 0.7);
+  border: 1px solid rgba(196, 145, 58, 0.45);
+  border-bottom: 2px solid rgba(196, 145, 58, 0.8);
+  color: #1A1916;
+  font-family: var(--font-body);
+}
+
+.parchment-input:focus {
+  background: rgba(255, 230, 210, 0.95);
+  border-color: rgba(196, 145, 58, 1);
+  box-shadow: 0 4px 20px rgba(196, 145, 58, 0.3);
+}
+
+.parchment-btn {
+  background: linear-gradient(135deg, #c4913a 0%, #ebd08e 50%, #b07c29 100%);
+  color: #1a130a;
+  text-shadow: 0 1px 0 rgba(255, 255, 255, 0.35);
+  box-shadow: 
+    0 8px 22px rgba(196, 145, 58, 0.4),
+    inset 0 1px 0 rgba(255, 255, 255, 0.5);
+  border: 1px solid rgba(160, 110, 30, 0.6);
+}
+
+.parchment-btn:hover {
+  background: linear-gradient(135deg, #d4a14a 0%, #f7dc9e 50%, #c08c39 100%);
+  box-shadow: 
+    0 12px 28px rgba(196, 145, 58, 0.55),
+    inset 0 1px 0 rgba(255, 255, 255, 0.7);
+  transform: translateY(-2px);
+}
+
 
 

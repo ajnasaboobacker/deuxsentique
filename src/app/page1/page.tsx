@@ -156,7 +156,7 @@ export default function Page1() {
                 Everything else begins from there.
               </p>
             </div>
-            <div className="md:col-span-6 flex justify-end mix-blend-multiply">
+            <div className="md:col-span-6 flex justify-end">
               <div className="cinematic-frame w-full max-w-[480px] animate-float-slow">
                 <img
                   src="/chapters/ch04_painting.png"
@@ -226,7 +226,7 @@ export default function Page1() {
                 Designed to remain close. Created for meaningful moments. Discovered only by those nearest to you.
               </p>
             </div>
-            <div className="md:col-span-5 flex justify-center mix-blend-multiply order-1 md:order-2">
+            <div className="md:col-span-5 flex justify-center order-1 md:order-2">
               <div className="cinematic-frame w-full max-w-[380px] animate-float-slow">
                 <img
                   src="/chapters/ch05_painting.png"

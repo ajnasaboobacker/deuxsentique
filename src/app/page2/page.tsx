@@ -43,7 +43,7 @@ export default function Page2() {
                 From this, Deuxsentique was born: two creators, one shared essence.
               </p>
             </div>
-            <div className="md:col-span-6 flex justify-end mix-blend-multiply scroll-reveal-container">
+            <div className="md:col-span-6 flex justify-end scroll-reveal-container">
               <div className="cinematic-frame w-full max-w-[480px] animate-float-slow">
                 <img
                   src="/about_beginning.png"
@@ -78,7 +78,7 @@ export default function Page2() {
                 Where chemistry meets soul: Jiji ensures precision, safety, and authenticity. Resten shapes each perfume as a living story — a bottle of memory. Together they create fragrances that are technically balanced and emotionally profound.
               </p>
             </div>
-            <div className="md:col-span-5 flex justify-center mix-blend-multiply order-1 md:order-2 scroll-reveal-container">
+            <div className="md:col-span-5 flex justify-center order-1 md:order-2 scroll-reveal-container">
               <div className="cinematic-frame w-full max-w-[380px] animate-float-slower">
                 <img
                   src="/about_founders.png"
@@ -93,7 +93,7 @@ export default function Page2() {
         {/* Philosophy */}
         <section className="!max-w-[1200px] mx-auto my-16 md:my-24">
           <div className="grid grid-cols-1 md:grid-cols-12 gap-8 md:gap-16 items-center">
-            <div className="md:col-span-6 flex justify-start mix-blend-multiply scroll-reveal-container">
+            <div className="md:col-span-6 flex justify-start scroll-reveal-container">
               <div className="cinematic-frame w-full max-w-[480px] animate-float-fast">
                 <img
                   src="/about_philosophy.png"
@@ -129,7 +129,7 @@ export default function Page2() {
                 &ldquo;Deuxsentique is not built to compete. It is built to endure.&rdquo;
               </p>
             </div>
-            <div className="md:col-span-5 flex justify-center mix-blend-multiply order-1 md:order-2 scroll-reveal-container">
+            <div className="md:col-span-5 flex justify-center order-1 md:order-2 scroll-reveal-container">
               <div className="cinematic-frame w-full max-w-[380px] animate-float-slow">
                 <img
                   src="/about_dna.png"
@@ -175,7 +175,7 @@ export default function Page2() {
         {/* Craft */}
         <section className="!max-w-[1200px] mx-auto my-16 md:my-24">
           <div className="grid grid-cols-1 md:grid-cols-12 gap-8 md:gap-16 items-center">
-            <div className="md:col-span-6 flex justify-start mix-blend-multiply scroll-reveal-container">
+            <div className="md:col-span-6 flex justify-start scroll-reveal-container">
               <div className="cinematic-frame w-full max-w-[480px] animate-float-slower">
                 <img
                   src="/about_craft.png"

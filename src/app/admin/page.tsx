@@ -4,6 +4,8 @@ import { useState, useEffect, useCallback } from "react";
 import Link from "next/link";
 import { Invitation } from "@/lib/supabase";
 
+type DateFilterOption = "all" | "today" | "week" | "month" | "custom";
+
 export default function AdminPage() {
   const [passcode, setPasscode] = useState("");
   const [isAuthenticated, setIsAuthenticated] = useState(false);
@@ -16,6 +18,9 @@ export default function AdminPage() {
 
   const [searchQuery, setSearchQuery] = useState("");
   const [selectedFilter, setSelectedFilter] = useState<"all" | "active" | "archived">("all");
+  const [dateFilter, setDateFilter] = useState<DateFilterOption>("all");
+  const [customStartDate, setCustomStartDate] = useState("");
+  const [customEndDate, setCustomEndDate] = useState("");
   const [actionLoadingId, setActionLoadingId] = useState<string | null>(null);
 
   // Check existing session auth
@@ -97,10 +102,60 @@ export default function AdminPage() {
     }
   };
 
+  // Date filtering logic
+  const matchesDateFilter = (createdAtStr: string) => {
+    if (dateFilter === "all") return true;
+
+    const itemDate = new Date(createdAtStr);
+    if (isNaN(itemDate.getTime())) return true;
+
+    const now = new Date();
+
+    if (dateFilter === "today") {
+      return (
+        itemDate.getFullYear() === now.getFullYear() &&
+        itemDate.getMonth() === now.getMonth() &&
+        itemDate.getDate() === now.getDate()
+      );
+    }
+
+    if (dateFilter === "week") {
+      // ponytail: Start of current week (Monday 00:00:00)
+      const startOfWeek = new Date(now);
+      const day = now.getDay();
+      const diff = now.getDate() - day + (day === 0 ? -6 : 1);
+      startOfWeek.setDate(diff);
+      startOfWeek.setHours(0, 0, 0, 0);
+      return itemDate >= startOfWeek;
+    }
+
+    if (dateFilter === "month") {
+      const startOfMonth = new Date(now.getFullYear(), now.getMonth(), 1, 0, 0, 0, 0);
+      return itemDate >= startOfMonth;
+    }
+
+    if (dateFilter === "custom") {
+      let matches = true;
+      if (customStartDate) {
+        const start = new Date(customStartDate);
+        start.setHours(0, 0, 0, 0);
+        matches = matches && itemDate >= start;
+      }
+      if (customEndDate) {
+        const end = new Date(customEndDate);
+        end.setHours(23, 59, 59, 999);
+        matches = matches && itemDate <= end;
+      }
+      return matches;
+    }
+
+    return true;
+  };
+
   const handleExportCSV = () => {
-    if (invitations.length === 0) return;
+    if (filteredList.length === 0) return;
     const headers = ["ID", "Email Address", "Status", "Source", "Date Registered"];
-    const rows = invitations.map((item) => [
+    const rows = filteredList.map((item) => [
       item.id,
       item.email,
       item.status,
@@ -128,7 +183,8 @@ export default function AdminPage() {
   const filteredList = invitations.filter((item) => {
     const matchesSearch = item.email.toLowerCase().includes(searchQuery.toLowerCase().trim());
     const matchesFilter = selectedFilter === "all" || item.status === selectedFilter;
-    return matchesSearch && matchesFilter;
+    const matchesDate = matchesDateFilter(item.created_at);
+    return matchesSearch && matchesFilter && matchesDate;
   });
 
   // Passcode Security Modal
@@ -140,7 +196,7 @@ export default function AdminPage() {
         <div className="bg-[#1A1916]/90 border border-primary/30 p-10 md:p-14 rounded-2xl max-w-md w-full text-center shadow-[0_20px_60px_rgba(0,0,0,0.6)] backdrop-blur-xl relative z-10">
           <div className="flex justify-center mb-6">
             <img
-              src="/icon.png"
+              src="/Assets/logo/icon.png"
               alt="Deuxsentique Monogram"
               className="h-16 w-auto object-contain drop-shadow-[0_0_20px_rgba(196,145,58,0.5)]"
             />
@@ -196,7 +252,7 @@ export default function AdminPage() {
       <header className="border-b border-primary/20 bg-[#1A1916]/80 backdrop-blur-md sticky top-0 z-50 px-6 md:px-16 py-5 flex justify-between items-center">
         <div className="flex items-center gap-4">
           <Link href="/" className="flex items-center gap-3">
-            <img src="/icon.png" alt="Logo" className="h-9 w-auto" />
+            <img src="/Assets/logo/icon.png" alt="Logo" className="h-9 w-auto" />
             <span className="font-display text-lg tracking-[0.3em] text-[#FAF6F0] uppercase">
               Deuxsentique
             </span>
@@ -290,35 +346,120 @@ export default function AdminPage() {
           </div>
         </div>
 
-        {/* Controls Bar: Search & Status Filters */}
-        <div className="flex flex-col md:flex-row items-stretch md:items-center justify-between gap-4 mb-6">
-          {/* Search Bar */}
-          <div className="relative flex-1 max-w-md">
-            <input
-              type="text"
-              value={searchQuery}
-              onChange={(e) => setSearchQuery(e.target.value)}
-              placeholder="Search by email..."
-              className="w-full bg-[#1A1916] border border-white/15 text-white/90 py-3 px-4 pl-10 rounded-lg text-xs focus:outline-none focus:border-primary transition-colors placeholder-white/30"
-            />
-            <span className="absolute left-3.5 top-1/2 -translate-y-1/2 text-white/30 text-xs">🔍</span>
+        {/* Controls Bar: Search, Status & Date Filters */}
+        <div className="flex flex-col gap-4 mb-6">
+          {/* Top Row: Search & Status Filters */}
+          <div className="flex flex-col md:flex-row items-stretch md:items-center justify-between gap-4">
+            {/* Search Bar */}
+            <div className="relative flex-1 max-w-md">
+              <input
+                type="text"
+                value={searchQuery}
+                onChange={(e) => setSearchQuery(e.target.value)}
+                placeholder="Search by email..."
+                className="w-full bg-[#1A1916] border border-white/15 text-white/90 py-3 px-4 pl-10 rounded-lg text-xs focus:outline-none focus:border-primary transition-colors placeholder-white/30"
+              />
+              <span className="absolute left-3.5 top-1/2 -translate-y-1/2 text-white/30 text-xs">🔍</span>
+            </div>
+
+            {/* Filter Status Tabs */}
+            <div className="flex items-center gap-2 bg-[#1A1916] p-1.5 rounded-lg border border-white/10 self-start md:self-auto">
+              <span className="text-[9px] uppercase tracking-wider text-white/40 px-2 font-medium">Status:</span>
+              {(["all", "active", "archived"] as const).map((filter) => (
+                <button
+                  key={filter}
+                  onClick={() => setSelectedFilter(filter)}
+                  className={`px-3 py-1.5 rounded-md text-[10px] uppercase tracking-[0.2em] transition-all cursor-pointer ${
+                    selectedFilter === filter
+                      ? "bg-primary text-[#11100E] font-medium"
+                      : "text-white/60 hover:text-white hover:bg-white/5"
+                  }`}
+                >
+                  {filter}
+                </button>
+              ))}
+            </div>
           </div>
 
-          {/* Filter Status Tabs */}
-          <div className="flex items-center gap-2 bg-[#1A1916] p-1.5 rounded-lg border border-white/10 self-start md:self-auto">
-            {(["all", "active", "archived"] as const).map((filter) => (
-              <button
-                key={filter}
-                onClick={() => setSelectedFilter(filter)}
-                className={`px-4 py-2 rounded-md text-[10px] uppercase tracking-[0.2em] transition-all cursor-pointer ${
-                  selectedFilter === filter
-                    ? "bg-primary text-[#11100E] font-medium"
-                    : "text-white/60 hover:text-white hover:bg-white/5"
-                }`}
-              >
-                {filter}
-              </button>
-            ))}
+          {/* Bottom Row: Date Range Filters */}
+          <div className="flex flex-wrap items-center justify-between gap-3 bg-[#1A1916] p-3 rounded-xl border border-white/10">
+            <div className="flex flex-wrap items-center gap-2">
+              <span className="text-[9px] uppercase tracking-wider text-white/40 px-2 font-medium">Date Range:</span>
+              {(
+                [
+                  { id: "all", label: "All Time" },
+                  { id: "today", label: "Today" },
+                  { id: "week", label: "This Week" },
+                  { id: "month", label: "This Month" },
+                  { id: "custom", label: "Custom Date" },
+                ] as const
+              ).map((preset) => (
+                <button
+                  key={preset.id}
+                  onClick={() => setDateFilter(preset.id)}
+                  className={`px-3 py-1.5 rounded-md text-[10px] uppercase tracking-[0.15em] transition-all cursor-pointer ${
+                    dateFilter === preset.id
+                      ? "bg-primary/20 text-primary border border-primary/40 font-medium"
+                      : "text-white/60 hover:text-white hover:bg-white/5 border border-transparent"
+                  }`}
+                >
+                  {preset.label}
+                </button>
+              ))}
+            </div>
+
+            {/* Custom Date Picker Inputs */}
+            {dateFilter === "custom" && (
+              <div className="flex flex-wrap items-center gap-3 pl-2 border-t sm:border-t-0 sm:border-l border-white/10 pt-2 sm:pt-0 w-full sm:w-auto">
+                <div className="flex items-center gap-2">
+                  <label className="text-[9px] uppercase tracking-wider text-white/50">From:</label>
+                  <input
+                    type="date"
+                    value={customStartDate}
+                    onChange={(e) => setCustomStartDate(e.target.value)}
+                    className="bg-[#11100E] border border-white/20 text-white/90 text-xs py-1.5 px-3 rounded-md focus:outline-none focus:border-primary [color-scheme:dark]"
+                  />
+                </div>
+                <div className="flex items-center gap-2">
+                  <label className="text-[9px] uppercase tracking-wider text-white/50">To:</label>
+                  <input
+                    type="date"
+                    value={customEndDate}
+                    onChange={(e) => setCustomEndDate(e.target.value)}
+                    className="bg-[#11100E] border border-white/20 text-white/90 text-xs py-1.5 px-3 rounded-md focus:outline-none focus:border-primary [color-scheme:dark]"
+                  />
+                </div>
+                {(customStartDate || customEndDate) && (
+                  <button
+                    onClick={() => {
+                      setCustomStartDate("");
+                      setCustomEndDate("");
+                    }}
+                    className="text-[9px] uppercase tracking-wider text-white/40 hover:text-white px-2 py-1 transition-colors cursor-pointer"
+                  >
+                    Clear Dates
+                  </button>
+                )}
+              </div>
+            )}
+
+            {/* Reset All Filters button if any active */}
+            {(searchQuery || selectedFilter !== "all" || dateFilter !== "all") && (
+              <div className="ml-auto text-right">
+                <button
+                  onClick={() => {
+                    setSearchQuery("");
+                    setSelectedFilter("all");
+                    setDateFilter("all");
+                    setCustomStartDate("");
+                    setCustomEndDate("");
+                  }}
+                  className="text-[9px] uppercase tracking-wider text-amber-400/80 hover:text-amber-300 transition-colors cursor-pointer px-2 py-1"
+                >
+                  Reset Filters
+                </button>
+              </div>
+            )}
           </div>
         </div>
 
@@ -332,8 +473,8 @@ export default function AdminPage() {
             <div className="p-16 text-center">
               <p className="text-white/60 text-sm font-light mb-2">No email entries found.</p>
               <p className="text-white/30 text-xs font-light">
-                {searchQuery
-                  ? `No entries matched "${searchQuery}"`
+                {searchQuery || selectedFilter !== "all" || dateFilter !== "all"
+                  ? "No entries matched your search and filter criteria."
                   : "New signups submitted on the website will automatically appear here."}
               </p>
             </div>

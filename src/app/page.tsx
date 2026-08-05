@@ -3,6 +3,7 @@
 import { useEffect, useState, useRef } from "react";
 import Link from "next/link";
 import { PageHeader, Footer } from "./components/shared";
+import { LiquidMetalButton } from "@/components/ui/liquid-metal-button";
 
 interface Chapter {
   id: string;
@@ -29,8 +30,8 @@ const chapters: Chapter[] = [
   {
     id: "section-2",
     num: "Section II",
-    title: "Every fragrance begins with a story.",
-    desc: "Some stories are remembered.\n\nSome quietly become part of who we are.\n\nAt Deuxsentique, we transform genuine human stories into fragrances that carry emotion, meaning and memory.\n\nEvery creation begins long before the bottle.\n\nEvery story has an essence.",
+    title: "Every Story Deserves an Essence.",
+    desc: "Behind every fragrance is a real human story.\n\nEverything else begins from there.",
     imageUrl: "/chapters/ch04_painting.png",
     bgImageUrl: "/chapters/ch04_painting.png",
     imageAlt: "Brand Introduction",
@@ -71,8 +72,8 @@ const chapters: Chapter[] = [
     num: "Section VI",
     title: "Begin Your Journey",
     desc: "Request your invitation to enter the world of Deuxsentique.\n\nReceive exclusive stories, behind-the-scenes moments and carefully curated updates as our journey unfolds.",
-    imageUrl: "/chapters/ch06_painting.png",
-    bgImageUrl: "/chapters/ch06_painting.png",
+    imageUrl: "/chapters/ch100_seamless.png",
+    bgImageUrl: "/chapters/ch100_seamless.png",
     imageAlt: "Begin Your Journey",
     layout: "invite",
   },
@@ -111,9 +112,59 @@ function renderTitle(title: string) {
   ));
 }
 
+function ScrollRollerHandle({ side }: { side: "left" | "right" }) {
+  return (
+    <svg
+      viewBox="0 0 28 90"
+      className={`absolute ${
+        side === "left" ? "left-[-14px]" : "right-[-14px] scale-x-[-1]"
+      } top-1/2 -translate-y-1/2 h-[86px] w-[26px] z-20 pointer-events-none drop-shadow-[2px_2px_5px_rgba(0,0,0,0.35)]`}
+    >
+      <defs>
+        <linearGradient id={`woodKnob_${side}`} x1="0" y1="0" x2="1" y2="0">
+          <stop offset="0%" stopColor="#4A2E12" />
+          <stop offset="40%" stopColor="#8C5C29" />
+          <stop offset="70%" stopColor="#A47239" />
+          <stop offset="100%" stopColor="#36200A" />
+        </linearGradient>
+        <linearGradient id={`brassCollar_${side}`} x1="0" y1="0" x2="1" y2="0">
+          <stop offset="0%" stopColor="#5C3F14" />
+          <stop offset="50%" stopColor="#D4A34B" />
+          <stop offset="100%" stopColor="#4A3010" />
+        </linearGradient>
+        <linearGradient id={`paperRoll_${side}`} x1="0" y1="0" x2="1" y2="0">
+          <stop offset="0%" stopColor="#7A562D" />
+          <stop offset="25%" stopColor="#E0CDAF" />
+          <stop offset="60%" stopColor="#F5E8D3" />
+          <stop offset="85%" stopColor="#C9B18C" />
+          <stop offset="100%" stopColor="#63431E" />
+        </linearGradient>
+      </defs>
+
+      {/* Top Wooden Knob */}
+      <path d="M 9 2 C 14 0 19 0 24 2 C 26 4 26 7 24 9 C 19 11 14 11 9 9 C 7 7 7 4 9 2 Z" fill={`url(#woodKnob_${side})`} stroke="#2E1B09" strokeWidth="0.8" />
+      <path d="M 7 9 C 13 8 20 8 26 9 L 24 14 C 18 15 11 15 7 14 Z" fill={`url(#brassCollar_${side})`} stroke="#2E1B09" strokeWidth="0.6" />
+      <path d="M 10 14 C 14 14 19 14 22 14 L 21 17 C 17 17 13 17 10 17 Z" fill="#2E1D0A" />
+
+      {/* Vertical Paper Scroll Roll */}
+      <rect x="5" y="17" width="20" height="56" rx="2" fill={`url(#paperRoll_${side})`} stroke="#4A3010" strokeWidth="1" />
+      <line x1="6" y1="24" x2="24" y2="24" stroke="#4A3010" strokeWidth="0.5" opacity="0.3" />
+      <line x1="6" y1="36" x2="24" y2="36" stroke="#4A3010" strokeWidth="0.5" opacity="0.3" />
+      <line x1="6" y1="48" x2="24" y2="48" stroke="#4A3010" strokeWidth="0.5" opacity="0.3" />
+      <line x1="6" y1="60" x2="24" y2="60" stroke="#4A3010" strokeWidth="0.5" opacity="0.3" />
+
+      {/* Bottom Wooden Knob */}
+      <path d="M 10 73 C 14 73 19 73 22 73 L 21 76 C 17 76 13 76 10 76 Z" fill="#2E1D0A" />
+      <path d="M 7 76 C 13 75 20 75 26 76 L 24 81 C 18 82 11 82 7 81 Z" fill={`url(#brassCollar_${side})`} stroke="#2E1B09" strokeWidth="0.6" />
+      <path d="M 9 81 C 14 79 19 79 24 81 C 26 83 26 86 24 88 C 19 90 14 90 9 88 C 7 86 7 83 9 81 Z" fill={`url(#woodKnob_${side})`} stroke="#2E1B09" strokeWidth="0.8" />
+    </svg>
+  );
+}
+
 export default function Home() {
   const [activeChapter, setActiveChapter] = useState("section-1");
   const [email, setEmail] = useState("");
+  const [marketingConsent, setMarketingConsent] = useState(false);
   const [submitted, setSubmitted] = useState(false);
   const containerRef = useRef<HTMLDivElement>(null);
 
@@ -132,6 +183,16 @@ export default function Home() {
   const [activeAccord, setActiveAccord] = useState<"top" | "heart" | "base">("top");
 
   const [mounted, setMounted] = useState(false);
+  const section6VideoRef = useRef<HTMLVideoElement>(null);
+
+  // Trigger Section 6 video playback when user scrolls to Section 6, freezing on the last frame
+  useEffect(() => {
+    if (activeChapter === "section-6" && section6VideoRef.current) {
+      const vid = section6VideoRef.current;
+      vid.currentTime = 0;
+      vid.play().catch((err) => console.log("Section 6 video play error:", err));
+    }
+  }, [activeChapter]);
 
   useEffect(() => {
     setMounted(true);
@@ -194,7 +255,7 @@ export default function Home() {
       await fetch("/api/invitations", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ email, source: "homepage" }),
+        body: JSON.stringify({ email, marketingConsent, source: "homepage" }),
       });
     } catch (err) {
       console.warn("Failed to post email to API, showing success state:", err);
@@ -345,6 +406,10 @@ export default function Home() {
               alt={chapter.imageAlt}
               className="w-full h-full object-cover filter grayscale contrast-[0.9] brightness-[1.05] mix-blend-multiply"
             />
+            {/* Smooth top and bottom gradients to blend background images with the page background color (#fec6a1) */}
+            <div className="absolute inset-0 bg-gradient-to-b from-[#fec6a1] via-transparent to-[#fec6a1] opacity-95"></div>
+            {/* Subtle side vignettes to soften horizontal transitions */}
+            <div className="absolute inset-0 bg-gradient-to-r from-[#fec6a1]/20 via-transparent to-[#fec6a1]/20"></div>
             <div className="image-overlay"></div>
           </div>
         ))}
@@ -385,6 +450,27 @@ export default function Home() {
               id={chapter.id}
               className={`chapter-section ${isActive ? "active" : ""}`}
             >
+              {chapter.layout === "invite" && (
+                <div className="absolute inset-0 pointer-events-none overflow-hidden z-0">
+                  {/* Seamless Masked Video — Plays once on scroll into Section 6 and freezes on final static frame */}
+                  <video
+                    ref={section6VideoRef}
+                    muted
+                    playsInline
+                    className="absolute right-0 top-0 h-full w-full max-w-[960px] object-cover object-right opacity-80 mix-blend-multiply pointer-events-none"
+                    style={{
+                      WebkitMaskImage: "radial-gradient(ellipse at 80% 55%, rgba(0,0,0,1) 20%, rgba(0,0,0,0.7) 50%, rgba(0,0,0,0) 90%)",
+                      maskImage: "radial-gradient(ellipse at 80% 55%, rgba(0,0,0,1) 20%, rgba(0,0,0,0.7) 50%, rgba(0,0,0,0) 90%)",
+                    }}
+                  >
+                    <source src="/Assets/begin.mp4" type="video/mp4" />
+                  </video>
+
+                  {/* Soft Vignettes & Golden Ambient Lighting Glow */}
+                  <div className="absolute inset-0 bg-gradient-to-b from-[#fec6a1]/40 via-transparent to-[#fec6a1]/40 pointer-events-none" />
+                  <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-[#C4913A]/10 rounded-full blur-3xl pointer-events-none" />
+                </div>
+              )}
               <div className="relative z-auto w-full max-w-[1440px] px-6 md:px-24 grid grid-cols-1 md:grid-cols-12 gap-8 md:gap-16 items-center">
                 
                 {chapter.layout === "hero" && (
@@ -392,7 +478,7 @@ export default function Home() {
                     <div className="glass-editorial-panel w-full max-w-[1000px] flex flex-col items-center justify-center reveal-frame">
                       <div className="flex justify-center mb-8 reveal-subtitle">
                         <img
-                          src="/icon.png"
+                          src="/Assets/logo/ICON blk trnsprnt.png"
                           alt="Deuxsentique Logo"
                           className="h-28 md:h-40 w-auto object-contain hero-logo-float drop-shadow-[0_0_20px_rgba(196,145,58,0.4)]"
                         />
@@ -417,12 +503,12 @@ export default function Home() {
                         <h2 className="font-display text-2xl md:text-4xl lg:text-5xl mb-6 md:mb-8 leading-tight text-on-background whitespace-pre-line">
                           {renderTitle(chapter.title)}
                         </h2>
-                        <p className="text-on-background/70 leading-relaxed text-[14px] md:text-[15px] font-body font-light italic reveal-desc whitespace-pre-line">
+                        <p className="text-on-background/95 leading-relaxed text-[16px] md:text-[18px] lg:text-[19px] font-body font-normal italic reveal-desc whitespace-pre-line">
                           {chapter.desc}
                         </p>
                       </div>
                     </div>
-                    <div className="md:col-span-6 hidden md:flex justify-end reveal-frame mix-blend-multiply">
+                    <div className="md:col-span-6 hidden md:flex justify-end reveal-frame">
                       <div className="cinematic-frame w-full max-w-[480px]">
                         <img
                           src={chapter.imageUrl}
@@ -436,7 +522,7 @@ export default function Home() {
 
                 {chapter.layout === "right-panel" && (
                   <>
-                    <div className="md:col-span-6 hidden md:flex justify-start reveal-frame mix-blend-multiply">
+                    <div className="md:col-span-6 hidden md:flex justify-start reveal-frame">
                       <div className="cinematic-frame w-full max-w-[480px]">
                         <img
                           src={chapter.imageUrl}
@@ -453,7 +539,7 @@ export default function Home() {
                         <h2 className="font-display text-2xl md:text-4xl lg:text-5xl mb-6 md:mb-8 leading-tight text-on-background whitespace-pre-line">
                           {renderTitle(chapter.title)}
                         </h2>
-                        <p className="text-on-background/70 leading-relaxed text-[14px] md:text-[15px] font-body font-light italic reveal-desc whitespace-pre-line">
+                        <p className="text-on-background/95 leading-relaxed text-[16px] md:text-[18px] lg:text-[19px] font-body font-normal italic reveal-desc whitespace-pre-line">
                           {chapter.desc}
                         </p>
                       </div>
@@ -486,7 +572,7 @@ export default function Home() {
                         </div>
                       </div>
                     </div>
-                    <div className="md:col-span-6 hidden md:flex justify-end reveal-frame mix-blend-multiply">
+                    <div className="md:col-span-6 hidden md:flex justify-end reveal-frame">
                       <div className="cinematic-frame w-full max-w-[480px]">
                         <img
                           src={chapter.imageUrl}
@@ -511,12 +597,12 @@ export default function Home() {
                             &ldquo;The fragrance is discovered, not announced.&rdquo;
                           </p>
                         </div>
-                        <p className="text-on-background/70 leading-relaxed text-[14px] md:text-[15px] font-body font-light italic reveal-desc whitespace-pre-line">
+                        <p className="text-on-background/95 leading-relaxed text-[16px] md:text-[18px] lg:text-[19px] font-body font-normal italic reveal-desc whitespace-pre-line">
                           {chapter.desc}
                         </p>
                       </div>
                     </div>
-                    <div className="md:col-span-5 hidden md:flex justify-center reveal-frame mix-blend-multiply">
+                    <div className="md:col-span-5 hidden md:flex justify-center reveal-frame">
                       <div className="cinematic-frame w-full max-w-[380px] -translate-y-8">
                         <img
                           src={chapter.imageUrl}
@@ -530,7 +616,7 @@ export default function Home() {
 
                 {chapter.layout === "believe" && (
                   <>
-                    <div className="md:col-span-6 hidden md:flex justify-start reveal-frame mix-blend-multiply">
+                    <div className="md:col-span-6 hidden md:flex justify-start reveal-frame">
                       <div className="cinematic-frame w-full max-w-[480px]">
                         <img
                           src={chapter.imageUrl}
@@ -565,80 +651,152 @@ export default function Home() {
                 )}
 
                 {chapter.layout === "invite" && (
-                  <div className="md:col-span-12 flex justify-center text-center relative z-10">
-                    {/* Glowing background aura */}
-                    <div className="absolute -inset-6 bg-gradient-to-r from-primary/20 via-primary/30 to-primary/20 rounded-3xl blur-2xl opacity-60 animate-glow-pulse pointer-events-none"></div>
-
-                    <div className="relative bg-surface/50 backdrop-blur-xl border border-primary/30 p-10 md:p-16 w-full max-w-[620px] flex flex-col items-center justify-center reveal-frame rounded-2xl invite-card-animated overflow-hidden">
-                      {/* Decorative Gold Corner Borders */}
-                      <div className="absolute top-0 left-0 w-8 h-8 border-t-2 border-l-2 border-primary/50 rounded-tl-2xl"></div>
-                      <div className="absolute top-0 right-0 w-8 h-8 border-t-2 border-r-2 border-primary/50 rounded-tr-2xl"></div>
-                      <div className="absolute bottom-0 left-0 w-8 h-8 border-b-2 border-l-2 border-primary/50 rounded-bl-2xl"></div>
-                      <div className="absolute bottom-0 right-0 w-8 h-8 border-b-2 border-r-2 border-primary/50 rounded-br-2xl"></div>
+                  <div className="md:col-span-12 flex flex-col items-center justify-center text-center relative z-10 min-h-screen w-full py-12 md:py-16 px-4 sm:px-6 overflow-hidden">
+                    
+                    {/* Native Content Stack positioned in alignment with reference design */}
+                    <div className="relative z-10 w-full max-w-[580px] mx-auto flex flex-col items-center text-center my-auto pt-4 md:pt-8">
                       
-                      {/* Floating Brand Logo Seal */}
-                      <div className="flex justify-center mb-6 reveal-subtitle">
-                        <img
-                          src="/icon.png"
-                          alt="Deuxsentique Seal"
-                          className="h-16 w-auto object-contain hero-logo-float drop-shadow-[0_0_20px_rgba(196,145,58,0.5)]"
-                        />
+                      {/* Brand Name */}
+                      <div className="font-display text-[16px] sm:text-[18px] md:text-[22px] tracking-[0.55em] text-[#8C5832] uppercase mb-3 reveal-subtitle select-none font-medium">
+                        Deuxsentique
                       </div>
 
-                      <p className="text-secondary text-[10px] uppercase tracking-[0.6em] mb-4 font-body reveal-subtitle font-medium">
-                        {chapter.num}
-                      </p>
-                      <h2 className="font-display text-2xl md:text-4xl lg:text-5xl mb-6 leading-tight text-on-background whitespace-pre-line">
-                        {renderTitle(chapter.title)}
-                      </h2>
-                      <p className="text-on-background/80 mb-10 text-[14px] md:text-[15px] font-body font-light italic reveal-desc max-w-md">
-                        {chapter.desc}
-                      </p>
+                      {/* Black Brand Logo & Side Flourishes */}
+                      <div className="flex items-center justify-center gap-3 sm:gap-4 my-2 sm:my-3 select-none reveal-subtitle">
+                        {/* Left Flourish Swirl SVG */}
+                        <svg
+                          viewBox="0 0 140 40"
+                          className="w-[80px] sm:w-[120px] md:w-[140px] h-auto text-[#8C5832]"
+                          fill="none"
+                          stroke="currentColor"
+                          strokeWidth="1.6"
+                          strokeLinecap="round"
+                        >
+                          <path d="M 10 20 H 55 C 80 20 75 5 50 8 C 32 12 38 32 68 27 C 92 23 105 16 130 20" />
+                          <path d="M 122 8 C 112 0 102 2 106 12 C 110 22 122 19 130 20" strokeWidth="1.2" />
+                        </svg>
 
+                        {/* Black Brand Logo */}
+                        <img
+                          src="/Assets/logo/ICON blk trnsprnt.png"
+                          alt="Deuxsentique Logo"
+                          className="h-16 sm:h-20 md:h-24 w-auto object-contain drop-shadow-[0_2px_8px_rgba(140,88,50,0.18)]"
+                        />
+
+                        {/* Right Flourish Swirl SVG */}
+                        <svg
+                          viewBox="0 0 140 40"
+                          className="w-[80px] sm:w-[120px] md:w-[140px] h-auto text-[#8C5832] scale-x-[-1]"
+                          fill="none"
+                          stroke="currentColor"
+                          strokeWidth="1.6"
+                          strokeLinecap="round"
+                        >
+                          <path d="M 10 20 H 55 C 80 20 75 5 50 8 C 32 12 38 32 68 27 C 92 23 105 16 130 20" />
+                          <path d="M 122 8 C 112 0 102 2 106 12 C 110 22 122 19 130 20" strokeWidth="1.2" />
+                        </svg>
+                      </div>
+
+                      {/* Matching Luxury Editorial Title */}
+                      <h2 className="font-display text-3xl sm:text-4xl md:text-5xl lg:text-6xl text-[#23150D] tracking-wider font-normal leading-tight mb-4 drop-shadow-sm reveal-title">
+                        {renderTitle("Begin Your Journey")}
+                      </h2>
+
+                      {/* Animated Supporting Description Sentences */}
+                      <div className="max-w-[540px] mx-auto mb-8 font-body font-light italic leading-relaxed text-[#3A2418]/90 text-[13px] sm:text-[14px] md:text-[15px]">
+                        <p className="reveal-desc mb-2" style={{ transitionDelay: "600ms" }}>
+                          Embark on a fragrant odyssey where every scent tells a story of two souls united.
+                        </p>
+                        <p className="reveal-desc" style={{ transitionDelay: "900ms" }}>
+                          Receive exclusive tales, behind-the-scenes moments, and curated updates as our narrative unfolds.
+                        </p>
+                      </div>
+
+                      {/* Fully Interactive Native HTML Form */}
                       {!submitted ? (
                         mounted ? (
-                          <form onSubmit={handleSubmit} className="w-full flex flex-col gap-6 reveal-desc max-w-sm" id="waitlist-form">
-                            <div className="relative">
-                              <input
-                                type="email"
-                                id="email"
-                                required
-                                value={email}
-                                onChange={(e) => setEmail(e.target.value)}
-                                placeholder="ENTER YOUR EMAIL ADDRESS"
-                                className="w-full bg-[#1A1A1A]/5 border border-primary/30 text-[#1A1A1A] py-4 px-6 rounded-lg text-[11px] tracking-[0.25em] focus:outline-none input-luxury-focus text-center placeholder-[#1A1A1A]/50 font-body font-light"
-                              />
+                          <form onSubmit={handleSubmit} className="w-full max-w-[480px] flex flex-col items-center gap-6 mx-auto relative z-20 reveal-frame" id="waitlist-form">
+                            
+                            {/* Scroll-styled Email Input Container matching screenshot 100% */}
+                            <div className="relative w-full max-w-[500px] h-[54px] flex items-center mx-auto my-2 select-none">
+                              {/* Left 3D Wooden Scroll Handle */}
+                              <ScrollRollerHandle side="left" />
+
+                              {/* Parchment Paper Banner Container */}
+                              <div className="relative w-full h-full bg-gradient-to-b from-[#EBD9BD] via-[#DFCAAA] to-[#D3BD99] border-y-2 border-[#8C5832] shadow-[0_4px_15px_rgba(0,0,0,0.18)] flex items-center overflow-hidden">
+                                
+                                {/* Inner Gold framing trim lines */}
+                                <div className="absolute inset-x-0 top-[3px] h-[1px] bg-[#B88E4C]/70" />
+                                <div className="absolute inset-x-0 bottom-[3px] h-[1px] bg-[#B88E4C]/70" />
+
+                                {/* Inset vignette shadows on paper edges */}
+                                <div className="absolute left-0 top-0 bottom-0 w-8 bg-gradient-to-r from-[#5C3F14]/30 to-transparent pointer-events-none z-10" />
+                                <div className="absolute right-0 top-0 bottom-0 w-8 bg-gradient-to-l from-[#5C3F14]/30 to-transparent pointer-events-none z-10" />
+
+                                {/* Real Editable Email Input */}
+                                <input
+                                  type="email"
+                                  id="email"
+                                  required
+                                  value={email}
+                                  onChange={(e) => setEmail(e.target.value)}
+                                  placeholder="ENTER YOUR EMAIL ADDRESS"
+                                  className="w-full h-full bg-transparent text-[#3A2418] text-[12px] sm:text-[13px] md:text-[14px] tracking-[0.25em] text-center uppercase placeholder:text-[#5C3F14]/85 placeholder:tracking-[0.24em] transition-all duration-300 focus:outline-none font-body font-semibold px-8 relative z-20"
+                                />
+                              </div>
+
+                              {/* Right 3D Wooden Scroll Handle */}
+                              <ScrollRollerHandle side="right" />
                             </div>
-                            <button
+
+                            {/* GDPR Marketing Consent Checkbox */}
+                            <label className="flex items-start gap-3 cursor-pointer group px-2 max-w-[440px] text-left">
+                              <input
+                                type="checkbox"
+                                checked={marketingConsent}
+                                onChange={(e) => setMarketingConsent(e.target.checked)}
+                                className="mt-1 h-4 w-4 rounded border-2 border-[#8C5832]/60 text-[#8C5832] focus:ring-[#8C5832] accent-[#8C5832] bg-transparent cursor-pointer"
+                              />
+                              <span className="text-[11px] text-[#3A2418]/85 leading-relaxed font-body font-light group-hover:text-[#23150D] transition-colors select-none">
+                                I would like to receive stories, launch updates and exclusive invitations from Deuxsentique. I understand I can unsubscribe at any time.
+                              </span>
+                            </label>
+
+                            {/* Real Clickable Submit Button with liquid metal animation */}
+                            <LiquidMetalButton
                               type="submit"
-                              className="w-full font-body text-[10px] uppercase tracking-[0.3em] bg-primary text-background font-medium py-4 rounded-lg hover:bg-[#B38029] transition-all duration-500 cursor-pointer shadow-[0_8px_25px_rgba(196,145,58,0.3)] animate-button-shine"
-                            >
-                              Request Invitation
-                            </button>
-                            <p className="text-[9px] uppercase tracking-[0.25em] text-on-background/50 font-body font-light">
-                              Strictly private access. We value your privacy.
-                            </p>
+                              label="Request Invitation"
+                              width={340}
+                              height={52}
+                            />
                           </form>
-                        ) : (
-                          <div className="h-32 flex items-center justify-center reveal-desc">
-                            <span className="text-[10px] uppercase tracking-[0.3em] text-on-background/30">Loading Access Form...</span>
-                          </div>
-                        )
+                        ) : null
                       ) : (
-                        <div className="text-center reveal-desc max-w-md transition-all duration-1000 animate-fadeIn" id="success-state">
-                          <div className="inline-flex items-center justify-center w-14 h-14 rounded-full border-2 border-primary mb-6 text-primary bg-primary/10 shadow-[0_0_20px_rgba(196,145,58,0.2)]">
-                            <span className="text-xl">✓</span>
+                        /* Success State Overlay styled as parchment scroll */
+                        <div className="w-full max-w-[480px] bg-[#EADBBF]/95 rounded-3xl p-8 flex flex-col items-center justify-center text-center shadow-xl border border-[#8C5832] transition-all duration-1000 animate-fadeIn" id="success-state">
+                          <div className="inline-flex items-center justify-center w-12 h-12 rounded-full border border-[#8C5832] mb-3 text-[#8C5832] bg-[#8C5832]/10">
+                            <span className="text-lg">✓</span>
                           </div>
-                          <p className="text-primary text-[12px] uppercase tracking-[0.6em] mb-4 font-body font-semibold">
-                            Invitation Requested
+                          <p className="text-[#8C5832] text-[11px] md:text-[12px] uppercase tracking-[0.5em] mb-2 font-body font-semibold">
+                            Invitation Sealed &amp; Requested
                           </p>
-                          <p className="text-on-background/80 text-[13px] leading-relaxed font-body font-light">
+                          <p className="text-[#23150D] text-[12px] md:text-[13px] leading-relaxed font-body font-light italic">
                             Your journey with Deuxsentique begins here.<br />
                             We will share stories, updates and exclusive access as our first collection unfolds.
                           </p>
                         </div>
                       )}
+
+                      {/* Bottom Decorative Flourish matching reference image */}
+                      <div className="mt-8 flex justify-center opacity-80 select-none reveal-desc">
+                        <svg viewBox="0 0 240 30" className="w-44 sm:w-52 h-auto" fill="none" stroke="#8C5832" strokeWidth="1.4" strokeLinecap="round">
+                          <path d="M 10 15 H 85 C 105 15 100 4 85 7 C 72 10 77 24 98 20 C 112 17 116 12 120 15 C 124 12 128 17 142 20 C 163 24 168 10 155 7 C 140 4 135 15 155 15 H 230" />
+                          <polygon points="120,18 116,24 120,30 124,24" fill="#8C5832" stroke="none" />
+                        </svg>
+                      </div>
+
                     </div>
+
                   </div>
                 )}
 
