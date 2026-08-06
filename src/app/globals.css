@@ -711,7 +711,9 @@ input:-webkit-autofill:focus {
 
 .blend-painting {
   mix-blend-mode: multiply;
-  filter: contrast(1.08) brightness(1.05);
+  filter: contrast(1.18) brightness(1.08);
+  mask-image: radial-gradient(ellipse at center, rgba(0,0,0,1) 70%, rgba(0,0,0,0) 98%);
+  -webkit-mask-image: radial-gradient(ellipse at center, rgba(0,0,0,1) 70%, rgba(0,0,0,0) 98%);
 }
 
 /* Scroll reveal and ambient float animations for illustrations */
