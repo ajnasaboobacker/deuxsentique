@@ -648,6 +648,9 @@ export default function Home() {
                         <p className="text-secondary text-[10px] uppercase tracking-[0.6em] mb-6 md:mb-8 font-body reveal-subtitle">
                           {chapter.num}
                         </p>
+                        <h2 className="font-display text-2xl md:text-4xl lg:text-5xl mb-6 md:mb-8 leading-tight text-on-background whitespace-pre-line">
+                          {renderTitle(chapter.title)}
+                        </h2>
                         {/* Large Editorial Quote */}
                         <div className="border-l border-primary/20 pl-6 md:pl-8 mb-8">
                           <p className="font-display text-2xl md:text-3xl lg:text-4xl italic leading-relaxed text-on-background">
