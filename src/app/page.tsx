@@ -231,12 +231,12 @@ export default function Home() {
     const lenis = new Lenis({
       wrapper: container,
       content: (container.firstElementChild as HTMLElement) || container,
-      duration: 1.4,
+      duration: 1.0,
       easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
       orientation: "vertical",
       gestureOrientation: "vertical",
       smoothWheel: true,
-      wheelMultiplier: 1.1,
+      wheelMultiplier: 1.0,
       touchMultiplier: 1.5,
     });
 
@@ -270,10 +270,11 @@ export default function Home() {
         entries.forEach((entry) => {
           if (entry.isIntersecting) {
             setActiveChapter(entry.target.id);
+            entry.target.classList.add("visited");
           }
         });
       },
-      { root: container, threshold: 0.4 }
+      { root: container, threshold: 0.15 }
     );
     sections.forEach((section) => observer.observe(section));
 
@@ -439,7 +440,7 @@ export default function Home() {
         {chapters.map((chapter) => (
           <div
             key={`bg-${chapter.id}`}
-            className={`absolute inset-0 transition-opacity duration-[1400ms] ease-in-out ${
+            className={`absolute inset-0 transition-opacity duration-[750ms] ease-out ${
               activeChapter === chapter.id
                 ? chapter.id === "section-1"
                   ? "opacity-60"
