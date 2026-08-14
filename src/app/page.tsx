@@ -260,7 +260,7 @@ export default function Home() {
     if (!container) return;
 
     const handleScroll = () => {
-      setIsScrolled(container.scrollTop > 50);
+      setIsScrolled(container.scrollTop > 20);
     };
     container.addEventListener("scroll", handleScroll);
 
@@ -882,10 +882,12 @@ export default function Home() {
         <Footer />
       </div>
 
-      {/* Floating Scroll Indicator (hidden at section 7) */}
+      {/* Floating Scroll Indicator (Only in Hero section, disappears as soon as user scrolls) */}
       <div
-        className={`scroll-indicator transition-opacity duration-700 ${
-          activeChapter === "section-7" ? "opacity-0 pointer-events-none" : "opacity-100"
+        className={`scroll-indicator transition-all duration-700 pointer-events-none ${
+          activeChapter === "section-1" && !isScrolled
+            ? "opacity-100 translate-y-0"
+            : "opacity-0 translate-y-4"
         }`}
       >
         <span className="font-body text-[9px] uppercase tracking-[0.4em]">Scroll</span>

@@ -134,8 +134,8 @@ export default function Page1() {
           </p>
         </div>
 
-        {/* Floating Scroll Indicator */}
-        <div className="absolute bottom-8 left-1/2 -translate-x-1/2 z-10 flex flex-col items-center gap-2 opacity-80 animate-bounce">
+        {/* Floating Scroll Indicator (Only in Hero, fades on scroll) */}
+        <div className={`absolute bottom-8 left-1/2 -translate-x-1/2 z-10 flex flex-col items-center gap-2 transition-all duration-700 pointer-events-none ${isScrolled ? "opacity-0 translate-y-4" : "opacity-80 translate-y-0 animate-bounce"}`}>
           <span className="text-[#E8DDCB] text-[9px] uppercase tracking-[0.4em] font-body">Scroll</span>
           <div className="w-[1px] h-8 bg-gradient-to-b from-[#C4913A] to-transparent"></div>
         </div>
