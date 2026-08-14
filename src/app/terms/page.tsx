@@ -55,12 +55,15 @@ export default function TermsPage() {
               className="h-16 md:h-20 w-auto object-contain hero-logo-float drop-shadow-[0_0_15px_rgba(196,145,58,0.35)]"
             />
           </div>
-          <p className="text-secondary text-[10px] uppercase tracking-[0.6em] mb-4 font-body">
+          <p className="text-secondary text-[10px] uppercase tracking-[0.6em] mb-3 font-body">
             Legal &amp; Policies
           </p>
-          <h1 className="font-display text-3xl sm:text-4xl md:text-5xl mb-4 leading-tight text-on-background">
-            {currentPolicy.title}
+          <h1 className="font-display text-4xl sm:text-5xl md:text-6xl mb-3 leading-tight text-on-background">
+            Privacy &amp; Terms
           </h1>
+          <p className="text-primary font-display text-xl sm:text-2xl tracking-wide mb-4">
+            {currentPolicy.title}
+          </p>
           <div className="gold-divider max-w-[300px] mx-auto my-6 opacity-75"></div>
           <p className="text-on-background/70 text-xs sm:text-sm font-body tracking-wider uppercase">
             Last Updated: {currentPolicy.lastUpdated} &bull; Deuxsentique Ltd
