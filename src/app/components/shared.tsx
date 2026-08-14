@@ -15,13 +15,10 @@ export function Footer({ logoSrc = "/Assets/logo/ICON blk trnsprnt.png" }: { log
       <nav className="flex flex-wrap justify-center gap-6 md:gap-12 text-[9px] uppercase tracking-[0.3em] text-on-background/50">
         <Link className="hover:text-on-background transition-colors" href="/about">Our Story</Link>
         <Link className="hover:text-on-background transition-colors" href="/first-embrace">First Embrace</Link>
-        <Link className="hover:text-on-background transition-colors" href="#">Privacy</Link>
-        <Link className="hover:text-on-background transition-colors" href="#">Terms</Link>
-        <Link className="hover:text-on-background transition-colors" href="#">Contact</Link>
+        <Link className="hover:text-on-background transition-colors" href="/terms#privacy">Privacy</Link>
+        <Link className="hover:text-on-background transition-colors" href="/terms">Terms</Link>
+        <a className="hover:text-on-background transition-colors" href="mailto:customer-service@deuxsentique.com">Contact</a>
       </nav>
-      <div className="text-[9px] tracking-[0.2em] text-on-background/30">
-        © MMXXIV. LONDON.
-      </div>
     </footer>
   );
 }

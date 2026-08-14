@@ -51,23 +51,31 @@ export default function FirstEmbracePage() {
 
           {!submitted ? (
             mounted ? (
-              <form onSubmit={handleSubmit} className="w-full flex flex-col gap-6 md:gap-8 max-w-md mx-auto" id="waitlist-form">
-                <div className="relative">
+              <form onSubmit={handleSubmit} className="w-full flex flex-col gap-6 md:gap-8 max-w-md mx-auto items-center" id="waitlist-form">
+                {/* Clean Editorial Email Input Field */}
+                <div className="w-full relative px-2">
                   <input
                     type="email"
                     id="email"
                     required
                     value={email}
                     onChange={(e) => setEmail(e.target.value)}
-                    placeholder="EMAIL ADDRESS"
-                    className="w-full bg-transparent border-0 border-b border-primary/20 text-[#1A1A1A] py-3 text-[11px] tracking-[0.3em] uppercase focus:outline-none focus:border-primary transition-colors text-center"
+                    placeholder="ENTER YOUR EMAIL ADDRESS"
+                    className="w-full bg-transparent border-b border-primary/40 focus:border-primary pb-3 pt-2 text-on-background text-[12px] sm:text-[13px] tracking-[0.25em] text-center uppercase placeholder:text-on-background/50 placeholder:tracking-[0.20em] transition-all duration-300 focus:outline-none font-display font-medium"
                   />
                 </div>
+
+                {/* Authentic Parchment Scroll Request Invitation Submit Button */}
                 <button
                   type="submit"
-                  className="w-full font-body text-[10px] uppercase tracking-[0.3em] border border-primary text-primary py-4 hover:bg-primary hover:text-background transition-all duration-700 cursor-pointer"
+                  className="relative group cursor-pointer border-none bg-transparent p-0 transition-all duration-500 hover:scale-[1.03] active:scale-[0.97] focus:outline-none flex items-center justify-center my-1 select-none"
+                  aria-label="Request Invitation"
                 >
-                  Request Invitation
+                  <img
+                    src="/Assets/scroll_request_invitation.png"
+                    alt="Request Invitation"
+                    className="w-full max-w-[300px] sm:max-w-[340px] md:max-w-[360px] h-auto object-contain drop-shadow-[0_8px_20px_rgba(40,20,5,0.20)] group-hover:drop-shadow-[0_12px_28px_rgba(196,145,58,0.30)] transition-all duration-500"
+                  />
                 </button>
               </form>
             ) : (

@@ -307,15 +307,17 @@ export default function Page1() {
             </p>
 
             {!submitted ? (
-              <form onSubmit={handleSubmit} className="w-full flex flex-col gap-5 max-w-md text-left">
-                <div>
+              <form onSubmit={handleSubmit} className="w-full flex flex-col gap-6 max-w-md text-left items-center">
+                {/* Clean Editorial Email Input Field */}
+                <div className="w-full relative px-2">
                   <input
                     type="email"
+                    id="email"
                     required
                     value={email}
                     onChange={(e) => setEmail(e.target.value)}
                     placeholder="ENTER YOUR EMAIL ADDRESS"
-                    className="w-full bg-[#FAF6F0] border border-[#C4913A]/40 text-[#2D1F1D] py-4 px-6 rounded-xl text-[11px] tracking-[0.25em] focus:outline-none focus:border-[#C4913A] focus:ring-1 focus:ring-[#C4913A] text-center placeholder-[#8C7A6B] font-body font-light transition-all shadow-inner"
+                    className="w-full bg-transparent border-b border-[#C4913A]/40 focus:border-[#C4913A] pb-3 pt-2 text-[#2D1F1D] text-[12px] sm:text-[13px] tracking-[0.25em] text-center uppercase placeholder:text-[#4A3B32]/60 placeholder:tracking-[0.20em] transition-all duration-300 focus:outline-none font-display font-medium"
                   />
                 </div>
 
@@ -332,12 +334,17 @@ export default function Page1() {
                   </span>
                 </label>
 
-                {/* Updated Premium Button */}
+                {/* Authentic Parchment Scroll Request Invitation Submit Button */}
                 <button
                   type="submit"
-                  className="w-full font-body text-[11px] uppercase tracking-[0.3em] bg-[#2D1F1D] text-[#FAF6F0] font-medium py-4 rounded-xl border border-[#C4913A]/50 hover:bg-[#C4913A] hover:text-[#1A1916] hover:border-[#C4913A] transition-all duration-500 cursor-pointer shadow-[0_8px_25px_rgba(45,31,29,0.2)] hover:shadow-[0_0_25px_rgba(196,145,58,0.4)]"
+                  className="relative group cursor-pointer border-none bg-transparent p-0 transition-all duration-500 hover:scale-[1.03] active:scale-[0.97] focus:outline-none flex items-center justify-center my-1 select-none"
+                  aria-label="Request Invitation"
                 >
-                  Request Invitation
+                  <img
+                    src="/Assets/scroll_request_invitation.png"
+                    alt="Request Invitation"
+                    className="w-full max-w-[300px] sm:max-w-[340px] md:max-w-[360px] h-auto object-contain drop-shadow-[0_8px_20px_rgba(45,31,29,0.20)] group-hover:drop-shadow-[0_12px_28px_rgba(196,145,58,0.30)] transition-all duration-500"
+                  />
                 </button>
 
                 {/* Privacy Text */}

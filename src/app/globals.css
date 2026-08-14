@@ -799,7 +799,7 @@ input:-webkit-autofill:focus {
 
 .blend-painting {
   mix-blend-mode: multiply;
-  filter: contrast(1.08) brightness(1.05);
+  filter: contrast(1.18) brightness(1.08);
 }
 
 /* Scroll reveal and ambient float animations for illustrations */

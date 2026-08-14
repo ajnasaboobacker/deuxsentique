@@ -46,7 +46,7 @@ export default function Page2() {
             <div className="md:col-span-6 flex justify-end scroll-reveal-container">
               <div className="cinematic-frame w-full max-w-[480px] animate-float-slow">
                 <img
-                  src="/about_beginning.png"
+                  src="/about_philosophy.png"
                   alt="The Beginning of Deuxsentique"
                   className="w-full h-auto object-contain max-h-[60vh] blend-painting"
                 />
@@ -96,7 +96,7 @@ export default function Page2() {
             <div className="md:col-span-6 flex justify-start scroll-reveal-container">
               <div className="cinematic-frame w-full max-w-[480px] animate-float-fast">
                 <img
-                  src="/about_philosophy.png"
+                  src="/about_beginning.png"
                   alt="Our Philosophy"
                   className="w-full h-auto object-contain max-h-[60vh] blend-painting"
                 />

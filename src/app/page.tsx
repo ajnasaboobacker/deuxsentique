@@ -51,11 +51,11 @@ const chapters: Chapter[] = [
   {
     id: "section-4",
     num: "Section IV",
-    title: "Designed to Stay Close",
+    title: "",
     desc: "Some fragrances fill a room.\n\nOurs are created to become part of yours.\n\nDesigned to remain close.\n\nCreated for meaningful moments.\n\nDiscovered only by those nearest to you.",
     imageUrl: "/chapters/ch05_painting.png",
     bgImageUrl: "/chapters/ch05_painting.png",
-    imageAlt: "Designed to Stay Close",
+    imageAlt: "Section IV",
     layout: "asymmetric",
   },
   {
@@ -649,9 +649,11 @@ export default function Home() {
                         <p className="text-secondary text-[10px] uppercase tracking-[0.6em] mb-6 md:mb-8 font-body reveal-subtitle">
                           {chapter.num}
                         </p>
-                        <h2 className="font-display text-2xl md:text-4xl lg:text-5xl mb-6 md:mb-8 leading-tight text-on-background whitespace-pre-line">
-                          {renderTitle(chapter.title)}
-                        </h2>
+                        {chapter.title && (
+                          <h2 className="font-display text-2xl md:text-4xl lg:text-5xl mb-6 md:mb-8 leading-tight text-on-background whitespace-pre-line">
+                            {renderTitle(chapter.title)}
+                          </h2>
+                        )}
                         {/* Large Editorial Quote */}
                         <div className="border-l border-primary/20 pl-6 md:pl-8 mb-8">
                           <p className="font-display text-2xl md:text-3xl lg:text-4xl italic leading-relaxed text-on-background">
@@ -696,11 +698,11 @@ export default function Home() {
                         </h2>
                         <div className="h-24 flex items-center reveal-desc">
                           <span className="font-display text-4xl md:text-6xl tracking-wide text-primary transition-all duration-700 ease-in-out">
-                            {["Story", "Craftsmanship", "Emotion", "Authenticity", "Connection", "Timelessness"][beliefIdx]}
+                            {["Emotion First", "Authenticity", "Craftsmanship", "Connection", "Quiet Luxury", "Timelessness"][beliefIdx]}
                           </span>
                         </div>
                         <div className="flex flex-wrap gap-4 mt-6 text-[10px] uppercase tracking-[0.3em] text-on-background/30 font-body reveal-desc">
-                          {["Story", "Craftsmanship", "Emotion", "Authenticity", "Connection", "Timelessness"].map((word, idx) => (
+                          {["Emotion First", "Authenticity", "Craftsmanship", "Connection", "Quiet Luxury", "Timelessness"].map((word, idx) => (
                             <span key={word} className={`transition-colors duration-500 ${idx === beliefIdx ? "text-primary font-medium" : ""}`}>
                               {word} {idx < 5 && <span className="ml-4 text-on-background/15">•</span>}
                             </span>
@@ -778,36 +780,17 @@ export default function Home() {
                         mounted ? (
                           <form onSubmit={handleSubmit} className="w-full max-w-[480px] flex flex-col items-center gap-6 mx-auto relative z-20 reveal-frame" id="waitlist-form">
                             
-                            {/* Scroll-styled Email Input Container matching screenshot 100% */}
-                            <div className="relative w-full max-w-[500px] h-[54px] flex items-center mx-auto my-2 select-none">
-                              {/* Left 3D Wooden Scroll Handle */}
-                              <ScrollRollerHandle side="left" />
-
-                              {/* Parchment Paper Banner Container */}
-                              <div className="relative w-full h-full bg-gradient-to-b from-[#EBD9BD] via-[#DFCAAA] to-[#D3BD99] border-y-2 border-[#8C5832] shadow-[0_4px_15px_rgba(0,0,0,0.18)] flex items-center overflow-hidden">
-                                
-                                {/* Inner Gold framing trim lines */}
-                                <div className="absolute inset-x-0 top-[3px] h-[1px] bg-[#B88E4C]/70" />
-                                <div className="absolute inset-x-0 bottom-[3px] h-[1px] bg-[#B88E4C]/70" />
-
-                                {/* Inset vignette shadows on paper edges */}
-                                <div className="absolute left-0 top-0 bottom-0 w-8 bg-gradient-to-r from-[#5C3F14]/30 to-transparent pointer-events-none z-10" />
-                                <div className="absolute right-0 top-0 bottom-0 w-8 bg-gradient-to-l from-[#5C3F14]/30 to-transparent pointer-events-none z-10" />
-
-                                {/* Real Editable Email Input */}
-                                <input
-                                  type="email"
-                                  id="email"
-                                  required
-                                  value={email}
-                                  onChange={(e) => setEmail(e.target.value)}
-                                  placeholder="ENTER YOUR EMAIL ADDRESS"
-                                  className="w-full h-full bg-transparent text-[#3A2418] text-[12px] sm:text-[13px] md:text-[14px] tracking-[0.25em] text-center uppercase placeholder:text-[#5C3F14]/85 placeholder:tracking-[0.24em] transition-all duration-300 focus:outline-none font-body font-semibold px-8 relative z-20"
-                                />
-                              </div>
-
-                              {/* Right 3D Wooden Scroll Handle */}
-                              <ScrollRollerHandle side="right" />
+                            {/* Clean Editorial Email Input Field */}
+                            <div className="w-full max-w-[420px] relative px-2">
+                              <input
+                                type="email"
+                                id="email"
+                                required
+                                value={email}
+                                onChange={(e) => setEmail(e.target.value)}
+                                placeholder="ENTER YOUR EMAIL ADDRESS"
+                                className="w-full bg-transparent border-b border-[#8C5832]/40 focus:border-[#8C5832] pb-3 pt-2 text-[#3A2418] text-[12px] sm:text-[13px] tracking-[0.25em] text-center uppercase placeholder:text-[#633A18]/60 placeholder:tracking-[0.20em] transition-all duration-300 focus:outline-none font-display font-medium"
+                              />
                             </div>
 
                             {/* GDPR Marketing Consent Checkbox */}
@@ -823,13 +806,18 @@ export default function Home() {
                               </span>
                             </label>
 
-                            {/* Real Clickable Submit Button with liquid metal animation */}
-                            <LiquidMetalButton
+                            {/* Authentic Parchment Scroll Request Invitation Submit Button */}
+                            <button
                               type="submit"
-                              label="Request Invitation"
-                              width={340}
-                              height={52}
-                            />
+                              className="relative group cursor-pointer border-none bg-transparent p-0 transition-all duration-500 hover:scale-[1.03] active:scale-[0.97] focus:outline-none flex items-center justify-center my-1 select-none"
+                              aria-label="Request Invitation"
+                            >
+                              <img
+                                src="/Assets/scroll_request_invitation.png"
+                                alt="Request Invitation"
+                                className="w-full max-w-[300px] sm:max-w-[340px] md:max-w-[360px] h-auto object-contain drop-shadow-[0_8px_20px_rgba(40,20,5,0.20)] group-hover:drop-shadow-[0_12px_28px_rgba(40,20,5,0.30)] transition-all duration-500"
+                              />
+                            </button>
                           </form>
                         ) : null
                       ) : (

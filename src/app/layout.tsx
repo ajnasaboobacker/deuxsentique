@@ -44,7 +44,7 @@ export default function RootLayout({
 
         {/* Brand watermarks */}
         <div className="brand-watermark-left">Two Souls. One Essence.</div>
-        <div className="brand-watermark-right">Deuxsentique House. London.</div>
+        <div className="brand-watermark-right">Deuxsentique Storytelling Perfume House</div>
 
         {children}
       </body>
