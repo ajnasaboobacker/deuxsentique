@@ -217,7 +217,7 @@ export default function Page1() {
               <h2 className="!mt-0">Designed to Stay Close</h2>
               <SmokeQuote>
                 <p className="font-display text-xl md:text-2xl lg:text-3xl italic text-[#1A1916] leading-relaxed">
-                  &ldquo;The fragrance is discovered, not announced.&rdquo;
+                  &ldquo;Ours are created to become part of your story.&rdquo;
                 </p>
               </SmokeQuote>
               <p>

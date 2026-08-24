@@ -467,7 +467,7 @@ export default function Home() {
 
       {/* Floating Left Vertical Timeline Track */}
       <div className="timeline-track hidden md:flex">
-        {chapters.map((chapter, i) => (
+        {chapters.map((chapter) => (
           <button
             key={`dot-${chapter.id}`}
             onClick={() => scrollToSection(chapter.id)}
@@ -636,7 +636,7 @@ export default function Home() {
                         {/* Large Editorial Quote */}
                         <div className="border-l border-primary/20 pl-6 md:pl-8 mb-8">
                           <p className="font-display text-2xl md:text-3xl lg:text-4xl italic leading-relaxed text-on-background">
-                            &ldquo;The fragrance is discovered, not announced.&rdquo;
+                            &ldquo;Ours are created to become part of your story.&rdquo;
                           </p>
                         </div>
                         <p className="text-on-background/95 leading-relaxed text-[16px] md:text-[18px] lg:text-[19px] font-body font-normal italic reveal-desc whitespace-pre-line">
