@@ -304,7 +304,7 @@ export default function Page1() {
               Begin Your Journey
             </h2>
             <p className="text-[#4A3B32]/90 mb-8 text-[13px] md:text-[14px] font-body font-light leading-relaxed max-w-md">
-              Request your invitation to enter the world of Deuxsentique. Receive exclusive stories, early access and carefully curated updates as our journey unfolds.
+              Request your invitation to enter the world of Deuxsentique.<br /><br />Discover intimate brand stories, early access and thoughtfully selected news from the house.
             </p>
 
             {!submitted ? (

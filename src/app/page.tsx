@@ -65,7 +65,7 @@ const chapters: Chapter[] = [
   {
     id: "section-6",
     title: "Begin Your Journey",
-    desc: "Request your invitation to enter the world of Deuxsentique.\n\nReceive exclusive stories, behind-the-scenes moments and carefully curated updates as our journey unfolds.",
+    desc: "Request your invitation to enter the world of Deuxsentique.\n\nDiscover intimate brand stories, early access and thoughtfully selected news from the house.",
     imageUrl: "/chapters/ch100_seamless.png",
     bgImageUrl: "/chapters/ch100_seamless.png",
     imageAlt: "Begin Your Journey",
@@ -746,10 +746,10 @@ export default function Home() {
                       {/* Animated Supporting Description Sentences */}
                       <div className="max-w-[540px] mx-auto mb-8 font-body font-light italic leading-relaxed text-[#3A2418]/90 text-[13px] sm:text-[14px] md:text-[15px]">
                         <p className="reveal-desc mb-2" style={{ transitionDelay: "600ms" }}>
-                          Embark on a fragrant odyssey where every scent tells a story of two souls united.
+                          Request your invitation to enter the world of Deuxsentique.
                         </p>
                         <p className="reveal-desc" style={{ transitionDelay: "900ms" }}>
-                          Receive exclusive tales, behind-the-scenes moments, and curated updates as our narrative unfolds.
+                          Discover intimate brand stories, early access and thoughtfully selected news from the house.
                         </p>
                       </div>
 
