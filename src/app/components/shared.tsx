@@ -16,7 +16,7 @@ export function Footer({ logoSrc = "/Assets/logo/ICON blk trnsprnt.png" }: { log
         <Link className="hover:text-on-background transition-colors" href="/about">Our Story</Link>
         <Link className="hover:text-on-background transition-colors" href="/first-embrace">First Embrace</Link>
         <Link className="hover:text-on-background transition-colors" href="/terms">Privacy &amp; Terms</Link>
-        <a className="hover:text-on-background transition-colors" href="mailto:customer-service@deuxsentique.com">Contact</a>
+        <Link className="hover:text-on-background transition-colors" href="/contact">Contact</Link>
       </nav>
     </footer>
   );
@@ -92,6 +92,12 @@ export function PageHeader({
           >
             First Embrace
           </Link>
+          <Link
+            href="/contact"
+            className="hidden md:inline-block font-body text-[9px] md:text-[10px] uppercase tracking-[0.3em] text-[#fec6a1]/70 hover:text-primary transition-colors font-medium"
+          >
+            Contact
+          </Link>
 
           {/* Soundscape toggle */}
           {showSoundscape && toggleAmbientAudio && (
@@ -149,6 +155,9 @@ export function PageHeader({
         </Link>
         <Link href="/first-embrace" onClick={() => setMenuOpen(false)} className="font-display text-2xl tracking-[0.3em] uppercase text-on-background hover:text-primary transition-colors">
           First Embrace
+        </Link>
+        <Link href="/contact" onClick={() => setMenuOpen(false)} className="font-display text-2xl tracking-[0.3em] uppercase text-on-background hover:text-primary transition-colors">
+          Contact
         </Link>
         {scrollToSection ? (
           <button

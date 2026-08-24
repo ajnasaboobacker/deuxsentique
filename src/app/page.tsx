@@ -4,11 +4,10 @@ import { useEffect, useState, useRef } from "react";
 import Link from "next/link";
 import Lenis from "lenis";
 import { PageHeader, Footer } from "./components/shared";
-import { LiquidMetalButton } from "@/components/ui/liquid-metal-button";
+import { LuxuryAnimatedButton } from "@/components/ui/luxury-animated-button";
 
 interface Chapter {
   id: string;
-  num: string;
   title: string;
   desc: string;
   imageUrl: string;
@@ -20,7 +19,6 @@ interface Chapter {
 const chapters: Chapter[] = [
   {
     id: "section-1",
-    num: "Section I",
     title: "Two Souls. One Essence.",
     desc: "A Storytelling Perfume House",
     imageUrl: "/chapters/ch02_painting.png",
@@ -30,7 +28,6 @@ const chapters: Chapter[] = [
   },
   {
     id: "section-2",
-    num: "Section II",
     title: "Every Story Deserves an Essence.",
     desc: "Behind every fragrance is a real human story.\n\nEverything else begins from there.",
     imageUrl: "/chapters/ch04_painting.png",
@@ -40,7 +37,6 @@ const chapters: Chapter[] = [
   },
   {
     id: "section-3",
-    num: "Section III",
     title: "Our Creative Philosophy",
     desc: "",
     imageUrl: "/chapters/ch08_painting.png",
@@ -50,7 +46,6 @@ const chapters: Chapter[] = [
   },
   {
     id: "section-4",
-    num: "Section IV",
     title: "",
     desc: "Some fragrances fill a room.\n\nOurs are created to become part of yours.\n\nDesigned to remain close.\n\nCreated for meaningful moments.\n\nDiscovered only by those nearest to you.",
     imageUrl: "/chapters/ch05_painting.png",
@@ -60,7 +55,6 @@ const chapters: Chapter[] = [
   },
   {
     id: "section-5",
-    num: "Section V",
     title: "What We Believe",
     desc: "",
     imageUrl: "/chapters/ch10_painting.png",
@@ -70,7 +64,6 @@ const chapters: Chapter[] = [
   },
   {
     id: "section-6",
-    num: "Section VI",
     title: "Begin Your Journey",
     desc: "Request your invitation to enter the world of Deuxsentique.\n\nReceive exclusive stories, behind-the-scenes moments and carefully curated updates as our journey unfolds.",
     imageUrl: "/chapters/ch100_seamless.png",
@@ -80,7 +73,6 @@ const chapters: Chapter[] = [
   },
   {
     id: "section-7",
-    num: "Section VII",
     title: "Continue the Journey",
     desc: "",
     imageUrl: "/chapters/ch09_painting.png",
@@ -482,7 +474,6 @@ export default function Home() {
             className={`timeline-dot cursor-pointer focus:outline-none ${
               activeChapter === chapter.id ? "active" : ""
             }`}
-            data-chapter={`0${i + 1}`}
           ></button>
         ))}
       </div>
@@ -555,9 +546,6 @@ export default function Home() {
                   <>
                     <div className="md:col-span-6 flex justify-start">
                       <div className="glass-editorial-panel w-full max-w-[580px] reveal-frame">
-                        <p className="text-secondary text-[10px] uppercase tracking-[0.6em] mb-6 md:mb-8 font-body reveal-subtitle">
-                          {chapter.num}
-                        </p>
                         <h2 className="font-display text-2xl md:text-4xl lg:text-5xl mb-6 md:mb-8 leading-tight text-on-background whitespace-pre-line">
                           {renderTitle(chapter.title)}
                         </h2>
@@ -591,9 +579,6 @@ export default function Home() {
                     </div>
                     <div className="md:col-span-6 flex justify-end">
                       <div className="glass-editorial-panel w-full max-w-[580px] reveal-frame">
-                        <p className="text-secondary text-[10px] uppercase tracking-[0.6em] mb-6 md:mb-8 font-body reveal-subtitle">
-                          {chapter.num}
-                        </p>
                         <h2 className="font-display text-2xl md:text-4xl lg:text-5xl mb-6 md:mb-8 leading-tight text-on-background whitespace-pre-line">
                           {renderTitle(chapter.title)}
                         </h2>
@@ -609,9 +594,6 @@ export default function Home() {
                   <>
                     <div className="md:col-span-6 flex justify-start">
                       <div className="glass-editorial-panel w-full max-w-[580px] reveal-frame">
-                        <p className="text-secondary text-[10px] uppercase tracking-[0.6em] mb-6 md:mb-8 font-body reveal-subtitle">
-                          {chapter.num}
-                        </p>
                         <h2 className="font-display text-2xl md:text-4xl lg:text-5xl mb-12 leading-tight text-on-background">
                           {renderTitle(chapter.title)}
                         </h2>
@@ -646,9 +628,6 @@ export default function Home() {
                   <>
                     <div className="md:col-span-7 flex justify-start">
                       <div className="glass-editorial-panel w-full max-w-[620px] reveal-frame">
-                        <p className="text-secondary text-[10px] uppercase tracking-[0.6em] mb-6 md:mb-8 font-body reveal-subtitle">
-                          {chapter.num}
-                        </p>
                         {chapter.title && (
                           <h2 className="font-display text-2xl md:text-4xl lg:text-5xl mb-6 md:mb-8 leading-tight text-on-background whitespace-pre-line">
                             {renderTitle(chapter.title)}
@@ -690,9 +669,6 @@ export default function Home() {
                     </div>
                     <div className="md:col-span-6 flex justify-end">
                       <div className="glass-editorial-panel w-full max-w-[580px] reveal-frame">
-                        <p className="text-secondary text-[10px] uppercase tracking-[0.6em] mb-6 md:mb-8 font-body reveal-subtitle">
-                          {chapter.num}
-                        </p>
                         <h2 className="font-display text-2xl md:text-4xl lg:text-5xl mb-12 leading-tight text-on-background">
                           {renderTitle(chapter.title)}
                         </h2>
@@ -806,18 +782,8 @@ export default function Home() {
                               </span>
                             </label>
 
-                            {/* Authentic Parchment Scroll Request Invitation Submit Button */}
-                            <button
-                              type="submit"
-                              className="relative group cursor-pointer border-none bg-transparent p-0 transition-all duration-500 hover:scale-[1.03] active:scale-[0.97] focus:outline-none flex items-center justify-center my-1 select-none"
-                              aria-label="Request Invitation"
-                            >
-                              <img
-                                src="/Assets/scroll_request_invitation.png"
-                                alt="Request Invitation"
-                                className="w-full max-w-[300px] sm:max-w-[340px] md:max-w-[360px] h-auto object-contain drop-shadow-[0_8px_20px_rgba(40,20,5,0.20)] group-hover:drop-shadow-[0_12px_28px_rgba(40,20,5,0.30)] transition-all duration-500"
-                              />
-                            </button>
+                            {/* Animated Luxury Theme Button */}
+                            <LuxuryAnimatedButton type="submit" label="Request Invitation" />
                           </form>
                         ) : null
                       ) : (
@@ -852,9 +818,6 @@ export default function Home() {
                 {chapter.layout === "socials" && (
                   <div className="md:col-span-12 flex justify-center text-center">
                     <div className="glass-editorial-panel w-full max-w-[580px] flex flex-col items-center reveal-frame">
-                      <p className="text-secondary text-[10px] uppercase tracking-[0.6em] mb-6 md:mb-8 font-body reveal-subtitle">
-                        {chapter.num}
-                      </p>
                       <h2 className="font-display text-2xl md:text-4xl lg:text-5xl mb-12 leading-tight text-on-background">
                         {renderTitle(chapter.title)}
                       </h2>

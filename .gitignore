@@ -39,3 +39,7 @@ yarn-error.log*
 # typescript
 *.tsbuildinfo
 next-env.d.ts
+
+# Large assets and archives
+*.zip
+/public/Assets/kerala  product shoot/

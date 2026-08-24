@@ -188,3 +188,65 @@ export async function deleteInvitation(id: string) {
   return { success: false, error: "Invitation not found" };
 }
 
+export interface ContactMessage {
+  id: string;
+  name: string;
+  email: string;
+  inquiry_type: string;
+  message: string;
+  created_at: string;
+}
+
+const contactMessagesCache: ContactMessage[] = [];
+
+/**
+ * Add a new contact message directly to Supabase table or fallback storage
+ */
+export async function addContactMessage(
+  name: string,
+  email: string,
+  inquiry_type: string,
+  message: string
+) {
+  const cleanEmail = email.trim().toLowerCase();
+
+  if (checkIsSupabaseConfigured()) {
+    try {
+      const client = getSupabaseClient();
+      const { data, error } = await client
+        .from("contact_messages")
+        .insert([
+          {
+            name: name.trim(),
+            email: cleanEmail,
+            inquiry_type,
+            message: message.trim(),
+          },
+        ])
+        .select()
+        .single();
+
+      if (error) {
+        console.error("Supabase contact insert error:", error);
+        throw error;
+      }
+      return { success: true, data };
+    } catch (err) {
+      console.warn("Falling back to local cache due to Supabase error:", err);
+    }
+  }
+
+  // Memory fallback
+  const newMessage: ContactMessage = {
+    id: `msg-${Date.now()}`,
+    name: name.trim(),
+    email: cleanEmail,
+    inquiry_type,
+    message: message.trim(),
+    created_at: new Date().toISOString(),
+  };
+  contactMessagesCache.unshift(newMessage);
+  console.log("Contact submission received (in-memory):", newMessage);
+  return { success: true, data: newMessage };
+}
+

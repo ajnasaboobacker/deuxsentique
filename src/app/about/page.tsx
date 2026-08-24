@@ -13,7 +13,7 @@ export default function AboutPage() {
     <>
       <PageHeader />
 
-      <main className="inner-page page-fade-in">
+      <main className="inner-page page-fade-in active">
         <ScrollReveal />
 
         {/* Hero Section */}

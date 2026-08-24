@@ -45,7 +45,7 @@ export default function TermsPage() {
     <>
       <PageHeader />
 
-      <main className="inner-page page-fade-in min-h-screen pt-24 md:pt-32 pb-24 px-4 sm:px-6 md:px-12 max-w-[1280px] mx-auto">
+      <main className="inner-page page-fade-in active min-h-screen pt-24 md:pt-32 pb-24 px-4 sm:px-6 md:px-12 max-w-[1280px] mx-auto">
         {/* Header Banner */}
         <section className="text-center pt-8 pb-12 md:pb-16 max-w-3xl mx-auto">
           <div className="flex justify-center mb-6 reveal-frame">

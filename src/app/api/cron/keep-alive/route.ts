@@ -41,10 +41,10 @@ export async function GET() {
       count: count ?? 0,
       timestamp: new Date().toISOString(),
     });
-  } catch (err: any) {
+  } catch (err) {
     console.error("Keep-alive route failure:", err);
     return NextResponse.json(
-      { success: false, error: err?.message || "Unknown error", timestamp: new Date().toISOString() },
+      { success: false, error: err instanceof Error ? err.message : "Unknown error", timestamp: new Date().toISOString() },
       { status: 500 }
     );
   }

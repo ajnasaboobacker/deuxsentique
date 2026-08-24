@@ -5,6 +5,7 @@ import Link from "next/link";
 import { PageHeader, Footer } from "../components/shared";
 import ScrollReveal from "../components/scroll-reveal";
 import SmokeQuote from "../components/smoke-quote";
+import { LuxuryAnimatedButton } from "@/components/ui/luxury-animated-button";
 
 export default function Page1() {
   const [email, setEmail] = useState("");
@@ -334,18 +335,8 @@ export default function Page1() {
                   </span>
                 </label>
 
-                {/* Authentic Parchment Scroll Request Invitation Submit Button */}
-                <button
-                  type="submit"
-                  className="relative group cursor-pointer border-none bg-transparent p-0 transition-all duration-500 hover:scale-[1.03] active:scale-[0.97] focus:outline-none flex items-center justify-center my-1 select-none"
-                  aria-label="Request Invitation"
-                >
-                  <img
-                    src="/Assets/scroll_request_invitation.png"
-                    alt="Request Invitation"
-                    className="w-full max-w-[300px] sm:max-w-[340px] md:max-w-[360px] h-auto object-contain drop-shadow-[0_8px_20px_rgba(45,31,29,0.20)] group-hover:drop-shadow-[0_12px_28px_rgba(196,145,58,0.30)] transition-all duration-500"
-                  />
-                </button>
+                {/* Animated Luxury Theme Button */}
+                <LuxuryAnimatedButton type="submit" label="Request Invitation" />
 
                 {/* Privacy Text */}
                 <p className="text-[9px] uppercase tracking-[0.25em] text-[#8C7A6B] font-body font-light text-center mt-1">
