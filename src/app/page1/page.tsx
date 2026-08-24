@@ -160,7 +160,7 @@ export default function Page1() {
             <div className="md:col-span-6 flex justify-end">
               <div className="cinematic-frame w-full max-w-[480px] animate-float-slow">
                 <img
-                  src="/chapters/ch04_painting.png"
+                  src="/chapters/ch02_painting.png"
                   alt="Brand Introduction"
                   className="w-full h-auto object-contain max-h-[60vh] blend-painting"
                 />
