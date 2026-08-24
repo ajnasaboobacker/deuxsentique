@@ -573,7 +573,9 @@ export default function Home() {
                         <img
                           src={chapter.imageUrl}
                           alt={chapter.imageAlt}
-                          className="w-full h-auto object-contain max-h-[65vh] blend-painting"
+                          className={`w-full h-auto object-contain max-h-[65vh] ${
+                            chapter.imageUrl.includes("ch02_painting") ? "" : "blend-painting"
+                          }`}
                         />
                       </div>
                     </div>

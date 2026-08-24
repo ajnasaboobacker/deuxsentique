@@ -162,7 +162,7 @@ export default function Page1() {
                 <img
                   src="/chapters/ch02_painting.png"
                   alt="Brand Introduction"
-                  className="w-full h-auto object-contain max-h-[60vh] blend-painting"
+                  className="w-full h-auto object-contain max-h-[60vh]"
                 />
               </div>
             </div>
