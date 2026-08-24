@@ -47,7 +47,7 @@ const chapters: Chapter[] = [
   {
     id: "section-4",
     title: "",
-    desc: "Some fragrances fill a room.\n\nOurs are created to become part of yours.\n\nDesigned to remain close.\n\nCreated for meaningful moments.\n\nDiscovered only by those nearest to you.",
+    desc: "Some fragrances fill a room.\nOurs are created to become part of yours.\nDesigned to remain close.\nCreated for meaningful moments.\nDiscovered only by those nearest to you.",
     imageUrl: "/chapters/ch05_painting.png",
     bgImageUrl: "/chapters/ch05_painting.png",
     imageAlt: "Section IV",
