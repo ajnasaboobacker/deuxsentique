@@ -795,11 +795,10 @@ export default function Home() {
                             <span className="text-lg">✓</span>
                           </div>
                           <p className="text-[#8C5832] text-[11px] md:text-[12px] uppercase tracking-[0.5em] mb-2 font-body font-semibold">
-                            Invitation Sealed &amp; Requested
+                            You&rsquo;re now part of the Deuxsentique circle.
                           </p>
                           <p className="text-[#23150D] text-[12px] md:text-[13px] leading-relaxed font-body font-light italic">
-                            Your journey with Deuxsentique begins here.<br />
-                            We will share stories, updates and exclusive access as our first collection unfolds.
+                            From here, we&rsquo;ll keep you close to new releases, private moments and what comes next.
                           </p>
                         </div>
                       )}

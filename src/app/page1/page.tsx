@@ -349,11 +349,10 @@ export default function Page1() {
                   ✓
                 </div>
                 <p className="text-[#C4913A] text-[12px] uppercase tracking-[0.6em] mb-2 font-semibold">
-                  Invitation Requested
+                  You&rsquo;re now part of the Deuxsentique circle.
                 </p>
                 <p className="text-[#4A3B32]/90 text-[13px] leading-relaxed">
-                  Your journey with Deuxsentique begins here.<br />
-                  We will share stories, updates and exclusive access as our first collection unfolds.
+                  From here, we&rsquo;ll keep you close to new releases, private moments and what comes next.
                 </p>
               </div>
             )}

@@ -86,11 +86,10 @@ export default function FirstEmbracePage() {
           ) : (
             <div className="text-center max-w-md mx-auto transition-all duration-1000 animate-fadeIn" id="success-state">
               <p className="text-primary text-[12px] uppercase tracking-[0.6em] mb-4">
-                Thank you for requesting your invitation.
+                You&rsquo;re now part of the Deuxsentique circle.
               </p>
               <p className="text-on-background/70 text-[13px] leading-relaxed font-body font-light">
-                Your journey with Deuxsentique begins here.<br />
-                We&apos;ll share stories, updates and exclusive moments as we move towards our first collection.
+                From here, we&rsquo;ll keep you close to new releases, private moments and what comes next.
               </p>
             </div>
           )}
