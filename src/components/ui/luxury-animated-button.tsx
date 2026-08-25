@@ -43,19 +43,17 @@ export function LuxuryAnimatedButton({
         className={`relative overflow-hidden cursor-pointer rounded-full px-9 py-4 sm:px-11 sm:py-4.5
                    ${
                      isHovered
-                       ? "bg-gradient-to-b from-[#2A1E1C] via-[#1D1413] to-[#140D0C] border-[#C4913A] text-primary"
-                       : "bg-gradient-to-b from-[#E5B869] to-[#C4913A] border-[#B58028] text-[#1A1916]"
+                       ? "bg-gradient-to-b from-[#2A1E1C] via-[#1D1413] to-[#140D0C] border-[#C4913A] text-primary scale-[1.02] shadow-[0_12px_32px_rgba(196,145,58,0.25)]"
+                       : "bg-gradient-to-b from-[#E5B869] to-[#C4913A] border-[#B58028] text-[#1A1916] animate-luxury-pulse"
                    }
                    border
-                   shadow-[0_8px_25px_rgba(20,13,12,0.15)]
-                   hover:shadow-[0_12px_32px_rgba(196,145,58,0.25)]
                    transition-all duration-500 ease-out select-none
-                   ${isPressed ? "scale-[0.98]" : isHovered ? "scale-[1.02]" : "scale-100"}`}
+                   ${isPressed ? "scale-[0.98]" : ""}`}
       >
         {/* Animated Continuous Light Shimmer Sweep */}
         <span
-          className="absolute inset-0 w-full h-full bg-gradient-to-r from-transparent via-[#E5B869]/15 to-transparent
-                     -translate-x-full group-hover:translate-x-full transition-transform duration-1000 ease-out pointer-events-none"
+          className="absolute inset-0 w-full h-full bg-gradient-to-r from-transparent via-[#E5B869]/25 to-transparent
+                     pointer-events-none animate-shimmer"
         />
 
         {/* Ambient Pulsing Edge Ring */}
