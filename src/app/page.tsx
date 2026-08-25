@@ -175,6 +175,11 @@ export default function Home() {
   // Olfactory Accord active sub-state (Chapter X)
   const [activeAccord, setActiveAccord] = useState<"top" | "heart" | "base">("top");
 
+  // Track visited chapters to persist scroll reveal animations across React renders
+  const [visitedChapters, setVisitedChapters] = useState<Record<string, boolean>>({
+    "section-1": true, // First section is visible by default
+  });
+
   const [mounted, setMounted] = useState(false);
   const section6VideoRef = useRef<HTMLVideoElement>(null);
 
@@ -260,9 +265,14 @@ export default function Home() {
     const observer = new IntersectionObserver(
       (entries) => {
         entries.forEach((entry) => {
+          // Update visited state based on whether the section is currently intersecting (on-screen)
+          setVisitedChapters((prev) => ({
+            ...prev,
+            [entry.target.id]: entry.isIntersecting,
+          }));
+
           if (entry.isIntersecting) {
             setActiveChapter(entry.target.id);
-            entry.target.classList.add("visited");
           }
         });
       },
@@ -497,7 +507,9 @@ export default function Home() {
             <section
               key={chapter.id}
               id={chapter.id}
-              className={`chapter-section ${isActive ? "active" : ""}`}
+              className={`chapter-section ${isActive ? "active" : ""} ${
+                visitedChapters[chapter.id] ? "visited" : ""
+              }`}
             >
               {chapter.layout === "invite" && (
                 <div className="absolute inset-0 pointer-events-none overflow-hidden z-0">
