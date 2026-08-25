@@ -41,10 +41,14 @@ export function LuxuryAnimatedButton({
         onMouseDown={() => setIsPressed(true)}
         onMouseUp={() => setIsPressed(false)}
         className={`relative overflow-hidden cursor-pointer rounded-full px-9 py-4 sm:px-11 sm:py-4.5
-                   bg-gradient-to-b from-[#2A1E1C] via-[#1D1413] to-[#140D0C]
-                   border border-[#C4913A]/50 hover:border-[#E5B869]
-                   shadow-[0_8px_25px_rgba(20,13,12,0.35),inset_0_1px_1px_rgba(229,184,105,0.25)]
-                   hover:shadow-[0_12px_32px_rgba(196,145,58,0.25),inset_0_1px_2px_rgba(255,223,150,0.4)]
+                   ${
+                     isHovered
+                       ? "bg-gradient-to-b from-[#2A1E1C] via-[#1D1413] to-[#140D0C] border-[#C4913A] text-primary"
+                       : "bg-gradient-to-b from-[#E5B869] to-[#C4913A] border-[#B58028] text-[#1A1916]"
+                   }
+                   border
+                   shadow-[0_8px_25px_rgba(20,13,12,0.15)]
+                   hover:shadow-[0_12px_32px_rgba(196,145,58,0.25)]
                    transition-all duration-500 ease-out select-none
                    ${isPressed ? "scale-[0.98]" : isHovered ? "scale-[1.02]" : "scale-100"}`}
       >
@@ -62,25 +66,29 @@ export function LuxuryAnimatedButton({
 
         {/* Content Container */}
         <span className="relative z-10 flex items-center justify-center gap-3">
-          {/* Subtle Golden Dot / Wax Accent */}
+          {/* Subtle Decorative Dot / Wax Accent */}
           <span className="relative flex h-2 w-2">
             <span
-              className={`absolute inline-flex h-full w-full rounded-full bg-[#E5B869] opacity-75 transition-transform duration-500 ${
-                isHovered ? "animate-ping" : ""
+              className={`absolute inline-flex h-full w-full rounded-full opacity-75 transition-all duration-500 ${
+                isHovered ? "bg-[#E5B869] animate-ping" : "bg-[#1A1916]"
               }`}
             />
-            <span className="relative inline-flex rounded-full h-2 w-2 bg-[#C4913A] shadow-[0_0_8px_#E5B869]" />
+            <span className={`relative inline-flex rounded-full h-2 w-2 shadow-[0_0_8px_rgba(196,145,58,0.3)] transition-all duration-500 ${
+              isHovered ? "bg-[#C4913A]" : "bg-[#1A1916]"
+            }`} />
           </span>
 
           {/* Button Label Text */}
-          <span className="font-body text-[11px] sm:text-[12px] uppercase tracking-[0.32em] font-medium text-[#FAF4EA] group-hover:text-[#FFFFFF] transition-colors duration-300">
+          <span className={`font-body text-[11px] sm:text-[12px] uppercase tracking-[0.32em] font-medium transition-colors duration-300 ${
+            isHovered ? "text-[#FAF4EA]" : "text-[#1A1916]"
+          }`}>
             {label}
           </span>
 
-          {/* Subtle Decorative Golden Arrow / Line */}
+          {/* Subtle Decorative Arrow / Line */}
           <svg
-            className={`w-3.5 h-3.5 text-[#E5B869] transition-transform duration-500 ${
-              isHovered ? "translate-x-1" : "translate-x-0"
+            className={`w-3.5 h-3.5 transition-all duration-500 ${
+              isHovered ? "text-[#E5B869] translate-x-1" : "text-[#1A1916] translate-x-0"
             }`}
             fill="none"
             viewBox="0 0 24 24"
