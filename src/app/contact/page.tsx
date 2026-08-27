@@ -83,13 +83,24 @@ export default function ContactPage() {
     <>
       <PageHeader />
 
-      <main className={`inner-page page-fade-in min-h-[90vh] pt-24 md:pt-32 pb-20 px-4 md:px-8 max-w-[1200px] mx-auto z-10 relative ${mounted ? "active" : ""}`}>
+      {/* Cinematic Header Cover Banner */}
+      <div className="w-full h-[250px] sm:h-[320px] md:h-[400px] relative overflow-hidden mt-[76px] md:mt-[96px] z-10 shadow-lg reveal-frame">
+        <img
+          src="/Assets/contact_cinematic_banner.jpg"
+          alt="Cinematic Perfume Bottle Banner"
+          className="w-full h-full object-cover filter contrast-[0.98] brightness-[1.02] animate-cinematic-zoom"
+        />
+        {/* Soft top gradient to blend with the header and bottom gradient to blend with page theme */}
+        <div className="absolute inset-0 bg-gradient-to-b from-[#1A1916]/50 via-transparent to-[#fec6a1]"></div>
+      </div>
+
+      <main className={`inner-page page-fade-in pb-20 px-4 md:px-8 max-w-[1200px] mx-auto z-10 relative pt-12 md:pt-16 ${mounted ? "active" : ""}`}>
         <section className="grid grid-cols-1 lg:grid-cols-12 gap-12 md:gap-16 items-start mt-8">
           
           {/* Editorial Info Panel (Left) */}
           <div className="lg:col-span-5 flex flex-col justify-center text-left reveal-frame lg:sticky lg:top-32">
             <p className="text-secondary text-[10px] uppercase tracking-[0.6em] mb-4 font-body">
-              Section VII
+              Dialogues
             </p>
             <h1 className="font-display text-4xl sm:text-5xl mb-6 leading-tight text-on-background">
               Reach the Essence
