@@ -220,21 +220,13 @@ export default function Home() {
 
   const lenisRef = useRef<Lenis | null>(null);
 
-  // Initialize Lenis Buttery Smooth Scroll Engine
+  // Initialize Lenis Buttery Smooth Scroll Engine on the Window context for native smooth scrolling
   useEffect(() => {
-    const container = containerRef.current;
-    if (!container) return;
-
     const lenis = new Lenis({
-      wrapper: container,
-      content: (container.firstElementChild as HTMLElement) || container,
-      duration: 1.0,
+      duration: 1.2,
       easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
-      orientation: "vertical",
-      gestureOrientation: "vertical",
       smoothWheel: true,
       wheelMultiplier: 1.0,
-      touchMultiplier: 1.5,
     });
 
     lenisRef.current = lenis;
@@ -252,16 +244,14 @@ export default function Home() {
     };
   }, []);
 
+  // Window scroll event listener and section intersection observer
   useEffect(() => {
-    const container = containerRef.current;
-    if (!container) return;
-
     const handleScroll = () => {
-      setIsScrolled(container.scrollTop > 20);
+      setIsScrolled(window.scrollY > 20);
     };
-    container.addEventListener("scroll", handleScroll);
+    window.addEventListener("scroll", handleScroll);
 
-    const sections = container.querySelectorAll(".chapter-section");
+    const sections = document.querySelectorAll(".chapter-section");
     const observer = new IntersectionObserver(
       (entries) => {
         entries.forEach((entry) => {
@@ -276,12 +266,12 @@ export default function Home() {
           }
         });
       },
-      { root: container, threshold: 0.15 }
+      { threshold: 0.15 } // Omit root to default to the viewport/window context
     );
     sections.forEach((section) => observer.observe(section));
 
     return () => {
-      container.removeEventListener("scroll", handleScroll);
+      window.removeEventListener("scroll", handleScroll);
       sections.forEach((section) => observer.unobserve(section));
     };
   }, []);

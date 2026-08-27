@@ -43,7 +43,7 @@ export function LuxuryAnimatedButton({
         className={`relative overflow-hidden cursor-pointer rounded-full px-9 py-4 sm:px-11 sm:py-4.5
                    ${
                      isHovered
-                       ? "bg-gradient-to-b from-[#2A1E1C] via-[#1D1413] to-[#140D0C] border-[#C4913A] text-primary scale-[1.02] shadow-[0_12px_32px_rgba(196,145,58,0.25)]"
+                       ? "bg-gradient-to-b from-[#4A3B32] via-[#3A2E27] to-[#2D231E] border-[#C4913A] text-primary scale-[1.02] shadow-[0_12px_32px_rgba(196,145,58,0.25)]"
                        : "bg-gradient-to-b from-[#E5B869] to-[#C4913A] border-[#B58028] text-[#1A1916] animate-luxury-pulse"
                    }
                    border
