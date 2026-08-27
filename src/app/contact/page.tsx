@@ -84,7 +84,7 @@ export default function ContactPage() {
       <PageHeader />
 
       {/* Cinematic Header Cover Banner */}
-      <div className="w-full h-[250px] sm:h-[320px] md:h-[400px] relative overflow-hidden mt-[76px] md:mt-[96px] z-10 shadow-lg reveal-frame">
+      <div className="w-full h-[250px] sm:h-[320px] md:h-[400px] relative overflow-hidden mt-[76px] md:mt-[96px] z-10 shadow-lg page-fade-in">
         <img
           src="/Assets/contact_cinematic_banner.jpg"
           alt="Cinematic Perfume Bottle Banner"
