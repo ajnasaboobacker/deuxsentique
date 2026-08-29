@@ -155,69 +155,7 @@ export default function TermsPage() {
                 </div>
 
                 <div className="space-y-3 font-body text-on-background/80 text-sm md:text-[15px] leading-relaxed pl-1 sm:pl-2">
-                  {sec.paragraphs.map((p, pIdx) => {
-                    // Check for bullet lists
-                    if (p.startsWith("•") || p.startsWith("—") || p.startsWith("-")) {
-                      return (
-                        <div key={pIdx} className="flex items-start gap-2.5 my-1.5 pl-2">
-                          <span className="text-primary text-xs mt-1">&bull;</span>
-                          <p className="flex-1">{p.replace(/^[•—\-]\s*/, "")}</p>
-                        </div>
-                      );
-                    }
-
-                    // Check for email address
-                    if (p.includes("@deuxsentique.com")) {
-                      return (
-                        <p key={pIdx} className="font-medium text-primary py-1">
-                          <a
-                            href={`mailto:${p.trim()}`}
-                            className="underline hover:opacity-80 transition-opacity"
-                          >
-                            {p}
-                          </a>
-                        </p>
-                      );
-                    }
-
-                    // Check for external link (ICO)
-                    if (p.includes("https://")) {
-                      return (
-                        <p key={pIdx} className="font-medium text-primary py-1">
-                          <a
-                            href={p.trim()}
-                            target="_blank"
-                            rel="noopener noreferrer"
-                            className="underline hover:opacity-80 transition-opacity"
-                          >
-                            {p}
-                          </a>
-                        </p>
-                      );
-                    }
-
-                    // Bold headers/titles like "Customer Service Email", "Working Hours"
-                    if (
-                      p.length < 40 &&
-                      (p.includes("Hours") ||
-                        p.includes("Email") ||
-                        p.includes("Time") ||
-                        p.includes("Days") ||
-                        p.includes("Personal Information") ||
-                        p.includes("Order Information") ||
-                        p.includes("Website Usage Information") ||
-                        p.includes("Marketing Preferences") ||
-                        p.includes("Closing Note"))
-                    ) {
-                      return (
-                        <p key={pIdx} className="font-display font-semibold text-primary pt-2 text-base">
-                          {p}
-                        </p>
-                      );
-                    }
-
-                    return <p key={pIdx}>{p}</p>;
-                  })}
+                  {renderContent(sec.paragraphs)}
                 </div>
               </article>
             ))}
@@ -245,3 +183,183 @@ export default function TermsPage() {
     </>
   );
 }
+
+const renderContent = (paragraphs: string[]) => {
+  // Step 1: Merge bullets and split sentences
+  const cleaned: string[] = [];
+  for (let i = 0; i < paragraphs.length; i++) {
+    let p = paragraphs[i].trim();
+    if (!p) continue;
+
+    // If it's a standalone bullet marker
+    if ((p === "•" || p === "—" || p === "-") && i + 1 < paragraphs.length) {
+      cleaned.push("• " + paragraphs[i + 1].trim());
+      i++;
+      continue;
+    }
+
+    // Check if it's a split sentence
+    const sentenceTerminators = [".", "?", "!", ":", "—"];
+    const lastChar = p.slice(-1);
+    const isTerminated = sentenceTerminators.includes(lastChar);
+    
+    if (p.length >= 40 && !isTerminated && i + 1 < paragraphs.length) {
+      const nextP = paragraphs[i + 1].trim();
+      const isNextBullet = nextP.startsWith("•") || nextP.startsWith("—") || nextP.startsWith("-");
+      if (!isNextBullet) {
+        // Merge them!
+        p = p + " " + nextP;
+        i++; // skip next
+      }
+    }
+
+    cleaned.push(p);
+  }
+
+  // Step 2: Group consecutive address lines / short lines together
+  const blocks: React.ReactNode[] = [];
+  let currentGroup: string[] = [];
+
+  const renderGroup = (group: string[], key: string) => {
+    if (group.length === 0) return null;
+    if (group.length === 1) {
+      const p = group[0];
+      // Check for email
+      if (p.includes("@deuxsentique.com")) {
+        return (
+          <p key={key} className="font-medium text-primary py-0.5">
+            <a href={`mailto:${p}`} className="underline hover:underline-offset-4 hover:opacity-80 transition-all">
+              {p}
+            </a>
+          </p>
+        );
+      }
+      // Check for link
+      if (p.startsWith("https://")) {
+        return (
+          <p key={key} className="font-medium text-primary py-0.5">
+            <a href={p} target="_blank" rel="noopener noreferrer" className="underline hover:underline-offset-4 hover:opacity-80 transition-all">
+              {p}
+            </a>
+          </p>
+        );
+      }
+      // Check for bold sections/subheadings
+      if (
+        p.length < 40 &&
+        (p.includes("Hours") ||
+          p.includes("Email") ||
+          p.includes("Time") ||
+          p.includes("Days") ||
+          p.includes("Personal Information") ||
+          p.includes("Order Information") ||
+          p.includes("Website Usage Information") ||
+          p.includes("Marketing Preferences") ||
+          p.includes("Closing Note"))
+      ) {
+        return (
+          <p key={key} className="font-display font-semibold text-primary pt-3 pb-1 text-[15px] sm:text-base tracking-wide">
+            {p}
+          </p>
+        );
+      }
+
+      // Check if it ends with a colon (like a details label)
+      if (p.endsWith(":")) {
+        return (
+          <p key={key} className="font-semibold text-primary/95 mt-2 mb-1">
+            {p}
+          </p>
+        );
+      }
+
+      return (
+        <p key={key} className="text-on-background/80 leading-relaxed font-body">
+          {p}
+        </p>
+      );
+    }
+
+    // It's a sequence of short items (likely an address or details card)
+    return (
+      <div key={key} className="my-4 bg-primary/5 border border-primary/15 p-5 rounded-2xl space-y-1.5 max-w-[420px] shadow-sm">
+        {group.map((item, idx) => {
+          if (item.includes("@deuxsentique.com")) {
+            return (
+              <p key={idx} className="text-xs sm:text-sm font-medium text-primary">
+                <a href={`mailto:${item}`} className="underline hover:underline-offset-4 hover:opacity-80 transition-all">
+                  {item}
+                </a>
+              </p>
+            );
+          }
+          if (item.endsWith(":")) {
+            return (
+              <p key={idx} className="text-xs sm:text-sm font-semibold text-primary/95 mt-1.5 first:mt-0">
+                {item}
+              </p>
+            );
+          }
+          return (
+            <p key={idx} className="text-xs sm:text-sm text-on-background/80 font-normal leading-relaxed">
+              {item}
+            </p>
+          );
+        })}
+      </div>
+    );
+  };
+
+  for (let i = 0; i < cleaned.length; i++) {
+    const p = cleaned[i];
+
+    // Check if it's a bullet point
+    if (p.startsWith("•") || p.startsWith("—") || p.startsWith("-")) {
+      // Flush any active group first
+      if (currentGroup.length > 0) {
+        blocks.push(renderGroup(currentGroup, `g-${i}`));
+        currentGroup = [];
+      }
+
+      // Collect consecutive bullet items into a single list
+      const listItems: string[] = [];
+      let j = i;
+      while (j < cleaned.length && (cleaned[j].startsWith("•") || cleaned[j].startsWith("—") || cleaned[j].startsWith("-"))) {
+        listItems.push(cleaned[j].replace(/^[•—\-]\s*/, ""));
+        j++;
+      }
+      i = j - 1; // update loop counter
+
+      blocks.push(
+        <ul key={`list-${i}`} className="my-4 space-y-2.5 pl-5 list-disc marker:text-primary/70">
+          {listItems.map((item, itemIdx) => (
+            <li key={itemIdx} className="text-sm md:text-[14px] leading-relaxed text-on-background/85 pl-1 font-body">
+              {item}
+            </li>
+          ))}
+        </ul>
+      );
+      continue;
+    }
+
+    // Check if it's a short details line (does not end with sentence terminators)
+    const isGroupable = !p.endsWith(".") && !p.endsWith("?") && !p.endsWith("!");
+    if (isGroupable) {
+      currentGroup.push(p);
+    } else {
+      // Flush active group
+      if (currentGroup.length > 0) {
+        blocks.push(renderGroup(currentGroup, `g-${i}`));
+        currentGroup = [];
+      }
+      blocks.push(renderGroup([p], `p-${i}`));
+    }
+  }
+
+  // Flush remaining group
+  if (currentGroup.length > 0) {
+    blocks.push(renderGroup(currentGroup, "g-last"));
+  }
+
+  return <div className="space-y-3">{blocks}</div>;
+};
