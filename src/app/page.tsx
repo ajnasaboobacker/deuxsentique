@@ -107,7 +107,7 @@ function renderTitle(title: string) {
 
 function getImageClassName(imageUrl: string) {
   if (imageUrl.includes("Section") || imageUrl.endsWith(".jpeg") || imageUrl.endsWith(".jpg")) {
-    return "w-full aspect-[4/3] md:aspect-[5/4] object-cover rounded-2xl border border-primary/25 shadow-[0_25px_60px_rgba(140,88,50,0.18)] hover:shadow-[0_30px_70px_rgba(196,145,58,0.25)] max-h-[60vh] transition-all duration-700 hover:scale-[1.025]";
+    return "w-full aspect-[4/3] md:aspect-[5/4] object-cover rounded-2xl border border-primary/25 shadow-[0_25px_60px_rgba(140,88,50,0.18)] hover:shadow-[0_30px_70px_rgba(196,145,58,0.25)] max-h-[70vh] transition-all duration-700 hover:scale-[1.025]";
   }
   return "w-full h-auto object-contain max-h-[65vh] blend-painting";
 }
@@ -564,7 +564,7 @@ export default function Home() {
                       </div>
                     </div>
                     <div className="md:col-span-6 hidden md:flex justify-end reveal-frame">
-                      <div className="cinematic-frame w-full max-w-[480px]">
+                      <div className="cinematic-frame w-full max-w-[560px]">
                         <img
                           src={chapter.imageUrl}
                           alt={chapter.imageAlt}
@@ -578,7 +578,7 @@ export default function Home() {
                 {chapter.layout === "right-panel" && (
                   <>
                     <div className="md:col-span-6 hidden md:flex justify-start reveal-frame">
-                      <div className="cinematic-frame w-full max-w-[480px]">
+                      <div className="cinematic-frame w-full max-w-[560px]">
                         <img
                           src={chapter.imageUrl}
                           alt={chapter.imageAlt}
@@ -622,7 +622,7 @@ export default function Home() {
                       </div>
                     </div>
                     <div className="md:col-span-6 hidden md:flex justify-end reveal-frame">
-                      <div className="cinematic-frame w-full max-w-[480px]">
+                      <div className="cinematic-frame w-full max-w-[560px]">
                         <img
                           src={chapter.imageUrl}
                           alt={chapter.imageAlt}
@@ -654,7 +654,7 @@ export default function Home() {
                       </div>
                     </div>
                     <div className="md:col-span-5 hidden md:flex justify-center reveal-frame">
-                      <div className="cinematic-frame w-full max-w-[380px] -translate-y-8">
+                      <div className="cinematic-frame w-full max-w-[480px] -translate-y-8">
                         <img
                           src={chapter.imageUrl}
                           alt={chapter.imageAlt}
@@ -668,7 +668,7 @@ export default function Home() {
                 {chapter.layout === "believe" && (
                   <>
                     <div className="md:col-span-6 hidden md:flex justify-start reveal-frame">
-                      <div className="cinematic-frame w-full max-w-[480px]">
+                      <div className="cinematic-frame w-full max-w-[560px]">
                         <img
                           src={chapter.imageUrl}
                           alt={chapter.imageAlt}
