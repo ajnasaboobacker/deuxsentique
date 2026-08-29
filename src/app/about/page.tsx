@@ -205,35 +205,35 @@ export default function AboutPage() {
             <h2 className="mb-4 font-display text-3xl md:text-4xl">From Story to Scent</h2>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-5 gap-6 text-center my-10">
-            <div className="border-t border-primary/20 py-6 px-4 flex flex-col justify-between relative hover:bg-primary/[0.02] transition-colors rounded-xl">
+          <div className="grid grid-cols-1 md:grid-cols-5 gap-6 text-center my-10 items-stretch">
+            <div className="bg-primary/[0.02] border border-primary/10 hover:border-primary/20 p-5 rounded-2xl flex flex-col justify-between relative hover:bg-primary/[0.04] transition-all duration-300 h-full shadow-sm">
               <div>
-                <h3 className="text-primary font-display text-lg mb-3">1. Story</h3>
-                <p className="text-[13px] text-on-background/80 leading-relaxed font-body">Every fragrance begins with a real human story—a memory, a relationship, or a meaningful moment that deserves to be remembered.</p>
+                <h3 className="text-primary font-display text-base sm:text-lg mb-3 font-semibold">1. Story</h3>
+                <p className="text-xs sm:text-[13px] text-on-background/85 leading-relaxed font-body">Every fragrance begins with a real human story—a memory, a relationship, or a meaningful moment that deserves to be remembered.</p>
               </div>
             </div>
-            <div className="border-t border-primary/20 py-6 px-4 flex flex-col justify-between relative hover:bg-primary/[0.02] transition-colors rounded-xl">
+            <div className="bg-primary/[0.02] border border-primary/10 hover:border-primary/20 p-5 rounded-2xl flex flex-col justify-between relative hover:bg-primary/[0.04] transition-all duration-300 h-full shadow-sm">
               <div>
-                <h3 className="text-primary font-display text-lg mb-3">2. Emotion</h3>
-                <p className="text-[13px] text-on-background/80 leading-relaxed font-body">Every story holds a feeling. Before creating a fragrance, we take time to understand the emotions that gave the moment its meaning.</p>
+                <h3 className="text-primary font-display text-base sm:text-lg mb-3 font-semibold">2. Emotion</h3>
+                <p className="text-xs sm:text-[13px] text-on-background/85 leading-relaxed font-body">Every story holds a feeling. Before creating a fragrance, we take time to understand the emotions that gave the moment its meaning.</p>
               </div>
             </div>
-            <div className="border-t border-primary/20 py-6 px-4 flex flex-col justify-between relative hover:bg-primary/[0.02] transition-colors rounded-xl">
+            <div className="bg-primary/[0.02] border border-primary/10 hover:border-primary/20 p-5 rounded-2xl flex flex-col justify-between relative hover:bg-primary/[0.04] transition-all duration-300 h-full shadow-sm">
               <div>
-                <h3 className="text-primary font-display text-lg mb-3">3. Notes</h3>
-                <p className="text-[13px] text-on-background/80 leading-relaxed font-body">Those emotions are carefully translated into fragrance notes, with each note chosen to express a feeling, a memory, or a moment.</p>
+                <h3 className="text-primary font-display text-base sm:text-lg mb-3 font-semibold">3. Notes</h3>
+                <p className="text-xs sm:text-[13px] text-on-background/85 leading-relaxed font-body">Those emotions are carefully translated into fragrance notes, with each note chosen to express a feeling, a memory, or a moment.</p>
               </div>
             </div>
-            <div className="border-t border-primary/20 py-6 px-4 flex flex-col justify-between relative hover:bg-primary/[0.02] transition-colors rounded-xl">
+            <div className="bg-primary/[0.02] border border-primary/10 hover:border-primary/20 p-5 rounded-2xl flex flex-col justify-between relative hover:bg-primary/[0.04] transition-all duration-300 h-full shadow-sm">
               <div>
-                <h3 className="text-primary font-display text-lg mb-3">4. Scent</h3>
-                <p className="text-[13px] text-on-background/80 leading-relaxed font-body">The notes are brought together to create a fragrance that captures the emotional essence of the original story, allowing it to be experienced through scent.</p>
+                <h3 className="text-primary font-display text-base sm:text-lg mb-3 font-semibold">4. Scent</h3>
+                <p className="text-xs sm:text-[13px] text-on-background/85 leading-relaxed font-body">The notes are brought together to create a fragrance that captures the emotional essence of the original story, allowing it to be experienced through scent.</p>
               </div>
             </div>
-            <div className="border-t border-primary/20 py-6 px-4 flex flex-col justify-between relative hover:bg-primary/[0.02] transition-colors rounded-xl">
+            <div className="bg-primary/[0.02] border border-primary/10 hover:border-primary/20 p-5 rounded-2xl flex flex-col justify-between relative hover:bg-primary/[0.04] transition-all duration-300 h-full shadow-sm">
               <div>
-                <h3 className="text-primary font-display text-lg mb-3">5. Memory</h3>
-                <p className="text-[13px] text-on-background/80 leading-relaxed font-body">With time, the fragrance becomes part of the wearer&apos;s own journey, creating new memories while quietly preserving the old.</p>
+                <h3 className="text-primary font-display text-base sm:text-lg mb-3 font-semibold">5. Memory</h3>
+                <p className="text-xs sm:text-[13px] text-on-background/85 leading-relaxed font-body">With time, the fragrance becomes part of the wearer&apos;s own journey, creating new memories while quietly preserving the old.</p>
               </div>
             </div>
           </div>
