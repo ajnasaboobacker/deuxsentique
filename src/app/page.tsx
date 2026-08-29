@@ -30,7 +30,7 @@ const chapters: Chapter[] = [
     id: "section-2",
     title: "Every Story Deserves an Essence.",
     desc: "Behind every fragrance is a real human story.\n\nEverything else begins from there.",
-    imageUrl: "/chapters/ch02_painting.png",
+    imageUrl: "/Assets/Section2.jpeg",
     bgImageUrl: "/chapters/ch02_painting.png",
     imageAlt: "Brand Introduction",
     layout: "right-panel",
@@ -39,7 +39,7 @@ const chapters: Chapter[] = [
     id: "section-3",
     title: "Our Creative Philosophy",
     desc: "",
-    imageUrl: "/chapters/ch08_painting.png",
+    imageUrl: "/Assets/Section3.jpeg",
     bgImageUrl: "/chapters/ch08_painting.png",
     imageAlt: "Our Creative Philosophy",
     layout: "philosophy",
@@ -48,7 +48,7 @@ const chapters: Chapter[] = [
     id: "section-4",
     title: "",
     desc: "Some fragrances fill a room.\nOurs are created to become part of yours.\nDesigned to remain close.\nCreated for meaningful moments.\nDiscovered only by those nearest to you.",
-    imageUrl: "/chapters/ch05_painting.png",
+    imageUrl: "/Assets/Section4.jpeg",
     bgImageUrl: "/chapters/ch05_painting.png",
     imageAlt: "Section IV",
     layout: "asymmetric",
@@ -57,7 +57,7 @@ const chapters: Chapter[] = [
     id: "section-5",
     title: "What We Believe",
     desc: "",
-    imageUrl: "/chapters/ch10_painting.png",
+    imageUrl: "/Assets/Section5.jpeg",
     bgImageUrl: "/chapters/ch10_painting.png",
     imageAlt: "What We Believe",
     layout: "believe",
@@ -80,7 +80,7 @@ const chapters: Chapter[] = [
     imageAlt: "Continue the Journey",
     layout: "socials",
   },
-];;
+];
 
 /** Split title on \n into lines, then each line into words for the reveal animation */
 function renderTitle(title: string) {
@@ -103,6 +103,13 @@ function renderTitle(title: string) {
       })}
     </span>
   ));
+}
+
+function getImageClassName(imageUrl: string) {
+  if (imageUrl.includes("Section") || imageUrl.endsWith(".jpeg") || imageUrl.endsWith(".jpg")) {
+    return "w-full h-auto object-cover rounded-2xl border border-primary/20 shadow-2xl max-h-[60vh] transition-transform duration-700 hover:scale-[1.03]";
+  }
+  return "w-full h-auto object-contain max-h-[65vh] blend-painting";
 }
 
 function ScrollRollerHandle({ side }: { side: "left" | "right" }) {
@@ -451,7 +458,7 @@ export default function Home() {
               />
             ) : (
               <img
-                src={chapter.imageUrl}
+                src={chapter.bgImageUrl}
                 alt={chapter.imageAlt}
                 className="w-full h-full object-cover filter grayscale contrast-[0.9] brightness-[1.05] mix-blend-multiply"
               />
@@ -561,7 +568,7 @@ export default function Home() {
                         <img
                           src={chapter.imageUrl}
                           alt={chapter.imageAlt}
-                          className="w-full h-auto object-contain max-h-[65vh] blend-painting"
+                          className={getImageClassName(chapter.imageUrl)}
                         />
                       </div>
                     </div>
@@ -575,9 +582,7 @@ export default function Home() {
                         <img
                           src={chapter.imageUrl}
                           alt={chapter.imageAlt}
-                          className={`w-full h-auto object-contain max-h-[65vh] ${
-                            chapter.imageUrl.includes("ch02_painting") ? "" : "blend-painting"
-                          }`}
+                          className={getImageClassName(chapter.imageUrl)}
                         />
                       </div>
                     </div>
@@ -621,7 +626,7 @@ export default function Home() {
                         <img
                           src={chapter.imageUrl}
                           alt={chapter.imageAlt}
-                          className="w-full h-auto object-contain max-h-[65vh] blend-painting"
+                          className={getImageClassName(chapter.imageUrl)}
                         />
                       </div>
                     </div>
@@ -653,7 +658,7 @@ export default function Home() {
                         <img
                           src={chapter.imageUrl}
                           alt={chapter.imageAlt}
-                          className="w-full h-auto object-contain max-h-[60vh] blend-painting"
+                          className={getImageClassName(chapter.imageUrl)}
                         />
                       </div>
                     </div>
@@ -667,7 +672,7 @@ export default function Home() {
                         <img
                           src={chapter.imageUrl}
                           alt={chapter.imageAlt}
-                          className="w-full h-auto object-contain max-h-[65vh] blend-painting"
+                          className={getImageClassName(chapter.imageUrl)}
                         />
                       </div>
                     </div>
