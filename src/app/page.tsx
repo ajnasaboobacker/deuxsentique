@@ -769,7 +769,7 @@ export default function Home() {
                                 value={email}
                                 onChange={(e) => setEmail(e.target.value)}
                                 placeholder="ENTER YOUR EMAIL ADDRESS"
-                                className="w-full bg-transparent border-b border-[#8C5832]/40 focus:border-[#8C5832] pb-3 pt-2 text-[#3A2418] text-[12px] sm:text-[13px] tracking-[0.25em] text-center uppercase placeholder:text-[#633A18]/60 placeholder:tracking-[0.20em] transition-all duration-300 focus:outline-none font-display font-medium"
+                                className="w-full bg-transparent border-b border-[#8C5832]/40 focus:border-[#8C5832] pb-3 pt-2 text-[#3A2418] text-[12px] sm:text-[13px] tracking-[0.25em] text-center placeholder:text-[#633A18]/60 placeholder:tracking-[0.20em] transition-all duration-300 focus:outline-none font-display font-medium"
                               />
                             </div>
 

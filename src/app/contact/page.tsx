@@ -169,7 +169,7 @@ export default function ContactPage() {
                         value={name}
                         onChange={(e) => setName(e.target.value)}
                         placeholder="ENTER YOUR FULL NAME"
-                        className="w-full bg-transparent border-b border-[#C4913A]/30 focus:border-[#C4913A] pb-3 pt-2 text-[#2D1F1D] text-[12px] sm:text-[13px] tracking-[0.2em] placeholder:text-[#4A3B32]/40 transition-all duration-300 focus:outline-none font-display font-medium uppercase"
+                        className="w-full bg-transparent border-b border-[#C4913A]/30 focus:border-[#C4913A] pb-3 pt-2 text-[#2D1F1D] text-[12px] sm:text-[13px] tracking-[0.2em] placeholder:text-[#4A3B32]/40 transition-all duration-300 focus:outline-none font-display font-medium"
                       />
                     </div>
 
@@ -185,7 +185,7 @@ export default function ContactPage() {
                         value={email}
                         onChange={(e) => setEmail(e.target.value)}
                         placeholder="ENTER YOUR EMAIL ADDRESS"
-                        className="w-full bg-transparent border-b border-[#C4913A]/30 focus:border-[#C4913A] pb-3 pt-2 text-[#2D1F1D] text-[12px] sm:text-[13px] tracking-[0.2em] placeholder:text-[#4A3B32]/40 transition-all duration-300 focus:outline-none font-display font-medium uppercase"
+                        className="w-full bg-transparent border-b border-[#C4913A]/30 focus:border-[#C4913A] pb-3 pt-2 text-[#2D1F1D] text-[12px] sm:text-[13px] tracking-[0.2em] placeholder:text-[#4A3B32]/40 transition-all duration-300 focus:outline-none font-display font-medium"
                       />
                     </div>
 
@@ -253,7 +253,7 @@ export default function ContactPage() {
                         value={message}
                         onChange={(e) => setMessage(e.target.value)}
                         placeholder="EXPRESS YOUR THOUGHTS OR ENQUIRIES"
-                        className="w-full bg-transparent border-b border-[#C4913A]/30 focus:border-[#C4913A] pb-3 pt-2 text-[#2D1F1D] text-[12px] sm:text-[13px] tracking-[0.2em] placeholder:text-[#4A3B32]/40 transition-all duration-300 focus:outline-none font-display font-medium uppercase resize-none leading-relaxed"
+                        className="w-full bg-transparent border-b border-[#C4913A]/30 focus:border-[#C4913A] pb-3 pt-2 text-[#2D1F1D] text-[12px] sm:text-[13px] tracking-[0.2em] placeholder:text-[#4A3B32]/40 transition-all duration-300 focus:outline-none font-display font-medium resize-none leading-relaxed"
                       />
                     </div>
 

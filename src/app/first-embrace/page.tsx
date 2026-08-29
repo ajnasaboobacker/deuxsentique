@@ -61,7 +61,7 @@ export default function FirstEmbracePage() {
                     value={email}
                     onChange={(e) => setEmail(e.target.value)}
                     placeholder="ENTER YOUR EMAIL ADDRESS"
-                    className="w-full bg-transparent border-b border-primary/40 focus:border-primary pb-3 pt-2 text-on-background text-[12px] sm:text-[13px] tracking-[0.25em] text-center uppercase placeholder:text-on-background/50 placeholder:tracking-[0.20em] transition-all duration-300 focus:outline-none font-display font-medium"
+                    className="w-full bg-transparent border-b border-primary/40 focus:border-primary pb-3 pt-2 text-on-background text-[12px] sm:text-[13px] tracking-[0.25em] text-center placeholder:text-on-background/50 placeholder:tracking-[0.20em] transition-all duration-300 focus:outline-none font-display font-medium"
                   />
                 </div>
 

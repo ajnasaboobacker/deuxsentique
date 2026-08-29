@@ -318,7 +318,7 @@ export default function Page1() {
                     value={email}
                     onChange={(e) => setEmail(e.target.value)}
                     placeholder="ENTER YOUR EMAIL ADDRESS"
-                    className="w-full bg-transparent border-b border-[#C4913A]/40 focus:border-[#C4913A] pb-3 pt-2 text-[#2D1F1D] text-[12px] sm:text-[13px] tracking-[0.25em] text-center uppercase placeholder:text-[#4A3B32]/60 placeholder:tracking-[0.20em] transition-all duration-300 focus:outline-none font-display font-medium"
+                    className="w-full bg-transparent border-b border-[#C4913A]/40 focus:border-[#C4913A] pb-3 pt-2 text-[#2D1F1D] text-[12px] sm:text-[13px] tracking-[0.25em] text-center placeholder:text-[#4A3B32]/60 placeholder:tracking-[0.20em] transition-all duration-300 focus:outline-none font-display font-medium"
                   />
                 </div>
 
