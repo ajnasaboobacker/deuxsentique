@@ -107,7 +107,7 @@ function renderTitle(title: string) {
 
 function getImageClassName(imageUrl: string) {
   if (imageUrl.includes("Section") || imageUrl.endsWith(".jpeg") || imageUrl.endsWith(".jpg")) {
-    return "w-full h-auto object-cover rounded-2xl border border-primary/20 shadow-2xl max-h-[60vh] transition-transform duration-700 hover:scale-[1.03]";
+    return "w-full aspect-[4/3] md:aspect-[5/4] object-cover rounded-2xl border border-primary/25 shadow-[0_25px_60px_rgba(140,88,50,0.18)] hover:shadow-[0_30px_70px_rgba(196,145,58,0.25)] max-h-[60vh] transition-all duration-700 hover:scale-[1.025]";
   }
   return "w-full h-auto object-contain max-h-[65vh] blend-painting";
 }
