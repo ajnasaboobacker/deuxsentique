@@ -13,11 +13,22 @@ export default function AboutPage() {
     <>
       <PageHeader />
 
+      {/* Cinematic Header Cover Banner */}
+      <div className="w-full h-[250px] sm:h-[350px] md:h-[450px] relative overflow-hidden mt-[76px] md:mt-[96px] z-10 shadow-lg page-fade-in">
+        <img
+          src="/Assets/about_cinematic_banner.jpg"
+          alt="Our Story Cinematic Banner"
+          className="w-full h-full object-cover filter contrast-[0.98] brightness-[1.02] animate-cinematic-zoom"
+        />
+        {/* Soft top gradient to blend with the header and bottom gradient to blend with page theme */}
+        <div className="absolute inset-0 bg-gradient-to-b from-[#1A1916]/50 via-transparent to-[#fec6a1]"></div>
+      </div>
+
       <main className="inner-page page-fade-in active">
         <ScrollReveal />
 
         {/* Hero Section */}
-        <section className="text-center pt-8 pb-16 md:pt-16 md:pb-24 max-w-[1200px] mx-auto px-4">
+        <section className="text-center pt-12 pb-16 md:pt-16 md:pb-24 max-w-[1200px] mx-auto px-4">
           <div className="flex justify-center mb-6 reveal-frame">
             <img
               src="/Assets/logo/ICON blk trnsprnt.png"
@@ -43,7 +54,11 @@ export default function AboutPage() {
         <section className="!max-w-[1200px] mx-auto my-28 md:my-44 px-4">
           <div className="grid grid-cols-1 md:grid-cols-12 gap-8 md:gap-16 items-center">
             <div className="md:col-span-6 flex flex-col justify-center text-left">
-              <p className="text-secondary text-[10px] uppercase tracking-[0.6em] mb-3 font-body">Chapter I</p>
+              <div className="flex items-center gap-3 mb-4">
+                <span className="font-mono text-xs font-bold text-primary/70 bg-primary/10 px-2.5 py-1 rounded-md tracking-wider">
+                  CHAPTER I
+                </span>
+              </div>
               <h2 className="!mt-0 mb-6 font-display text-3xl md:text-4xl">A Scent That Stayed</h2>
               <p className="mb-4 text-on-background/85 leading-relaxed font-body">
                 Perfume was never part of everyday life. It belonged to special occasions, carefully kept away until the moment felt right, making every spray feel rare and meaningful.
@@ -89,7 +104,11 @@ export default function AboutPage() {
               </div>
             </div>
             <div className="md:col-span-6 flex flex-col justify-center text-left order-1 md:order-2">
-              <p className="text-secondary text-[10px] uppercase tracking-[0.6em] mb-3 font-body">Chapter II</p>
+              <div className="flex items-center gap-3 mb-4">
+                <span className="font-mono text-xs font-bold text-primary/70 bg-primary/10 px-2.5 py-1 rounded-md tracking-wider">
+                  CHAPTER II
+                </span>
+              </div>
               <h2 className="!mt-0 mb-6 font-display text-3xl md:text-4xl">The Moment Everything Changed</h2>
               <p className="mb-4 text-on-background/85 leading-relaxed font-body">
                 Wearing fragrance gradually became more than a daily ritual. It quietly changed the way life was experienced. There was a growing sense of confidence, conversations felt more natural, and everyday moments carried a little more presence. It wasn&apos;t the fragrance itself that created those changes, but the feeling it awakened from within.
@@ -114,7 +133,11 @@ export default function AboutPage() {
         {/* Chapter III: Two Souls. One Essence. */}
         <section className="!max-w-[1200px] mx-auto my-28 md:my-44 px-4">
           <div className="text-center max-w-3xl mx-auto mb-12">
-            <p className="text-secondary text-[10px] uppercase tracking-[0.6em] mb-3 font-body">Chapter III</p>
+            <div className="flex justify-center mb-4">
+              <span className="font-mono text-xs font-bold text-primary/70 bg-primary/10 px-2.5 py-1 rounded-md tracking-wider">
+                CHAPTER III
+              </span>
+            </div>
             <h2 className="mb-6 font-display text-3xl md:text-4xl">Two Souls. One Essence.</h2>
             <p className="text-on-background/85 leading-relaxed text-lg font-body">
               Every meaningful creation begins with balance. Story and science. Emotion and precision. Creativity and craftsmanship. What began as one unforgettable experience soon became a shared vision, bringing together two different strengths with one common purpose—to create fragrances that preserve emotion, memory and human connection.
@@ -134,13 +157,13 @@ export default function AboutPage() {
 
             <div className="md:col-span-7 flex flex-col justify-center">
               <div className="values-grid gap-6">
-                <div className="value-card p-6">
+                <div className="border-t border-primary/20 py-6 px-4 sm:px-6 relative text-left hover:bg-primary/[0.02] transition-colors rounded-xl">
                   <h3 className="font-display text-xl text-primary mb-2">Resten</h3>
                   <p className="text-sm text-on-background/80 leading-relaxed font-body">
                     A storyteller with a passion for transforming real experiences into meaningful narratives. Guided by creativity, vision and thoughtful direction, he believes every memorable moment deserves to be preserved, shaping each fragrance with purpose before it is brought to life.
                   </p>
                 </div>
-                <div className="value-card p-6">
+                <div className="border-t border-primary/20 py-6 px-4 sm:px-6 relative text-left hover:bg-primary/[0.02] transition-colors rounded-xl">
                   <h3 className="font-display text-xl text-primary mb-2">Jiji</h3>
                   <p className="text-sm text-on-background/80 leading-relaxed font-body">
                     A chemist with a deep understanding of ingredients, quality and precision. She combines scientific knowledge with thoughtful craftsmanship, ensuring every fragrance is developed with care while remaining true to the emotion behind each story.
@@ -174,36 +197,40 @@ export default function AboutPage() {
         {/* Chapter IV: From Story to Scent */}
         <section className="!max-w-[1200px] mx-auto my-28 md:my-44 px-4">
           <div className="text-center max-w-3xl mx-auto mb-12">
-            <p className="text-secondary text-[10px] uppercase tracking-[0.6em] mb-3 font-body">Chapter IV</p>
+            <div className="flex justify-center mb-4">
+              <span className="font-mono text-xs font-bold text-primary/70 bg-primary/10 px-2.5 py-1 rounded-md tracking-wider">
+                CHAPTER IV
+              </span>
+            </div>
             <h2 className="mb-4 font-display text-3xl md:text-4xl">From Story to Scent</h2>
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-5 gap-6 text-center my-10">
-            <div className="value-card flex flex-col justify-between p-6">
+            <div className="border-t border-primary/20 py-6 px-4 flex flex-col justify-between relative hover:bg-primary/[0.02] transition-colors rounded-xl">
               <div>
                 <h3 className="text-primary font-display text-lg mb-3">1. Story</h3>
                 <p className="text-[13px] text-on-background/80 leading-relaxed font-body">Every fragrance begins with a real human story—a memory, a relationship, or a meaningful moment that deserves to be remembered.</p>
               </div>
             </div>
-            <div className="value-card flex flex-col justify-between p-6">
+            <div className="border-t border-primary/20 py-6 px-4 flex flex-col justify-between relative hover:bg-primary/[0.02] transition-colors rounded-xl">
               <div>
                 <h3 className="text-primary font-display text-lg mb-3">2. Emotion</h3>
                 <p className="text-[13px] text-on-background/80 leading-relaxed font-body">Every story holds a feeling. Before creating a fragrance, we take time to understand the emotions that gave the moment its meaning.</p>
               </div>
             </div>
-            <div className="value-card flex flex-col justify-between p-6">
+            <div className="border-t border-primary/20 py-6 px-4 flex flex-col justify-between relative hover:bg-primary/[0.02] transition-colors rounded-xl">
               <div>
                 <h3 className="text-primary font-display text-lg mb-3">3. Notes</h3>
                 <p className="text-[13px] text-on-background/80 leading-relaxed font-body">Those emotions are carefully translated into fragrance notes, with each note chosen to express a feeling, a memory, or a moment.</p>
               </div>
             </div>
-            <div className="value-card flex flex-col justify-between p-6">
+            <div className="border-t border-primary/20 py-6 px-4 flex flex-col justify-between relative hover:bg-primary/[0.02] transition-colors rounded-xl">
               <div>
                 <h3 className="text-primary font-display text-lg mb-3">4. Scent</h3>
                 <p className="text-[13px] text-on-background/80 leading-relaxed font-body">The notes are brought together to create a fragrance that captures the emotional essence of the original story, allowing it to be experienced through scent.</p>
               </div>
             </div>
-            <div className="value-card flex flex-col justify-between p-6">
+            <div className="border-t border-primary/20 py-6 px-4 flex flex-col justify-between relative hover:bg-primary/[0.02] transition-colors rounded-xl">
               <div>
                 <h3 className="text-primary font-display text-lg mb-3">5. Memory</h3>
                 <p className="text-[13px] text-on-background/80 leading-relaxed font-body">With time, the fragrance becomes part of the wearer&apos;s own journey, creating new memories while quietly preserving the old.</p>
@@ -231,7 +258,11 @@ export default function AboutPage() {
               </div>
             </div>
             <div className="md:col-span-6 flex flex-col justify-center text-left">
-              <p className="text-secondary text-[10px] uppercase tracking-[0.6em] mb-3 font-body">Chapter V</p>
+              <div className="flex items-center gap-3 mb-4">
+                <span className="font-mono text-xs font-bold text-primary/70 bg-primary/10 px-2.5 py-1 rounded-md tracking-wider">
+                  CHAPTER V
+                </span>
+              </div>
               <h2 className="!mt-0 mb-4 font-display text-3xl md:text-4xl">Quiet Luxury</h2>
               <p className="text-primary font-display text-xl tracking-wide mb-6">
                 &ldquo;Designed to stay close.&rdquo;
@@ -257,34 +288,38 @@ export default function AboutPage() {
         {/* Chapter VI: What We Stand For */}
         <section className="!max-w-[1200px] mx-auto my-28 md:my-44 px-4">
           <div className="text-center max-w-2xl mx-auto mb-12">
-            <p className="text-secondary text-[10px] uppercase tracking-[0.6em] mb-3 font-body">Chapter VI</p>
+            <div className="flex justify-center mb-4">
+              <span className="font-mono text-xs font-bold text-primary/70 bg-primary/10 px-2.5 py-1 rounded-md tracking-wider">
+                CHAPTER VI
+              </span>
+            </div>
             <h2 className="mb-4 font-display text-3xl md:text-4xl">What We Stand For</h2>
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-12 gap-8 items-center mb-12">
             <div className="md:col-span-7">
               <div className="values-grid gap-6 md:gap-8">
-                <div className="value-card p-6">
+                <div className="border-t border-primary/20 py-6 px-4 sm:px-6 relative hover:bg-primary/[0.02] transition-colors rounded-xl">
                   <h3 className="font-display text-xl text-primary mb-3">Emotion First</h3>
                   <p className="text-sm text-on-background/80 leading-relaxed font-body">Every fragrance begins with a feeling before it becomes a scent. We believe emotion gives every story its meaning and every fragrance its soul.</p>
                 </div>
-                <div className="value-card p-6">
+                <div className="border-t border-primary/20 py-6 px-4 sm:px-6 relative hover:bg-primary/[0.02] transition-colors rounded-xl">
                   <h3 className="font-display text-xl text-primary mb-3">Authenticity</h3>
                   <p className="text-sm text-on-background/80 leading-relaxed font-body">We create from real human experiences, never from trends or imitation. Every creation is rooted in genuine moments, allowing each fragrance to tell a story that is honest and timeless.</p>
                 </div>
-                <div className="value-card p-6">
+                <div className="border-t border-primary/20 py-6 px-4 sm:px-6 relative hover:bg-primary/[0.02] transition-colors rounded-xl">
                   <h3 className="font-display text-xl text-primary mb-3">Craftsmanship</h3>
                   <p className="text-sm text-on-background/80 leading-relaxed font-body">Every detail is shaped with patience, precision and care. From the first idea to the final bottle, we believe true quality is found in thoughtful craftsmanship.</p>
                 </div>
-                <div className="value-card p-6">
+                <div className="border-t border-primary/20 py-6 px-4 sm:px-6 relative hover:bg-primary/[0.02] transition-colors rounded-xl">
                   <h3 className="font-display text-xl text-primary mb-3">Connection</h3>
                   <p className="text-sm text-on-background/80 leading-relaxed font-body">Our fragrances are created to bring people closer—to memories, emotions and one another. We hope every fragrance becomes a quiet reminder of the people, places and moments that matter most.</p>
                 </div>
-                <div className="value-card p-6">
+                <div className="border-t border-primary/20 py-6 px-4 sm:px-6 relative hover:bg-primary/[0.02] transition-colors rounded-xl">
                   <h3 className="font-display text-xl text-primary mb-3">Quiet Luxury</h3>
                   <p className="text-sm text-on-background/80 leading-relaxed font-body">We believe true luxury is found in intention, meaning and timeless craftsmanship, never in excess. Our creations are designed to be discovered naturally, leaving a lasting impression through emotion rather than volume.</p>
                 </div>
-                <div className="value-card p-6">
+                <div className="border-t border-primary/20 py-6 px-4 sm:px-6 relative hover:bg-primary/[0.02] transition-colors rounded-xl">
                   <h3 className="font-display text-xl text-primary mb-3">Timelessness</h3>
                   <p className="text-sm text-on-background/80 leading-relaxed font-body">We create fragrances designed to remain meaningful long after the moment has passed. Our goal is to create fragrances that can be treasured today, remembered tomorrow, and passed through generations.</p>
                 </div>
@@ -329,7 +364,11 @@ export default function AboutPage() {
               </div>
             </div>
             <div className="md:col-span-6 flex flex-col justify-center text-left">
-              <p className="text-secondary text-[10px] uppercase tracking-[0.6em] mb-3 font-body">Chapter VII</p>
+              <div className="flex items-center gap-3 mb-4">
+                <span className="font-mono text-xs font-bold text-primary/70 bg-primary/10 px-2.5 py-1 rounded-md tracking-wider">
+                  CHAPTER VII
+                </span>
+              </div>
               <h2 className="!mt-0 mb-6 font-display text-3xl md:text-4xl">Crafted With Intention</h2>
               <p className="mb-4 text-on-background/85 leading-relaxed font-body">
                 What began as an emotional idea soon became a responsibility. As our understanding of perfumery grew, we realised that creating a meaningful fragrance required far more than inspiration alone. It called for knowledge, precision, patience and genuine care.
@@ -351,7 +390,11 @@ export default function AboutPage() {
 
         {/* Chapter VIII: The Journey Continues */}
         <section className="!max-w-[1000px] mx-auto my-28 md:my-44 text-center px-4">
-          <p className="text-secondary text-[10px] uppercase tracking-[0.6em] mb-3 font-body">Chapter VIII</p>
+          <div className="flex justify-center mb-4">
+            <span className="font-mono text-xs font-bold text-primary/70 bg-primary/10 px-2.5 py-1 rounded-md tracking-wider">
+              CHAPTER VIII
+            </span>
+          </div>
           <h2 className="mb-8 font-display text-3xl md:text-4xl">The Journey Continues</h2>
 
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-6 justify-center items-center mb-10 max-w-[800px] mx-auto scroll-reveal-container">
