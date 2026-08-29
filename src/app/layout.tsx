@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { Bodoni_Moda, Work_Sans } from "next/font/google";
 import "./globals.css";
 import CursorEffect from "./components/cursor-effect";
+import SmoothScroller from "./components/smooth-scroller";
 
 const bodoniModa = Bodoni_Moda({
   subsets: ["latin"],
@@ -33,6 +34,7 @@ export default function RootLayout({
   return (
     <html lang="en" className={`dark scroll-smooth ${bodoniModa.variable} ${workSans.variable}`} data-scroll-behavior="smooth" suppressHydrationWarning>
       <body className="bg-background text-on-background font-body antialiased">
+        <SmoothScroller />
         {/* Visual depth layers — shared across all pages */}
         <div className="film-grain"></div>
         <div className="vignette"></div>

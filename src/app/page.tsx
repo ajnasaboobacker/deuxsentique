@@ -2,7 +2,6 @@
 
 import { useEffect, useState, useRef } from "react";
 import Link from "next/link";
-import Lenis from "lenis";
 import { PageHeader, Footer } from "./components/shared";
 import { LuxuryAnimatedButton } from "@/components/ui/luxury-animated-button";
 
@@ -225,31 +224,6 @@ export default function Home() {
     };
   }, [audioCtx]);
 
-  const lenisRef = useRef<Lenis | null>(null);
-
-  // Initialize Lenis Buttery Smooth Scroll Engine on the Window context for native smooth scrolling
-  useEffect(() => {
-    const lenis = new Lenis({
-      duration: 1.2,
-      easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
-      smoothWheel: true,
-      wheelMultiplier: 1.0,
-    });
-
-    lenisRef.current = lenis;
-
-    function raf(time: number) {
-      lenis.raf(time);
-      requestAnimationFrame(raf);
-    }
-
-    requestAnimationFrame(raf);
-
-    return () => {
-      lenis.destroy();
-      lenisRef.current = null;
-    };
-  }, []);
 
   // Window scroll event listener and section intersection observer
   useEffect(() => {
@@ -301,8 +275,9 @@ export default function Home() {
   const scrollToSection = (id: string) => {
     const el = document.getElementById(id);
     if (el) {
-      if (lenisRef.current) {
-        lenisRef.current.scrollTo(el, {
+      const lenisInstance = (window as unknown as { lenis?: { scrollTo: (el: HTMLElement, options?: { duration?: number; easing?: (t: number) => number }) => void } }).lenis;
+      if (lenisInstance) {
+        lenisInstance.scrollTo(el, {
           duration: 1.4,
           easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
         });
