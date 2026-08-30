@@ -60,13 +60,13 @@ export default function AboutPage() {
                 </span>
               </div>
               <h2 className="!mt-0 mb-6 font-display text-3xl md:text-4xl">A Scent That Stayed</h2>
-              <p className="mb-4 text-on-background/85 leading-relaxed font-body">
+              <p className="mb-4 text-on-background/85 leading-relaxed font-body text-justify">
                 Perfume was never part of everyday life. It belonged to special occasions, carefully kept away until the moment felt right, making every spray feel rare and meaningful.
               </p>
-              <p className="mb-4 text-on-background/85 leading-relaxed font-body">
+              <p className="mb-4 text-on-background/85 leading-relaxed font-body text-justify">
                 Years later, fragrance found its way back through a simple gift, followed by an experience that quietly changed everything. A scent card, tucked inside a purse, continued to carry its fragrance long after the moment had passed. Every time it was opened, the scent returned with it—a feeling, a memory, and a reminder that some moments never truly leave us.
               </p>
-              <p className="text-on-background/85 leading-relaxed font-body">
+              <p className="text-on-background/85 leading-relaxed font-body text-justify">
                 It was this quiet experience that planted the very first seed of what would one day become Deuxsentique.
               </p>
             </div>
@@ -110,7 +110,7 @@ export default function AboutPage() {
                 </span>
               </div>
               <h2 className="!mt-0 mb-6 font-display text-3xl md:text-4xl">The Moment Everything Changed</h2>
-              <p className="mb-4 text-on-background/85 leading-relaxed font-body">
+              <p className="mb-4 text-on-background/85 leading-relaxed font-body text-justify">
                 Wearing fragrance gradually became more than a daily ritual. It quietly changed the way life was experienced. There was a growing sense of confidence, conversations felt more natural, and everyday moments carried a little more presence. It wasn&apos;t the fragrance itself that created those changes, but the feeling it awakened from within.
               </p>
               <p className="italic font-display text-lg text-primary my-3">
@@ -121,7 +121,7 @@ export default function AboutPage() {
                   &ldquo;What if a fragrance could do more than simply smell beautiful? What if it could remind someone of their confidence, reconnect them with a meaningful memory, or become part of their own story?&rdquo;
                 </p>
               </div>
-              <p className="mt-2 text-on-background/85 leading-relaxed font-body">
+              <p className="mt-2 text-on-background/85 leading-relaxed font-body text-justify">
                 That single question became the foundation of what would one day become Deuxsentique.
               </p>
             </div>
@@ -159,13 +159,13 @@ export default function AboutPage() {
               <div className="values-grid gap-6">
                 <div className="border-t border-primary/20 py-6 px-4 sm:px-6 relative text-left hover:bg-primary/[0.02] transition-colors rounded-xl">
                   <h3 className="font-display text-xl text-primary mb-2">Resten</h3>
-                  <p className="text-sm text-on-background/80 leading-relaxed font-body">
+                  <p className="text-sm text-on-background/80 leading-relaxed font-body text-justify">
                     A storyteller with a passion for transforming real experiences into meaningful narratives. Guided by creativity, vision and thoughtful direction, he believes every memorable moment deserves to be preserved, shaping each fragrance with purpose before it is brought to life.
                   </p>
                 </div>
                 <div className="border-t border-primary/20 py-6 px-4 sm:px-6 relative text-left hover:bg-primary/[0.02] transition-colors rounded-xl">
                   <h3 className="font-display text-xl text-primary mb-2">Jiji</h3>
-                  <p className="text-sm text-on-background/80 leading-relaxed font-body">
+                  <p className="text-sm text-on-background/80 leading-relaxed font-body text-justify">
                     A chemist with a deep understanding of ingredients, quality and precision. She combines scientific knowledge with thoughtful craftsmanship, ensuring every fragrance is developed with care while remaining true to the emotion behind each story.
                   </p>
                 </div>
@@ -267,10 +267,10 @@ export default function AboutPage() {
               <p className="text-primary font-display text-xl tracking-wide mb-6">
                 &ldquo;Designed to stay close.&rdquo;
               </p>
-              <p className="mb-4 text-on-background/85 leading-relaxed font-body">
+              <p className="mb-4 text-on-background/85 leading-relaxed font-body text-justify">
                 To us, luxury is not defined by being seen, but by the meaning it carries. It is found in the details, the emotions we hold, and the moments that quietly stay with us.
               </p>
-              <p className="mb-6 text-on-background/85 leading-relaxed font-body">
+              <p className="mb-6 text-on-background/85 leading-relaxed font-body text-justify">
                 Our fragrances are created to remain close to the wearer, revealing themselves naturally through meaningful moments rather than asking to be noticed. They become part of a conversation, a quiet embrace, a shared smile, or a memory that lingers long after the moment has passed.
               </p>
               <div className="border-l-2 border-primary/50 pl-6 my-4 bg-primary/5 py-4 pr-4 rounded-r-lg">
@@ -370,10 +370,10 @@ export default function AboutPage() {
                 </span>
               </div>
               <h2 className="!mt-0 mb-6 font-display text-3xl md:text-4xl">Crafted With Intention</h2>
-              <p className="mb-4 text-on-background/85 leading-relaxed font-body">
+              <p className="mb-4 text-on-background/85 leading-relaxed font-body text-justify">
                 What began as an emotional idea soon became a responsibility. As our understanding of perfumery grew, we realised that creating a meaningful fragrance required far more than inspiration alone. It called for knowledge, precision, patience and genuine care.
               </p>
-              <p className="mb-6 text-on-background/85 leading-relaxed font-body">
+              <p className="mb-6 text-on-background/85 leading-relaxed font-body text-justify">
                 Rather than taking shortcuts, we chose to build Deuxsentique the right way—working with experienced specialists and giving every detail the attention it deserves. From fragrance development and quality to the finishing touches of every bottle, each decision is made with intention and respect for the stories we are privileged to tell.
               </p>
               <div className="border-l-2 border-primary/50 pl-5 my-4 bg-primary/5 py-4 pr-4 rounded-r-lg">

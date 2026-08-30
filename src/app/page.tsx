@@ -661,12 +661,50 @@ export default function Home() {
                             {["Emotion First", "Authenticity", "Craftsmanship", "Connection", "Quiet Luxury", "Timelessness"][beliefIdx]}
                           </span>
                         </div>
-                        <div className="flex flex-wrap gap-4 mt-6 text-[10px] uppercase tracking-[0.3em] text-on-background/30 font-body reveal-desc">
-                          {["Emotion First", "Authenticity", "Craftsmanship", "Connection", "Quiet Luxury", "Timelessness"].map((word, idx) => (
-                            <span key={word} className={`transition-colors duration-500 ${idx === beliefIdx ? "text-primary font-medium" : ""}`}>
-                              {word} {idx < 5 && <span className="ml-4 text-on-background/15">•</span>}
-                            </span>
-                          ))}
+                        <div className="w-fit grid grid-cols-[auto_auto_auto_auto_auto] items-center gap-x-3.5 sm:gap-x-4 gap-y-2 mt-6 text-[9.5px] sm:text-[10px] uppercase tracking-[0.2em] sm:tracking-[0.25em] text-on-background/30 font-body reveal-desc">
+                          {/* Row 1 */}
+                          <span
+                            onClick={() => setBeliefIdx(0)}
+                            className={`text-left whitespace-nowrap cursor-pointer transition-colors duration-500 ${beliefIdx === 0 ? "text-primary font-medium" : "hover:text-on-background/60"}`}
+                          >
+                            Emotion First
+                          </span>
+                          <span className="text-center text-on-background/15 select-none px-0.5">•</span>
+                          <span
+                            onClick={() => setBeliefIdx(1)}
+                            className={`text-left whitespace-nowrap cursor-pointer transition-colors duration-500 ${beliefIdx === 1 ? "text-primary font-medium" : "hover:text-on-background/60"}`}
+                          >
+                            Authenticity
+                          </span>
+                          <span className="text-center text-on-background/15 select-none px-0.5">•</span>
+                          <span
+                            onClick={() => setBeliefIdx(2)}
+                            className={`text-left whitespace-nowrap cursor-pointer transition-colors duration-500 ${beliefIdx === 2 ? "text-primary font-medium" : "hover:text-on-background/60"}`}
+                          >
+                            Craftsmanship
+                          </span>
+
+                          {/* Row 2 */}
+                          <span
+                            onClick={() => setBeliefIdx(3)}
+                            className={`text-left whitespace-nowrap cursor-pointer transition-colors duration-500 ${beliefIdx === 3 ? "text-primary font-medium" : "hover:text-on-background/60"}`}
+                          >
+                            Connection
+                          </span>
+                          <span className="text-center text-on-background/15 select-none px-0.5">•</span>
+                          <span
+                            onClick={() => setBeliefIdx(4)}
+                            className={`text-left whitespace-nowrap cursor-pointer transition-colors duration-500 ${beliefIdx === 4 ? "text-primary font-medium" : "hover:text-on-background/60"}`}
+                          >
+                            Quiet Luxury
+                          </span>
+                          <span className="text-center text-on-background/15 select-none px-0.5">•</span>
+                          <span
+                            onClick={() => setBeliefIdx(5)}
+                            className={`text-left whitespace-nowrap cursor-pointer transition-colors duration-500 ${beliefIdx === 5 ? "text-primary font-medium" : "hover:text-on-background/60"}`}
+                          >
+                            Timelessness
+                          </span>
                         </div>
                       </div>
                     </div>
