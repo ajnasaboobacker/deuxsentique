@@ -6,6 +6,7 @@ import {
   deleteInvitation,
   checkIsSupabaseConfigured,
 } from "@/lib/supabase";
+import { checkRateLimit, getClientIp } from "@/lib/rate-limit";
 
 const ADMIN_PASSCODE =
   process.env.ADMIN_PASSCODE ||
@@ -62,6 +63,16 @@ export async function GET(request: Request) {
 
 export async function POST(request: Request) {
   try {
+    const ip = getClientIp(request);
+    const rateLimit = checkRateLimit(ip, 5, 10 * 60 * 1000);
+
+    if (!rateLimit.success) {
+      return NextResponse.json(
+        { success: false, error: "Too many requests. Please try again in a few minutes." },
+        { status: 429 }
+      );
+    }
+
     const body = await request.json();
     const { email, source = "homepage", hp } = body;
 

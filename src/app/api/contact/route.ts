@@ -1,8 +1,19 @@
 import { NextResponse } from "next/server";
 import { addContactMessage } from "@/lib/supabase";
+import { checkRateLimit, getClientIp } from "@/lib/rate-limit";
 
 export async function POST(request: Request) {
   try {
+    const ip = getClientIp(request);
+    const rateLimit = checkRateLimit(ip, 5, 10 * 60 * 1000);
+
+    if (!rateLimit.success) {
+      return NextResponse.json(
+        { success: false, error: "Too many messages sent. Please try again in a few minutes." },
+        { status: 429 }
+      );
+    }
+
     const body = await request.json();
     const { name, email, inquiryType = "General Inquiry", message, hp } = body;
 

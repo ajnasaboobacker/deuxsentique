@@ -4,6 +4,7 @@ import { useEffect, useState, useRef } from "react";
 import Link from "next/link";
 import { PageHeader, Footer } from "./components/shared";
 import { LuxuryAnimatedButton } from "@/components/ui/luxury-animated-button";
+import AudioSoundscape from "./components/audio-soundscape";
 
 interface Chapter {
   id: string;
@@ -214,15 +215,6 @@ export default function Home() {
       clearInterval(beliefInterval);
     };
   }, []);
-
-  // Web Audio Context cleanup on page unmount
-  useEffect(() => {
-    return () => {
-      if (audioCtx) {
-        audioCtx.close().catch(() => {});
-      }
-    };
-  }, [audioCtx]);
 
 
   // Window scroll event listener and section intersection observer
@@ -881,6 +873,9 @@ export default function Home() {
         <span className="font-body text-[9px] uppercase tracking-[0.4em]">Scroll</span>
         <div className="scroll-indicator-line"></div>
       </div>
+
+      {/* Procedural Nature Soundscape audio controller */}
+      <AudioSoundscape />
     </>
   );
 }
