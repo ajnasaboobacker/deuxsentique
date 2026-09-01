@@ -149,6 +149,8 @@ export default function ContactPage() {
               {!submitted ? (
                 mounted ? (
                   <form onSubmit={handleSubmit} className="flex flex-col gap-8 w-full" id="contact-form" noValidate>
+                    {/* Honeypot field for bot protection */}
+                    <input type="text" name="hp" className="hidden" tabIndex={-1} autoComplete="off" />
                     
                     {/* Error message card */}
                     {errorMessage && (
@@ -165,6 +167,7 @@ export default function ContactPage() {
                       <input
                         type="text"
                         id="name"
+                        name="name"
                         required
                         value={name}
                         onChange={(e) => setName(e.target.value)}
@@ -181,6 +184,7 @@ export default function ContactPage() {
                       <input
                         type="email"
                         id="email"
+                        name="email"
                         required
                         value={email}
                         onChange={(e) => setEmail(e.target.value)}
@@ -248,6 +252,7 @@ export default function ContactPage() {
                       </label>
                       <textarea
                         id="message"
+                        name="message"
                         required
                         rows={4}
                         value={message}

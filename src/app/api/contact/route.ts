@@ -4,7 +4,12 @@ import { addContactMessage } from "@/lib/supabase";
 export async function POST(request: Request) {
   try {
     const body = await request.json();
-    const { name, email, inquiryType = "General Inquiry", message } = body;
+    const { name, email, inquiryType = "General Inquiry", message, hp } = body;
+
+    // Honeypot check: If bot filled the hidden honeypot field, silently discard
+    if (hp) {
+      return NextResponse.json({ success: true, message: "Message delivered." });
+    }
 
     // Validation
     if (!name || typeof name !== "string" || !name.trim()) {

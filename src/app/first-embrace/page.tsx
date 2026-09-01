@@ -53,12 +53,17 @@ export default function FirstEmbracePage() {
           {!submitted ? (
             mounted ? (
               <form onSubmit={handleSubmit} className="w-full flex flex-col gap-6 md:gap-8 max-w-md mx-auto items-center" id="waitlist-form">
+                {/* Honeypot field for bot protection */}
+                <input type="text" name="hp" className="hidden" tabIndex={-1} autoComplete="off" />
+
                 {/* Clean Editorial Email Input Field */}
                 <div className="w-full relative px-2">
                   <input
                     type="email"
                     id="email"
+                    name="email"
                     required
+                    aria-label="Enter your email address"
                     value={email}
                     onChange={(e) => setEmail(e.target.value)}
                     placeholder="ENTER YOUR EMAIL ADDRESS"

@@ -25,16 +25,36 @@ export default function AdminPage() {
 
   // Check existing session auth
   useEffect(() => {
-    const savedAuth = sessionStorage.getItem("dsq_admin_auth");
-    if (savedAuth === "true") {
+    const savedToken = sessionStorage.getItem("dsq_admin_token");
+    if (savedToken) {
       setIsAuthenticated(true);
     }
   }, []);
 
+  const getAuthHeaders = () => {
+    const token = sessionStorage.getItem("dsq_admin_token") || "";
+    return {
+      "Content-Type": "application/json",
+      "x-admin-token": token,
+    };
+  };
+
   const fetchInvitations = useCallback(async () => {
     setLoading(true);
     try {
-      const res = await fetch("/api/invitations");
+      const token = sessionStorage.getItem("dsq_admin_token") || "";
+      const res = await fetch("/api/invitations", {
+        headers: {
+          "x-admin-token": token,
+        },
+      });
+
+      if (res.status === 401) {
+        setIsAuthenticated(false);
+        sessionStorage.removeItem("dsq_admin_token");
+        return;
+      }
+
       const json = await res.json();
       if (json.success) {
         setInvitations(json.data || []);
@@ -54,13 +74,27 @@ export default function AdminPage() {
     }
   }, [isAuthenticated, fetchInvitations]);
 
-  const handleLogin = (e: React.FormEvent) => {
+  const handleLogin = async (e: React.FormEvent) => {
     e.preventDefault();
-    if (passcode.trim() === "deuxsentique2026" || passcode.trim() === process.env.NEXT_PUBLIC_ADMIN_PASSCODE) {
-      setIsAuthenticated(true);
-      sessionStorage.setItem("dsq_admin_auth", "true");
-      setAuthError(false);
-    } else {
+    setAuthError(false);
+
+    try {
+      const res = await fetch("/api/admin/verify", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ passcode }),
+      });
+
+      const json = await res.json();
+      if (json.success && json.token) {
+        sessionStorage.setItem("dsq_admin_token", json.token);
+        setIsAuthenticated(true);
+        setPasscode("");
+      } else {
+        setAuthError(true);
+      }
+    } catch (err) {
+      console.error("Authentication error:", err);
       setAuthError(true);
     }
   };
@@ -70,7 +104,7 @@ export default function AdminPage() {
     try {
       const res = await fetch("/api/invitations", {
         method: "PATCH",
-        headers: { "Content-Type": "application/json" },
+        headers: getAuthHeaders(),
         body: JSON.stringify({ id, status: newStatus }),
       });
       const json = await res.json();
@@ -90,6 +124,7 @@ export default function AdminPage() {
     try {
       const res = await fetch(`/api/invitations?id=${encodeURIComponent(id)}`, {
         method: "DELETE",
+        headers: getAuthHeaders(),
       });
       const json = await res.json();
       if (json.success) {
@@ -273,7 +308,7 @@ export default function AdminPage() {
 
           <button
             onClick={() => {
-              sessionStorage.removeItem("dsq_admin_auth");
+              sessionStorage.removeItem("dsq_admin_token");
               setIsAuthenticated(false);
             }}
             className="text-[10px] uppercase tracking-[0.25em] text-white/50 hover:text-red-400 border border-white/10 px-4 py-2 rounded-md transition-colors cursor-pointer"

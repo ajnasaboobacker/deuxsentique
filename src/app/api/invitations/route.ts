@@ -7,7 +7,38 @@ import {
   checkIsSupabaseConfigured,
 } from "@/lib/supabase";
 
-export async function GET() {
+const ADMIN_PASSCODE =
+  process.env.ADMIN_PASSCODE ||
+  process.env.NEXT_PUBLIC_ADMIN_PASSCODE ||
+  "deuxsentique2026";
+
+function verifyAdminSession(request: Request): boolean {
+  const token = request.headers.get("x-admin-token");
+  const authHeader = request.headers.get("authorization");
+
+  const expectedSignature = Buffer.from(
+    `dsq_admin_${ADMIN_PASSCODE}_${new Date().toDateString()}`
+  ).toString("base64");
+
+  if (token === expectedSignature || token === ADMIN_PASSCODE) {
+    return true;
+  }
+
+  if (authHeader === `Bearer ${expectedSignature}` || authHeader === `Bearer ${ADMIN_PASSCODE}`) {
+    return true;
+  }
+
+  return false;
+}
+
+export async function GET(request: Request) {
+  if (!verifyAdminSession(request)) {
+    return NextResponse.json(
+      { success: false, error: "Unauthorized administrative access." },
+      { status: 401 }
+    );
+  }
+
   try {
     const list = await getInvitations();
     const total = list.length;
@@ -32,7 +63,12 @@ export async function GET() {
 export async function POST(request: Request) {
   try {
     const body = await request.json();
-    const { email, source = "homepage" } = body;
+    const { email, source = "homepage", hp } = body;
+
+    // Honeypot check: If the hidden bot field 'hp' is filled, silently discard
+    if (hp) {
+      return NextResponse.json({ success: true, message: "Registered." });
+    }
 
     if (!email || typeof email !== "string" || !email.includes("@")) {
       return NextResponse.json(
@@ -53,6 +89,13 @@ export async function POST(request: Request) {
 }
 
 export async function PATCH(request: Request) {
+  if (!verifyAdminSession(request)) {
+    return NextResponse.json(
+      { success: false, error: "Unauthorized administrative access." },
+      { status: 401 }
+    );
+  }
+
   try {
     const body = await request.json();
     const { id, status } = body;
@@ -76,6 +119,13 @@ export async function PATCH(request: Request) {
 }
 
 export async function DELETE(request: Request) {
+  if (!verifyAdminSession(request)) {
+    return NextResponse.json(
+      { success: false, error: "Unauthorized administrative access." },
+      { status: 401 }
+    );
+  }
+
   try {
     const { searchParams } = new URL(request.url);
     const id = searchParams.get("id");

@@ -777,13 +777,17 @@ export default function Home() {
                       {!submitted ? (
                         mounted ? (
                           <form onSubmit={handleSubmit} className="w-full max-w-[480px] flex flex-col items-center gap-6 mx-auto relative z-20 reveal-frame" id="waitlist-form">
+                            {/* Honeypot field for bot protection */}
+                            <input type="text" name="hp" className="hidden" tabIndex={-1} autoComplete="off" />
                             
                             {/* Clean Editorial Email Input Field */}
                             <div className="w-full max-w-[420px] relative px-2">
                               <input
                                 type="email"
                                 id="email"
+                                name="email"
                                 required
+                                aria-label="Enter your email address"
                                 value={email}
                                 onChange={(e) => setEmail(e.target.value)}
                                 placeholder="ENTER YOUR EMAIL ADDRESS"

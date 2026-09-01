@@ -31,8 +31,27 @@ export default function RootLayout({
 }: Readonly<{
   children: React.ReactNode;
 }>) {
+  const jsonLd = {
+    "@context": "https://schema.org",
+    "@type": "Brand",
+    name: "Deuxsentique",
+    description: "An ultra-luxury niche storytelling fragrance house.",
+    url: "https://deuxsentique.com",
+    logo: "https://deuxsentique.com/Assets/Perfume%20Bottle%20Mockup%202.png",
+    sameAs: [
+      "https://instagram.com/deuxsentique",
+      "https://tiktok.com/@deuxsentique"
+    ]
+  };
+
   return (
     <html lang="en" className={`dark scroll-smooth ${bodoniModa.variable} ${workSans.variable}`} data-scroll-behavior="smooth" suppressHydrationWarning>
+      <head>
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+        />
+      </head>
       <body className="bg-background text-on-background font-body antialiased">
         <SmoothScroller />
         {/* Visual depth layers — shared across all pages */}
