@@ -5,10 +5,11 @@ import { PageHeader, Footer } from "../components/shared";
 import { LuxuryAnimatedButton } from "@/components/ui/luxury-animated-button";
 
 const INQUIRY_TYPES = [
-  "General Inquiry",
-  "Bespoke Creations",
-  "Wholesale & Retail",
-  "Press & Media",
+  "General Enquiry",
+  "Order & Delivery",
+  "Product Enquiry",
+  "Press & Collaboration",
+  "Other",
 ];
 
 export default function ContactPage() {
@@ -16,7 +17,7 @@ export default function ContactPage() {
   const [email, setEmail] = useState("");
   const [inquiryType, setInquiryType] = useState(INQUIRY_TYPES[0]);
   const [message, setMessage] = useState("");
-  
+
   const [isDropdownOpen, setIsDropdownOpen] = useState(false);
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [submitted, setSubmitted] = useState(false);
@@ -29,7 +30,10 @@ export default function ContactPage() {
     setMounted(true);
 
     const handleClickOutside = (event: MouseEvent) => {
-      if (dropdownRef.current && !dropdownRef.current.contains(event.target as Node)) {
+      if (
+        dropdownRef.current &&
+        !dropdownRef.current.contains(event.target as Node)
+      ) {
         setIsDropdownOpen(false);
       }
     };
@@ -69,11 +73,15 @@ export default function ContactPage() {
       if (data.success) {
         setSubmitted(true);
       } else {
-        setErrorMessage(data.error || "Failed to send message. Please try again.");
+        setErrorMessage(
+          data.error || "Failed to send message. Please try again."
+        );
       }
     } catch (err) {
       console.error("Failed to post message:", err);
-      setErrorMessage("Network error. Please check your connection and try again.");
+      setErrorMessage(
+        "Network error. Please check your connection and try again."
+      );
     } finally {
       setIsSubmitting(false);
     }
@@ -84,7 +92,7 @@ export default function ContactPage() {
       <PageHeader />
 
       {/* Cinematic Header Cover Banner */}
-      <div className="w-full h-[250px] sm:h-[320px] md:h-[400px] relative overflow-hidden mt-[76px] md:mt-[96px] z-10 shadow-lg page-fade-in">
+      <div className="w-full h-[220px] sm:h-[280px] md:h-[350px] relative overflow-hidden mt-[76px] md:mt-[96px] z-10 shadow-lg page-fade-in">
         <img
           src="/Assets/contact_cinematic_banner.jpg"
           alt="Cinematic Perfume Bottle Banner"
@@ -94,49 +102,75 @@ export default function ContactPage() {
         <div className="absolute inset-0 bg-gradient-to-b from-[#1A1916]/50 via-transparent to-[#fec6a1]"></div>
       </div>
 
-      <main className={`inner-page page-fade-in pb-20 px-4 md:px-8 max-w-[1200px] mx-auto z-10 relative pt-12 md:pt-16 ${mounted ? "active" : ""}`}>
-        <section className="grid grid-cols-1 lg:grid-cols-12 gap-12 md:gap-16 items-start mt-8">
-          
+      <main
+        className={`inner-page page-fade-in pb-20 px-4 md:px-8 max-w-[1200px] mx-auto z-10 relative pt-10 md:pt-14 ${
+          mounted ? "active" : ""
+        }`}
+      >
+        <section className="grid grid-cols-1 lg:grid-cols-12 gap-12 md:gap-16 items-start mt-6">
           {/* Editorial Info Panel (Left) */}
           <div className="lg:col-span-5 flex flex-col justify-center text-left reveal-frame lg:sticky lg:top-32">
             <p className="text-secondary text-[10px] uppercase tracking-[0.6em] mb-4 font-body">
-              Dialogues
+              CONTACT
             </p>
             <h1 className="font-display text-4xl sm:text-5xl mb-6 leading-tight text-on-background">
               Reach the Essence
             </h1>
             <div className="gold-divider !mx-0 mb-8 max-w-[200px]"></div>
-            
-            <p className="lead mb-8 text-[#3A2418]/90 font-light italic leading-relaxed text-[15px]">
-              Every creation begins as a whisper, a story shared. We invite your thoughts, enquiries, and expressions.
+
+            <p className="lead mb-8 text-[#3A2418]/90 font-light italic leading-relaxed text-[14px] sm:text-[15px]">
+              Every creation begins as a whisper, a story shared. We invite your
+              thoughts, enquiries, and expressions.
             </p>
 
             <div className="flex flex-col gap-6 font-body text-[12px] text-on-background/85 leading-relaxed tracking-wide">
+              {/* Customer Service */}
               <div>
-                <p className="uppercase text-[9px] tracking-[0.25em] text-secondary font-semibold mb-1">General Dialogues</p>
-                <a href="mailto:customer-service@deuxsentique.com" className="hover:text-primary transition-colors text-[13px] font-medium tracking-[0.05em]">
+                <p className="uppercase text-[9px] tracking-[0.25em] text-secondary font-semibold mb-1">
+                  Customer Service
+                </p>
+                <a
+                  href="mailto:customer-service@deuxsentique.com"
+                  className="hover:text-primary transition-colors text-[13px] font-medium tracking-[0.05em] text-[#2D1F1D]"
+                >
                   customer-service@deuxsentique.com
                 </a>
               </div>
-              
+
+              {/* Working Hours */}
               <div>
-                <p className="uppercase text-[9px] tracking-[0.25em] text-secondary font-semibold mb-1">Bespoke Fragrance Consultation</p>
-                <a href="mailto:bespoke@deuxsentique.com" className="hover:text-primary transition-colors text-[13px] font-medium tracking-[0.05em]">
-                  bespoke@deuxsentique.com
-                </a>
+                <p className="uppercase text-[9px] tracking-[0.25em] text-secondary font-semibold mb-1">
+                  Working Hours
+                </p>
+                <p className="text-[13px] font-medium text-[#2D1F1D]">
+                  Monday – Friday
+                </p>
+                <p className="text-[12px] text-[#2D1F1D]/80">
+                  9:00 AM – 5:00 PM (UK Time)
+                </p>
               </div>
 
+              {/* Response Time */}
               <div>
-                <p className="uppercase text-[9px] tracking-[0.25em] text-secondary font-semibold mb-1">Press &amp; Wholesale Inquiries</p>
-                <a href="mailto:wholesale@deuxsentique.com" className="hover:text-primary transition-colors text-[13px] font-medium tracking-[0.05em]">
-                  wholesale@deuxsentique.com
-                </a>
+                <p className="uppercase text-[9px] tracking-[0.25em] text-secondary font-semibold mb-1">
+                  Response Time
+                </p>
+                <p className="text-[12px] text-[#2D1F1D]/90 italic">
+                  We aim to respond within 24–48 business hours.
+                </p>
               </div>
             </div>
 
             {/* Subtle Decorative Flourish */}
-            <div className="mt-12 opacity-40 hidden lg:block select-none">
-              <svg viewBox="0 0 240 30" className="w-44" fill="none" stroke="#8C5832" strokeWidth="1.2" strokeLinecap="round">
+            <div className="mt-10 opacity-40 hidden lg:block select-none">
+              <svg
+                viewBox="0 0 240 30"
+                className="w-44"
+                fill="none"
+                stroke="#8C5832"
+                strokeWidth="1.2"
+                strokeLinecap="round"
+              >
                 <path d="M 10 15 H 85 C 105 15 100 4 85 7 C 72 10 77 24 98 20 C 112 17 116 12 120 15 C 124 12 128 17 142 20 C 163 24 168 10 155 7 C 140 4 135 15 155 15 H 230" />
               </svg>
             </div>
@@ -145,13 +179,23 @@ export default function ContactPage() {
           {/* Fully Interactive Contact Form Panel (Right) */}
           <div className="lg:col-span-7 w-full flex justify-center">
             <div className="glass-editorial-panel w-full max-w-[620px] p-8 md:p-12 reveal-frame relative z-20 overflow-visible">
-              
               {!submitted ? (
                 mounted ? (
-                  <form onSubmit={handleSubmit} className="flex flex-col gap-8 w-full" id="contact-form" noValidate>
+                  <form
+                    onSubmit={handleSubmit}
+                    className="flex flex-col gap-7 w-full"
+                    id="contact-form"
+                    noValidate
+                  >
                     {/* Honeypot field for bot protection */}
-                    <input type="text" name="hp" className="hidden" tabIndex={-1} autoComplete="off" />
-                    
+                    <input
+                      type="text"
+                      name="hp"
+                      className="hidden"
+                      tabIndex={-1}
+                      autoComplete="off"
+                    />
+
                     {/* Error message card */}
                     {errorMessage && (
                       <div className="bg-[#E53E3E]/10 border border-[#E53E3E]/40 text-[#C53030] text-[11px] uppercase tracking-[0.2em] py-3.5 px-4 rounded-xl font-body text-center animate-fadeIn">
@@ -161,8 +205,11 @@ export default function ContactPage() {
 
                     {/* Name Input */}
                     <div className="flex flex-col gap-2 relative">
-                      <label htmlFor="name" className="text-[10px] uppercase tracking-[0.3em] text-[#8C5832] font-semibold">
-                        Your Name
+                      <label
+                        htmlFor="name"
+                        className="text-[10px] uppercase tracking-[0.3em] text-[#8C5832] font-semibold"
+                      >
+                        Full Name
                       </label>
                       <input
                         type="text"
@@ -178,7 +225,10 @@ export default function ContactPage() {
 
                     {/* Email Input */}
                     <div className="flex flex-col gap-2 relative">
-                      <label htmlFor="email" className="text-[10px] uppercase tracking-[0.3em] text-[#8C5832] font-semibold">
+                      <label
+                        htmlFor="email"
+                        className="text-[10px] uppercase tracking-[0.3em] text-[#8C5832] font-semibold"
+                      >
                         Email Address
                       </label>
                       <input
@@ -194,11 +244,14 @@ export default function ContactPage() {
                     </div>
 
                     {/* Custom Luxury Inquiry Dropdown Selector */}
-                    <div className="flex flex-col gap-2 relative" ref={dropdownRef}>
+                    <div
+                      className="flex flex-col gap-2 relative"
+                      ref={dropdownRef}
+                    >
                       <label className="text-[10px] uppercase tracking-[0.3em] text-[#8C5832] font-semibold">
-                        Inquiry Nature
+                        Inquiry Type
                       </label>
-                      
+
                       {/* Trigger Button */}
                       <button
                         type="button"
@@ -215,7 +268,11 @@ export default function ContactPage() {
                           stroke="currentColor"
                           strokeWidth={1.5}
                         >
-                          <path strokeLinecap="round" strokeLinejoin="round" d="M19.5 8.25l-7.5 7.5-7.5-7.5" />
+                          <path
+                            strokeLinecap="round"
+                            strokeLinejoin="round"
+                            d="M19.5 8.25l-7.5 7.5-7.5-7.5"
+                          />
                         </svg>
                       </button>
 
@@ -247,7 +304,10 @@ export default function ContactPage() {
 
                     {/* Message Textarea */}
                     <div className="flex flex-col gap-2 relative">
-                      <label htmlFor="message" className="text-[10px] uppercase tracking-[0.3em] text-[#8C5832] font-semibold">
+                      <label
+                        htmlFor="message"
+                        className="text-[10px] uppercase tracking-[0.3em] text-[#8C5832] font-semibold"
+                      >
                         Your Message
                       </label>
                       <textarea
@@ -263,38 +323,45 @@ export default function ContactPage() {
                     </div>
 
                     {/* Submit Button */}
-                    <div className="flex justify-center mt-6">
+                    <div className="flex justify-center mt-4">
                       <LuxuryAnimatedButton
                         type="submit"
-                        label={isSubmitting ? "Sealing Message..." : "Send Message"}
+                        label={
+                          isSubmitting
+                            ? "Sending Message..."
+                            : "Send Message"
+                        }
                         disabled={isSubmitting}
                       />
                     </div>
                   </form>
                 ) : (
                   <div className="h-64 flex items-center justify-center">
-                    <span className="text-[10px] uppercase tracking-[0.3em] text-on-background/25">Loading dialogue form...</span>
+                    <span className="text-[10px] uppercase tracking-[0.3em] text-on-background/25">
+                      Loading contact form...
+                    </span>
                   </div>
                 )
               ) : (
-                /* Success Parchment Scroll State */
-                <div className="w-full bg-[#EADBBF]/95 rounded-3xl p-8 sm:p-12 flex flex-col items-center justify-center text-center border border-[#8C5832] transition-all duration-1000 animate-fadeIn" id="contact-success">
+                /* Confirmation Message State */
+                <div
+                  className="w-full bg-[#EADBBF]/95 rounded-3xl p-8 sm:p-12 flex flex-col items-center justify-center text-center border border-[#8C5832] transition-all duration-1000 animate-fadeIn"
+                  id="contact-success"
+                >
                   <div className="inline-flex items-center justify-center w-12 h-12 rounded-full border border-[#8C5832] mb-5 text-[#8C5832] bg-[#8C5832]/10 shadow-[0_2px_8px_rgba(140,88,50,0.1)] animate-pulse">
                     <span className="text-lg">✓</span>
                   </div>
-                  <h3 className="text-[#8C5832] text-[12px] sm:text-[13px] uppercase tracking-[0.55em] mb-3 font-display font-semibold">
-                    Message Sealed &amp; Sent
+                  <h3 className="text-[#8C5832] text-[12px] sm:text-[13px] uppercase tracking-[0.35em] mb-3 font-display font-semibold">
+                    Thank you for reaching out to Deuxsentique.
                   </h3>
                   <p className="text-[#23150D] text-[13px] leading-relaxed font-body font-light italic max-w-sm">
-                    Thank you, {name.split(" ")[0]}. Your message has been sealed and sent to our perfume house.<br /><br />
-                    We will reflect on your request and connect with you shortly.
+                    Your message has found its way to us. We&rsquo;ll be in touch
+                    within 24–48 business hours.
                   </p>
                 </div>
               )}
-
             </div>
           </div>
-
         </section>
       </main>
 
