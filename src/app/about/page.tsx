@@ -29,13 +29,6 @@ export default function AboutPage() {
 
         {/* Hero Section */}
         <section className="text-center pt-12 pb-16 md:pt-16 md:pb-24 max-w-[1200px] mx-auto px-4">
-          <div className="flex justify-center mb-6 reveal-frame">
-            <img
-              src="/Assets/logo/ICON blk trnsprnt.png"
-              alt="Deuxsentique Logo"
-              className="h-20 md:h-28 w-auto object-contain hero-logo-float drop-shadow-[0_0_15px_rgba(196,145,58,0.35)]"
-            />
-          </div>
           <p className="text-secondary text-[10px] uppercase tracking-[0.6em] mb-6 font-body animate-hero-subtitle">
             Our Story
           </p>
