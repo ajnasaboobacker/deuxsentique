@@ -66,7 +66,7 @@ export default function TermsPage() {
           </p>
           <div className="gold-divider max-w-[300px] mx-auto my-6 opacity-75"></div>
           <p className="text-on-background/70 text-xs sm:text-sm font-body tracking-wider uppercase">
-            Last Updated: {currentPolicy.lastUpdated} &bull; Deuxsentique Ltd
+            Last Updated: {currentPolicy.lastUpdated} Deuxsentique Ltd
           </p>
         </section>
 
