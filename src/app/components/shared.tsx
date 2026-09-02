@@ -2,6 +2,7 @@
 
 import { useState } from "react";
 import Link from "next/link";
+import { Volume2, VolumeX } from "lucide-react";
 
 export function Footer({ logoSrc = "/Assets/logo/ICON blk trnsprnt.png" }: { logoSrc?: string }) {
   return (
@@ -99,18 +100,19 @@ export function PageHeader({
             Contact
           </Link>
 
-          {/* Soundscape toggle */}
+          {/* Soundscape icon toggle */}
           {showSoundscape && toggleAmbientAudio && (
             <button
               onClick={toggleAmbientAudio}
-              className="hidden md:flex items-center gap-3 cursor-pointer text-[9px] uppercase tracking-[0.3em] text-[#fec6a1]/60 hover:text-primary transition-colors focus:outline-none bg-transparent border-none p-0"
+              aria-label={audioPlaying ? "Mute audio soundscape" : "Turn sound on"}
+              title={audioPlaying ? "Mute sound" : "Turn sound on"}
+              className="hidden md:flex items-center justify-center p-2 rounded-full text-[#fec6a1]/70 hover:text-primary hover:bg-white/5 transition-all duration-300 cursor-pointer focus:outline-none bg-transparent border-none"
             >
-              <span>Sound</span>
-              <div className="flex gap-[2px] items-end h-3 w-4">
-                <span className={`w-[2px] bg-primary transition-all duration-300 ${audioPlaying ? "animate-[pulse_1s_infinite_0s] h-3" : "h-1"}`}></span>
-                <span className={`w-[2px] bg-primary transition-all duration-300 ${audioPlaying ? "animate-[pulse_1s_infinite_0.2s] h-2" : "h-[2px]"}`}></span>
-                <span className={`w-[2px] bg-primary transition-all duration-300 ${audioPlaying ? "animate-[pulse_1s_infinite_0.4s] h-3" : "h-[1.5px]"}`}></span>
-              </div>
+              {audioPlaying ? (
+                <Volume2 className="w-4 h-4 text-primary animate-pulse" />
+              ) : (
+                <VolumeX className="w-4 h-4 text-[#fec6a1]/60 hover:text-primary" />
+              )}
             </button>
           )}
 
@@ -159,6 +161,26 @@ export function PageHeader({
         <Link href="/contact" onClick={() => setMenuOpen(false)} className="font-display text-2xl tracking-[0.3em] uppercase text-on-background hover:text-primary transition-colors">
           Contact
         </Link>
+
+        {showSoundscape && toggleAmbientAudio && (
+          <button
+            onClick={toggleAmbientAudio}
+            aria-label={audioPlaying ? "Mute audio soundscape" : "Turn sound on"}
+            className="flex items-center gap-3 font-display text-xl tracking-[0.2em] uppercase text-on-background/80 hover:text-primary transition-colors cursor-pointer bg-transparent border-none"
+          >
+            {audioPlaying ? (
+              <>
+                <Volume2 className="w-5 h-5 text-primary animate-pulse" />
+                <span>Sound On</span>
+              </>
+            ) : (
+              <>
+                <VolumeX className="w-5 h-5 text-on-background/50" />
+                <span>Sound Off</span>
+              </>
+            )}
+          </button>
+        )}
         {scrollToSection ? (
           <button
             onClick={() => { setMenuOpen(false); scrollToSection("section-6"); }}
