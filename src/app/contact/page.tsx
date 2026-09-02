@@ -103,35 +103,35 @@ export default function ContactPage() {
       </div>
 
       <main
-        className={`inner-page page-fade-in pb-20 px-4 md:px-8 max-w-[1200px] mx-auto z-10 relative pt-10 md:pt-14 ${
+        className={`inner-page page-fade-in pb-24 px-4 md:px-8 max-w-[1240px] mx-auto z-10 relative pt-12 md:pt-16 ${
           mounted ? "active" : ""
         }`}
       >
-        <section className="grid grid-cols-1 lg:grid-cols-12 gap-12 md:gap-16 items-start mt-6">
+        <section className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-start">
           {/* Editorial Info Panel (Left) */}
-          <div className="lg:col-span-5 flex flex-col justify-center text-left reveal-frame lg:sticky lg:top-32">
-            <p className="text-secondary text-[10px] uppercase tracking-[0.6em] mb-4 font-body">
+          <div className="lg:col-span-5 flex flex-col justify-start text-left reveal-frame lg:sticky lg:top-36">
+            <p className="text-secondary text-[11px] sm:text-[12px] uppercase tracking-[0.5em] mb-4 font-body font-semibold">
               CONTACT
             </p>
-            <h1 className="font-display text-4xl sm:text-5xl mb-6 leading-tight text-on-background">
+            <h1 className="font-display text-4xl sm:text-5xl lg:text-5xl mb-6 leading-tight text-on-background">
               Reach the Essence
             </h1>
-            <div className="gold-divider !mx-0 mb-8 max-w-[200px]"></div>
+            <div className="gold-divider !mx-0 mb-8 max-w-[220px]"></div>
 
-            <p className="lead mb-8 text-[#3A2418]/90 font-light italic leading-relaxed text-[14px] sm:text-[15px]">
+            <p className="lead mb-10 text-[#3A2418]/90 font-light italic leading-relaxed text-[15px] sm:text-[16px]">
               Every creation begins as a whisper, a story shared. We invite your
               thoughts, enquiries, and expressions.
             </p>
 
-            <div className="flex flex-col gap-6 font-body text-[12px] text-on-background/85 leading-relaxed tracking-wide">
+            <div className="flex flex-col gap-7 font-body text-on-background/85 leading-relaxed tracking-wide">
               {/* Customer Service */}
               <div>
-                <p className="uppercase text-[9px] tracking-[0.25em] text-secondary font-semibold mb-1">
+                <p className="uppercase text-[10px] sm:text-[11px] tracking-[0.25em] text-secondary font-semibold mb-1.5">
                   Customer Service
                 </p>
                 <a
                   href="mailto:customer-service@deuxsentique.com"
-                  className="hover:text-primary transition-colors text-[13px] font-medium tracking-[0.05em] text-[#2D1F1D]"
+                  className="hover:text-primary transition-colors text-[14px] sm:text-[15px] font-medium tracking-[0.03em] text-[#2D1F1D]"
                 >
                   customer-service@deuxsentique.com
                 </a>
@@ -139,33 +139,33 @@ export default function ContactPage() {
 
               {/* Working Hours */}
               <div>
-                <p className="uppercase text-[9px] tracking-[0.25em] text-secondary font-semibold mb-1">
+                <p className="uppercase text-[10px] sm:text-[11px] tracking-[0.25em] text-secondary font-semibold mb-1.5">
                   Working Hours
                 </p>
-                <p className="text-[13px] font-medium text-[#2D1F1D]">
+                <p className="text-[14px] sm:text-[15px] font-medium text-[#2D1F1D]">
                   Monday – Friday
                 </p>
-                <p className="text-[12px] text-[#2D1F1D]/80">
+                <p className="text-[13px] text-[#2D1F1D]/80 mt-0.5">
                   9:00 AM – 5:00 PM (UK Time)
                 </p>
               </div>
 
               {/* Response Time */}
               <div>
-                <p className="uppercase text-[9px] tracking-[0.25em] text-secondary font-semibold mb-1">
+                <p className="uppercase text-[10px] sm:text-[11px] tracking-[0.25em] text-secondary font-semibold mb-1.5">
                   Response Time
                 </p>
-                <p className="text-[12px] text-[#2D1F1D]/90 italic">
+                <p className="text-[13px] sm:text-[14px] text-[#2D1F1D]/90 italic">
                   We aim to respond within 24–48 business hours.
                 </p>
               </div>
             </div>
 
             {/* Subtle Decorative Flourish */}
-            <div className="mt-10 opacity-40 hidden lg:block select-none">
+            <div className="mt-12 opacity-45 hidden lg:block select-none">
               <svg
                 viewBox="0 0 240 30"
-                className="w-44"
+                className="w-48"
                 fill="none"
                 stroke="#8C5832"
                 strokeWidth="1.2"
@@ -177,13 +177,13 @@ export default function ContactPage() {
           </div>
 
           {/* Fully Interactive Contact Form Panel (Right) */}
-          <div className="lg:col-span-7 w-full flex justify-center">
-            <div className="glass-editorial-panel w-full max-w-[620px] p-8 md:p-12 reveal-frame relative z-20 overflow-visible">
+          <div className="lg:col-span-7 w-full flex justify-start">
+            <div className="glass-editorial-panel w-full max-w-[660px] p-8 sm:p-10 md:p-12 reveal-frame relative z-20 overflow-visible">
               {!submitted ? (
                 mounted ? (
                   <form
                     onSubmit={handleSubmit}
-                    className="flex flex-col gap-7 w-full"
+                    className="flex flex-col gap-8 sm:gap-9 w-full"
                     id="contact-form"
                     noValidate
                   >
@@ -198,7 +198,7 @@ export default function ContactPage() {
 
                     {/* Error message card */}
                     {errorMessage && (
-                      <div className="bg-[#E53E3E]/10 border border-[#E53E3E]/40 text-[#C53030] text-[11px] uppercase tracking-[0.2em] py-3.5 px-4 rounded-xl font-body text-center animate-fadeIn">
+                      <div className="bg-[#E53E3E]/10 border border-[#E53E3E]/40 text-[#C53030] text-[12px] uppercase tracking-[0.2em] py-4 px-5 rounded-xl font-body text-center animate-fadeIn">
                         {errorMessage}
                       </div>
                     )}
@@ -207,7 +207,7 @@ export default function ContactPage() {
                     <div className="flex flex-col gap-2 relative">
                       <label
                         htmlFor="name"
-                        className="text-[10px] uppercase tracking-[0.3em] text-[#8C5832] font-semibold"
+                        className="text-[11px] sm:text-[12px] uppercase tracking-[0.25em] text-[#5E361F] font-semibold"
                       >
                         Full Name
                       </label>
@@ -219,7 +219,7 @@ export default function ContactPage() {
                         value={name}
                         onChange={(e) => setName(e.target.value)}
                         placeholder="ENTER YOUR FULL NAME"
-                        className="w-full bg-transparent border-b border-[#C4913A]/30 focus:border-[#C4913A] pb-3 pt-2 text-[#2D1F1D] text-[12px] sm:text-[13px] tracking-[0.2em] placeholder:text-[#4A3B32]/40 transition-all duration-300 focus:outline-none font-display font-medium"
+                        className="w-full bg-transparent border-b border-[#C4913A]/40 focus:border-[#C4913A] pb-3.5 pt-2 text-[#2D1F1D] text-[15px] sm:text-[16px] md:text-[17px] tracking-[0.12em] placeholder:text-[#4A3B32]/50 transition-all duration-300 focus:outline-none font-display font-medium"
                       />
                     </div>
 
@@ -227,7 +227,7 @@ export default function ContactPage() {
                     <div className="flex flex-col gap-2 relative">
                       <label
                         htmlFor="email"
-                        className="text-[10px] uppercase tracking-[0.3em] text-[#8C5832] font-semibold"
+                        className="text-[11px] sm:text-[12px] uppercase tracking-[0.25em] text-[#5E361F] font-semibold"
                       >
                         Email Address
                       </label>
@@ -239,7 +239,7 @@ export default function ContactPage() {
                         value={email}
                         onChange={(e) => setEmail(e.target.value)}
                         placeholder="ENTER YOUR EMAIL ADDRESS"
-                        className="w-full bg-transparent border-b border-[#C4913A]/30 focus:border-[#C4913A] pb-3 pt-2 text-[#2D1F1D] text-[12px] sm:text-[13px] tracking-[0.2em] placeholder:text-[#4A3B32]/40 transition-all duration-300 focus:outline-none font-display font-medium"
+                        className="w-full bg-transparent border-b border-[#C4913A]/40 focus:border-[#C4913A] pb-3.5 pt-2 text-[#2D1F1D] text-[15px] sm:text-[16px] md:text-[17px] tracking-[0.12em] placeholder:text-[#4A3B32]/50 transition-all duration-300 focus:outline-none font-display font-medium"
                       />
                     </div>
 
@@ -248,7 +248,7 @@ export default function ContactPage() {
                       className="flex flex-col gap-2 relative"
                       ref={dropdownRef}
                     >
-                      <label className="text-[10px] uppercase tracking-[0.3em] text-[#8C5832] font-semibold">
+                      <label className="text-[11px] sm:text-[12px] uppercase tracking-[0.25em] text-[#5E361F] font-semibold">
                         Inquiry Type
                       </label>
 
@@ -256,11 +256,11 @@ export default function ContactPage() {
                       <button
                         type="button"
                         onClick={() => setIsDropdownOpen(!isDropdownOpen)}
-                        className="w-full bg-transparent border-b border-[#C4913A]/30 focus:border-[#C4913A] pb-3 pt-2 text-left text-[#2D1F1D] text-[12px] sm:text-[13px] tracking-[0.2em] uppercase transition-all duration-300 focus:outline-none flex justify-between items-center cursor-pointer select-none font-display font-medium"
+                        className="w-full bg-transparent border-b border-[#C4913A]/40 focus:border-[#C4913A] pb-3.5 pt-2 text-left text-[#2D1F1D] text-[15px] sm:text-[16px] md:text-[17px] tracking-[0.12em] uppercase transition-all duration-300 focus:outline-none flex justify-between items-center cursor-pointer select-none font-display font-medium"
                       >
                         <span>{inquiryType}</span>
                         <svg
-                          className={`w-3.5 h-3.5 text-[#C4913A] transition-transform duration-500 ${
+                          className={`w-4 h-4 text-[#C4913A] transition-transform duration-500 ${
                             isDropdownOpen ? "rotate-180" : ""
                           }`}
                           fill="none"
@@ -278,8 +278,8 @@ export default function ContactPage() {
 
                       {/* Dropdown Options List Overlay */}
                       {isDropdownOpen && (
-                        <div className="absolute left-0 right-0 top-full mt-2 bg-[#EADBBF] border border-[#C4913A]/45 rounded-2xl shadow-xl overflow-hidden z-[999] transition-all duration-300 animate-fadeIn">
-                          <div className="py-1 flex flex-col">
+                        <div className="absolute left-0 right-0 top-full mt-2 bg-[#EADBBF] border border-[#C4913A]/50 rounded-2xl shadow-2xl overflow-hidden z-[999] transition-all duration-300 animate-fadeIn">
+                          <div className="py-1.5 flex flex-col">
                             {INQUIRY_TYPES.map((type) => (
                               <button
                                 key={type}
@@ -288,10 +288,10 @@ export default function ContactPage() {
                                   setInquiryType(type);
                                   setIsDropdownOpen(false);
                                 }}
-                                className={`w-full text-left px-6 py-3.5 text-[11px] sm:text-[12px] uppercase tracking-[0.2em] transition-colors cursor-pointer font-display font-medium ${
+                                className={`w-full text-left px-6 py-4 text-[13px] sm:text-[14px] uppercase tracking-[0.15em] transition-colors cursor-pointer font-display font-medium ${
                                   inquiryType === type
                                     ? "bg-[#C4913A] text-[#FAF4EA]"
-                                    : "text-[#3A2418] hover:bg-[#C4913A]/10 hover:text-primary"
+                                    : "text-[#3A2418] hover:bg-[#C4913A]/15 hover:text-primary"
                                 }`}
                               >
                                 {type}
@@ -306,7 +306,7 @@ export default function ContactPage() {
                     <div className="flex flex-col gap-2 relative">
                       <label
                         htmlFor="message"
-                        className="text-[10px] uppercase tracking-[0.3em] text-[#8C5832] font-semibold"
+                        className="text-[11px] sm:text-[12px] uppercase tracking-[0.25em] text-[#5E361F] font-semibold"
                       >
                         Your Message
                       </label>
@@ -314,16 +314,16 @@ export default function ContactPage() {
                         id="message"
                         name="message"
                         required
-                        rows={4}
+                        rows={5}
                         value={message}
                         onChange={(e) => setMessage(e.target.value)}
                         placeholder="EXPRESS YOUR THOUGHTS OR ENQUIRIES"
-                        className="w-full bg-transparent border-b border-[#C4913A]/30 focus:border-[#C4913A] pb-3 pt-2 text-[#2D1F1D] text-[12px] sm:text-[13px] tracking-[0.2em] placeholder:text-[#4A3B32]/40 transition-all duration-300 focus:outline-none font-display font-medium resize-none leading-relaxed"
+                        className="w-full bg-transparent border-b border-[#C4913A]/40 focus:border-[#C4913A] pb-3.5 pt-2 text-[#2D1F1D] text-[15px] sm:text-[16px] md:text-[17px] tracking-[0.08em] placeholder:text-[#4A3B32]/50 transition-all duration-300 focus:outline-none font-display font-medium resize-none leading-relaxed min-h-[130px]"
                       />
                     </div>
 
                     {/* Submit Button */}
-                    <div className="flex justify-center mt-4">
+                    <div className="flex justify-center mt-6">
                       <LuxuryAnimatedButton
                         type="submit"
                         label={
@@ -337,7 +337,7 @@ export default function ContactPage() {
                   </form>
                 ) : (
                   <div className="h-64 flex items-center justify-center">
-                    <span className="text-[10px] uppercase tracking-[0.3em] text-on-background/25">
+                    <span className="text-[11px] uppercase tracking-[0.3em] text-on-background/40">
                       Loading contact form...
                     </span>
                   </div>
@@ -351,10 +351,10 @@ export default function ContactPage() {
                   <div className="inline-flex items-center justify-center w-12 h-12 rounded-full border border-[#8C5832] mb-5 text-[#8C5832] bg-[#8C5832]/10 shadow-[0_2px_8px_rgba(140,88,50,0.1)] animate-pulse">
                     <span className="text-lg">✓</span>
                   </div>
-                  <h3 className="text-[#8C5832] text-[12px] sm:text-[13px] uppercase tracking-[0.35em] mb-3 font-display font-semibold">
+                  <h3 className="text-[#8C5832] text-[13px] sm:text-[14px] uppercase tracking-[0.35em] mb-3 font-display font-semibold">
                     Thank you for reaching out to Deuxsentique.
                   </h3>
-                  <p className="text-[#23150D] text-[13px] leading-relaxed font-body font-light italic max-w-sm">
+                  <p className="text-[#23150D] text-[14px] leading-relaxed font-body font-light italic max-w-sm">
                     Your message has found its way to us. We&rsquo;ll be in touch
                     within 24–48 business hours.
                   </p>
