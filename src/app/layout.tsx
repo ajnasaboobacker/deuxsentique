@@ -39,8 +39,10 @@ export default function RootLayout({
     url: "https://deuxsentique.com",
     logo: "https://deuxsentique.com/Assets/Perfume%20Bottle%20Mockup%202.png",
     sameAs: [
-      "https://instagram.com/deuxsentique",
-      "https://tiktok.com/@deuxsentique"
+      "https://www.instagram.com/deuxsentique/?hl=en",
+      "https://www.tiktok.com/@deuxsentique?lang=en-GB",
+      "https://www.facebook.com/Deuxsentique?locale=en_GB",
+      "https://www.youtube.com/@Deuxsentique"
     ]
   };
 

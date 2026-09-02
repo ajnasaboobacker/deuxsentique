@@ -838,14 +838,21 @@ export default function Home() {
                         {renderTitle(chapter.title)}
                       </h2>
                       <div className="flex flex-wrap justify-center gap-8 md:gap-12 mt-4 reveal-desc">
-                        {["Instagram", "TikTok", "Facebook", "LinkedIn", "YouTube"].map((platform) => (
-                          <Link
-                            key={platform}
-                            href="#"
-                            className="font-body text-[10px] uppercase tracking-[0.3em] text-on-background/50 hover:text-primary transition-colors duration-500"
+                        {[
+                          { name: "Instagram", href: "https://www.instagram.com/deuxsentique/?hl=en" },
+                          { name: "TikTok", href: "https://www.tiktok.com/@deuxsentique?lang=en-GB" },
+                          { name: "Facebook", href: "https://www.facebook.com/Deuxsentique?locale=en_GB" },
+                          { name: "YouTube", href: "https://www.youtube.com/@Deuxsentique" },
+                        ].map((social) => (
+                          <a
+                            key={social.name}
+                            href={social.href}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className="font-body text-[10px] uppercase tracking-[0.3em] text-on-background/60 hover:text-primary transition-colors duration-500"
                           >
-                            {platform}
-                          </Link>
+                            {social.name}
+                          </a>
                         ))}
                       </div>
                     </div>
